@@ -1,0 +1,5 @@
+[gd_resource type="RectangleShape2D" format=2]
+
+[resource]
+resource_local_to_scene = true
+extents = Vector2( 8, 8 )

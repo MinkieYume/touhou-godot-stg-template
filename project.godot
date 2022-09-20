@@ -1,0 +1,210 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "EditorPlugin",
+"class": &"AnnotationPlugin",
+"language": &"GDScript",
+"path": "res://addons/annotations_tree/annotation_plugin.gd"
+}, {
+"base": "PanelContainer",
+"class": &"AnnotationsArea",
+"language": &"GDScript",
+"path": "res://addons/annotations_tree/annotations_area.gd"
+}, {
+"base": "Object",
+"class": &"Bullet",
+"language": &"GDScript",
+"path": "res://弹幕相关/子弹.gd"
+}, {
+"base": "Node2D",
+"class": &"BulletManager",
+"language": &"GDScript",
+"path": "res://弹幕相关/弹幕管理器.gd"
+}, {
+"base": "Object",
+"class": &"BulletPool",
+"language": &"GDScript",
+"path": "res://弹幕相关/子弹池（未使用）.gd"
+}, {
+"base": "Marker2D",
+"class": &"BulletSpawner",
+"language": &"GDScript",
+"path": "res://弹幕相关/发弹点.gd"
+}, {
+"base": "BulletSpawner",
+"class": &"BulletSpawnerBomb",
+"language": &"GDScript",
+"path": "res://弹幕相关/发弹点/炸弹发弹点.gd"
+}, {
+"base": "BulletSpawner",
+"class": &"EnemyFlyerShooter",
+"language": &"GDScript",
+"path": "res://弹幕相关/发弹点/敌机发射器.gd"
+}, {
+"base": "Object",
+"class": &"Point",
+"language": &"GDScript",
+"path": "res://掉落物/Point.gd"
+}, {
+"base": "Point",
+"class": &"Power",
+"language": &"GDScript",
+"path": "res://掉落物/Power.gd"
+}, {
+"base": "Area2D",
+"class": &"Reflecter",
+"language": &"GDScript",
+"path": "res://弹幕相关/反射板/基础反射板.gd"
+}, {
+"base": "CharacterBody2D",
+"class": &"SelfFlyer",
+"language": &"GDScript",
+"path": "res://机体/自机/默认自机.gd"
+}, {
+"base": "Area2D",
+"class": &"Shade",
+"language": &"GDScript",
+"path": "res://弹幕相关/遮罩/基础遮罩.gd"
+}, {
+"base": "Resource",
+"class": &"SpawnerSetting",
+"language": &"GDScript",
+"path": "res://弹幕相关/发弹点配置.gd"
+}, {
+"base": "Node",
+"class": &"SpellCard",
+"language": &"GDScript",
+"path": "res://弹幕相关/符卡/基础符卡.gd"
+}, {
+"base": "Node",
+"class": &"Util",
+"language": &"GDScript",
+"path": "res://Util.gd"
+}]
+_global_script_class_icons={
+"AnnotationPlugin": "",
+"AnnotationsArea": "",
+"Bullet": "",
+"BulletManager": "",
+"BulletPool": "",
+"BulletSpawner": "",
+"BulletSpawnerBomb": "",
+"EnemyFlyerShooter": "",
+"Point": "",
+"Power": "",
+"Reflecter": "",
+"SelfFlyer": "",
+"Shade": "",
+"SpawnerSetting": "",
+"SpellCard": "",
+"Util": ""
+}
+
+[addons]
+
+instance_dock/scenes=[{
+"name": "测试关卡",
+"scenes": [{
+"scene": "res://关卡/默认测试关卡.tscn"
+}, {
+"scene": "res://关卡/符卡测试关卡.tscn"
+}],
+"scroll": 0
+}, {
+"name": "非符与符卡",
+"scenes": [],
+"scroll": 0
+}]
+
+[application]
+
+config/name="东方弹幕绘"
+run/main_scene="res://东方弹幕绘.tscn"
+config/features=PackedStringArray("4.0")
+config/icon="res://icon.png"
+
+[autoload]
+
+STGSYS="*res://STGSYS.gd"
+RS="*res://RSLOADER.gd"
+
+[debug]
+
+settings/fps/force_fps=60
+
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
+window/stretch/mode="viewport"
+window/size/width=800
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/InstanceDock/plugin.cfg", "res://addons/annotations_tree/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/version-check/plugin.cfg")
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/channel_pack": 0,
+"compress/hdr_compression": 1,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d/compress_to": 0,
+"mipmaps/generate": false,
+"mipmaps/limit": -1,
+"process/fix_alpha_border": true,
+"process/hdr_as_srgb": false,
+"process/hdr_clamp_exposure": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"process/size_limit": 0,
+"roughness/mode": 0,
+"roughness/src_normal": ""
+}
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
+}
+low_speed={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194325,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
+}
+ui_bomb={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":88,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
+}
+ui_z={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":90,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

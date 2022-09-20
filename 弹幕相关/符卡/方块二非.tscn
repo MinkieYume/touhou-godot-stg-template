@@ -1,0 +1,414 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfi1eeyo7tvgb"]
+
+[ext_resource type="PackedScene" path="res://弹幕相关/符卡/基础符卡.tscn" id="1_glkca"]
+[ext_resource type="PackedScene" path="res://弹幕相关/发弹点/自机狙发弹点.tscn" id="2_mqopy"]
+
+[sub_resource type="GDScript" id="GDScript_0y511"]
+resource_name = "方块二非"
+script/source = "extends SpellCard
+
+func _before_card_run():
+	pass
+
+func _card_running_event():
+	var left_time = floor(get_left_time())
+	var running_time = floor(get_card_run_time())
+	if running_time == 0:
+		if is_instance_valid(STGSYS.boss):
+			STGSYS.boss.self_move = true
+			STGSYS.boss.move($\"符卡发弹点/棱造型发弹点\".position,1)
+	if running_time == 1:
+		$\"符卡发弹点/棱造型发弹点\".enable = true
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点\".enable = true
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点2\".enable = true
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点3\".enable = true
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点4\".enable = true
+	if running_time == 41:
+		$\"符卡发弹点/棱造型发弹点3\".enable = true
+		
+	if running_time == 81:
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点5\".enable = true
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点6\".enable = true
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点7\".enable = true
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点8\".enable = true
+	if running_time == 121:
+		$\"符卡发弹点/棱造型发弹点2\".enable = true
+		$\"符卡发弹点/棱造型发弹点4\".enable = true
+	if left_time == 10:
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点9\".enable = true
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点10\".enable = true
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点11\".enable = true
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点12\".enable = true
+		$\"符卡发弹点/固定棱形发弹点/棱造型发弹点13\".enable = true
+	
+func _after_card_run():
+	pass
+
+"
+
+[sub_resource type="GDScript" id="GDScript_ch4wr"]
+script/source = "extends \"res://弹幕相关/发弹点/自机狙发弹点.gd\"
+
+#一个基础的发弹点，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+var bullets_len_frame = {}
+
+func bullet_spawn_logic():
+	var direction = get_global_position().direction_to(player.get_global_position())
+	var bullets = get_bullet_group(way_num)
+	if !lock_aim_direction and bullet_aim:
+		#若未锁定自机狙方向，则每个子弹都会获取一次玩家方向
+		way_rotation = rad_to_deg(Vector2.DOWN.angle_to(direction))
+	set_way_bullet_spawn(bullets)
+	draw_len(bullets)
+	spawn_group_of_bullet(bullets)
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	pass
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	#follow_player()
+	pass
+
+func draw_len(bullets):
+	#画棱形的方法
+	var rota =way_range/way_num
+	var leng_line = sqrt(pow(position.x-player.position.x,2)+\\
+	pow(position.y-player.position.y,2))
+	var c = leng_line/2
+	var d = c/cos(deg_to_rad(rota/2))
+	for bullet in bullets:
+		var turn_array = []
+		var frame = d/bullet_speed
+		turn_array.append(floor(frame))
+		var rotb = 90 - (180-rota)/2
+		var turn_rot
+		if bullet.rotation-way_rotation > 0:
+			turn_rot = -rotb+way_rotation
+		elif  bullet.rotation-way_rotation <0:
+			turn_rot = rotb+way_rotation
+		elif bullet.rotation - way_rotation == 0:
+			if way_rotation > 0:
+				turn_rot = -rotb+way_rotation
+			else:
+				turn_rot = rotb+way_rotation
+		turn_array.append(turn_rot)
+		bullets_len_frame[bullet] = turn_array
+
+func follow_player():
+	#无意间做出了会周期性往玩家方向追踪的弹幕效果
+	for bullet in all_bullets:
+		if is_instance_valid(bullet):
+			var direction = bullet.position.direction_to(player.get_global_position())
+			bullet.rotation = rad_to_deg(Vector2.DOWN.angle_to(direction))
+
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	if bull.run_frame == bullets_len_frame[bull][0]:
+		bull.rotation = bullets_len_frame[bull][1]
+
+"
+
+[sub_resource type="GDScript" id="GDScript_dei3l"]
+resource_name = "固定棱形发弹点"
+script/source = "extends BulletSpawner
+
+#一个基础的发弹点，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+var bullets_len_frame = {}
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	var bullets = get_bullet_group(way_num)
+	set_way_bullet_spawn(bullets)
+	spawn_group_of_bullet(bullets)
+
+func draw_len(bullets):
+	#画棱形的方法
+	var rota =way_range/way_num
+	var leng_line = sqrt(pow(position.x-player.position.x,2)+\\
+	pow(position.y-player.position.y,2))
+	var c = leng_line/2
+	var d = c/cos(deg_to_rad(rota/2))
+	for bullet in bullets:
+		var turn_array = []
+		var frame = d/bullet_speed
+		turn_array.append(floor(frame))
+		var rotb = 90 - (180-rota)/2
+		var turn_rot
+		if bullet.rotation-way_rotation > 0:
+			turn_rot = -rotb+way_rotation
+		elif  bullet.rotation-way_rotation <0:
+			turn_rot = rotb+way_rotation
+		elif bullet.rotation - way_rotation == 0:
+			if way_rotation > 0:
+				turn_rot = -rotb+way_rotation
+			else:
+				turn_rot = rotb+way_rotation
+		turn_array.append(turn_rot)
+		bullets_len_frame[bullet] = turn_array
+
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	pass
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+
+"
+
+[node name="方块二非" instance=ExtResource("1_glkca")]
+script = SubResource("GDScript_0y511")
+keep_sec = 160.0
+
+[node name="棱造型发弹点" parent="符卡发弹点" index="0" instance=ExtResource("2_mqopy")]
+position = Vector2(180, 43)
+script = SubResource("GDScript_ch4wr")
+lock_aim_direction = true
+bullet_aim = true
+cycle = true
+start_sec = 0.01
+end_sec = 10.0
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 6
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 10
+
+[node name="棱造型发弹点2" parent="符卡发弹点" index="1" instance=ExtResource("2_mqopy")]
+position = Vector2(60, 43)
+script = SubResource("GDScript_ch4wr")
+lock_aim_direction = true
+bullet_aim = true
+cycle = true
+start_sec = 0.01
+end_sec = 10.0
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 6
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 10
+
+[node name="棱造型发弹点3" parent="符卡发弹点" index="2" instance=ExtResource("2_mqopy")]
+position = Vector2(300, 43)
+script = SubResource("GDScript_ch4wr")
+lock_aim_direction = true
+bullet_aim = true
+cycle = true
+start_sec = 0.01
+end_sec = 10.0
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 6
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 10
+
+[node name="棱造型发弹点4" parent="符卡发弹点" index="3" instance=ExtResource("2_mqopy")]
+position = Vector2(420, 43)
+script = SubResource("GDScript_ch4wr")
+lock_aim_direction = true
+bullet_aim = true
+cycle = true
+start_sec = 0.01
+end_sec = 10.0
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 6
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 10
+
+[node name="固定棱形发弹点" type="Node" parent="符卡发弹点" index="4"]
+
+[node name="棱造型发弹点" parent="符卡发弹点/固定棱形发弹点" index="0" instance=ExtResource("2_mqopy")]
+position = Vector2(46, 43)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点2" parent="符卡发弹点/固定棱形发弹点" index="1" instance=ExtResource("2_mqopy")]
+position = Vector2(169, 43)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点3" parent="符卡发弹点/固定棱形发弹点" index="2" instance=ExtResource("2_mqopy")]
+position = Vector2(330, 43)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点4" parent="符卡发弹点/固定棱形发弹点" index="3" instance=ExtResource("2_mqopy")]
+position = Vector2(428, 43)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点5" parent="符卡发弹点/固定棱形发弹点" index="4" instance=ExtResource("2_mqopy")]
+position = Vector2(101, 43)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点6" parent="符卡发弹点/固定棱形发弹点" index="5" instance=ExtResource("2_mqopy")]
+position = Vector2(251, 43)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点7" parent="符卡发弹点/固定棱形发弹点" index="6" instance=ExtResource("2_mqopy")]
+position = Vector2(384, 43)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点8" parent="符卡发弹点/固定棱形发弹点" index="7" instance=ExtResource("2_mqopy")]
+position = Vector2(470, 43)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点9" parent="符卡发弹点/固定棱形发弹点" index="8" instance=ExtResource("2_mqopy")]
+position = Vector2(16, 42)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点10" parent="符卡发弹点/固定棱形发弹点" index="9" instance=ExtResource("2_mqopy")]
+position = Vector2(74, 42)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点11" parent="符卡发弹点/固定棱形发弹点" index="10" instance=ExtResource("2_mqopy")]
+position = Vector2(133, 42)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点12" parent="符卡发弹点/固定棱形发弹点" index="11" instance=ExtResource("2_mqopy")]
+position = Vector2(293, 42)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="棱造型发弹点13" parent="符卡发弹点/固定棱形发弹点" index="12" instance=ExtResource("2_mqopy")]
+position = Vector2(206, 44)
+script = SubResource("GDScript_dei3l")
+start_sec = 0.01
+never_end = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 7
+way_num = 2
+way_range = 40.0
+spawn_bullet_frame = 20
+
+[node name="测试背景" parent="." index="4"]
+metadata/_edit_lock_ = true

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1bmakohvgygy"]
+
+[ext_resource type="PackedScene" uid="uid://6xog4sfqd0yd" path="res://弹幕相关/符卡/基础符卡.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://弹幕相关/符卡/符卡发弹点/方符：摇曳方阵.tscn" id="2"]
+
+[sub_resource type="GDScript" id="1"]
+script/source = "extends SpellCard
+
+var squre_rotation = 0
+
+func _before_card_run():
+	pass
+
+func _card_running_event():
+	var left_time = floor(get_left_time())
+	var running_time = floor(get_card_run_time())
+	if running_time == 0:
+		if is_instance_valid(STGSYS.boss):
+			STGSYS.boss.move($\"符卡发弹点/方符：摇曳方阵\".position,1)
+	if running_time == 1:
+		$\"符卡发弹点/方符：摇曳方阵\".enable = true
+
+func _after_card_run():
+	pass
+"
+
+[node name="方符：摇曳方阵" instance=ExtResource("1")]
+script = SubResource("1")
+spellcard_name = "方符：摇曳方阵"
+
+[node name="方符：摇曳方阵" parent="符卡发弹点" index="0" instance=ExtResource("2")]
+position = Vector2(238, 186)
+spawn_bullet_frame = 50

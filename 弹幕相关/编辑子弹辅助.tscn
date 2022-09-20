@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://弹幕相关/子弹样式组.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://弹幕相关/子弹碰撞/中玉.tres" type="Shape2D" id=2]
+[ext_resource path="res://弹幕相关/子弹碰撞/小玉.tres" type="Shape2D" id=3]
+[ext_resource path="res://弹幕相关/子弹碰撞/方玉.tres" type="Shape2D" id=4]
+[ext_resource path="res://弹幕相关/子弹碰撞/米玉.tres" type="Shape2D" id=5]
+[ext_resource path="res://弹幕相关/子弹碰撞/激光.tres" type="Shape2D" id=6]
+[ext_resource path="res://弹幕相关/子弹碰撞/棱弹.tres" type="Shape2D" id=7]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+frames = ExtResource( 1 )
+animation = "棱弹"
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "此节点没有实际应用，仅用于方便编辑子弹的帧组图和碰撞形状等。"
+}
+
+[node name="碰撞形状" type="Node" parent="."]
+
+[node name="中玉" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource( 2 )
+
+[node name="小玉" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource( 3 )
+
+[node name="方玉" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource( 4 )
+
+[node name="米玉" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource( 5 )
+
+[node name="激光" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource( 6 )
+
+[node name="棱弹" type="CollisionShape2D" parent="碰撞形状"]
+shape = ExtResource( 7 )

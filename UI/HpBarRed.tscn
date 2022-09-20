@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/BossHpSpell.png" type="Texture2D" id=1]
+
+[node name="HpBarRedTexture" type="TextureProgressBar"]
+offset_right = 1000.0
+offset_bottom = 4.0
+texture_progress = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

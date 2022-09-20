@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://6xog4sfqd0yd"]
+
+[ext_resource type="Script" path="res://弹幕相关/符卡/基础符卡.gd" id="1"]
+
+[node name="基础符卡" type="Node"]
+script = ExtResource("1")
+
+[node name="符卡发弹点" type="Node" parent="."]
+
+[node name="符卡遮罩" type="Node" parent="."]
+
+[node name="符卡反射板" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="测试背景" type="ColorRect" parent="."]
+offset_right = 480.0
+offset_bottom = 560.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

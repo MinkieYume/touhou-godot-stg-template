@@ -1,0 +1,441 @@
+[gd_scene load_steps=19 format=3 uid="uid://lakvsrra3wdc"]
+
+[ext_resource type="FontFile" uid="uid://bfulrtgnpdxb5" path="res://字体/进度条文本.tres" id="1"]
+[ext_resource type="FontFile" path="res://字体/标题.tres" id="4"]
+[ext_resource type="FontFile" path="res://字体/number.tres" id="4_avm47"]
+[ext_resource type="Texture2D" uid="uid://wnvy23lfk22n" path="res://Resource/texture/Point.png" id="5"]
+[ext_resource type="PackedScene" uid="uid://d2x86ewor0p62" path="res://UI/UI.tscn" id="6"]
+[ext_resource type="Texture2D" uid="uid://brtxymjhomfrl" path="res://Resource/texture/P_Point.png" id="6_3fn0i"]
+[ext_resource type="FontFile" path="res://字体/分数标题.tres" id="7"]
+[ext_resource type="Texture2D" uid="uid://wnltn64cscho" path="res://Resource/texture/生命心值.png" id="8"]
+[ext_resource type="Script" path="res://NumberPanel.gd" id="9"]
+[ext_resource type="Texture2D" uid="uid://db27h2qfhkxhi" path="res://Resource/texture/符卡值.png" id="10"]
+[ext_resource type="Script" path="res://GameWindow.gd" id="11"]
+[ext_resource type="FontFile" uid="uid://c5o8vt8loqopj" path="res://字体/WenQuanDianZhenZhengHei-1.ttf" id="13"]
+[ext_resource type="Script" path="res://GameOverWindow.gd" id="14"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i56db"]
+bg_color = Color(0.192157, 0.666667, 0.772549, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_xe6sr"]
+base_font = ExtResource("13")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke8b8"]
+bg_color = Color(0.129412, 0.658824, 0.827451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_balp2"]
+bg_color = Color(0.443137, 0.768627, 0.909804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eenx0"]
+bg_color = Color(0.192157, 0.666667, 0.772549, 1)
+
+[node name="东方弹幕绘" type="Node2D"]
+
+[node name="GameWindow" type="Panel" parent="."]
+offset_right = 800.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i56db")
+script = ExtResource("11")
+enable = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GameWindow"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 496.0
+offset_bottom = 574.0
+
+[node name="SubViewport" type="SubViewport" parent="GameWindow/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(480, 560)
+render_target_update_mode = 4
+
+[node name="NumberPanel" type="ReferenceRect" parent="GameWindow"]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 19.0
+offset_right = 771.0
+offset_bottom = 579.0
+border_color = Color(0.0705882, 0.254902, 0.968627, 1)
+script = ExtResource("9")
+
+[node name="历史得分" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 10.0
+offset_right = 179.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("7")
+text = "历史得分"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="当前得分" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 72.0
+offset_right = 179.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("7")
+text = "当前分数"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="point_num_1" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 105.0
+offset_right = 219.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("4_avm47")
+text = "10000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="point_num_2" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 43.0
+offset_right = 219.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("4_avm47")
+text = "10000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="残机" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 154.0
+offset_right = 45.0
+offset_bottom = 178.0
+theme_override_fonts/font = ExtResource("4")
+text = "残机"
+
+[node name="符卡" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 180.0
+offset_right = 45.0
+offset_bottom = 204.0
+theme_override_fonts/font = ExtResource("4")
+text = "符卡"
+
+[node name="灵力" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 229.0
+offset_right = 68.0
+offset_bottom = 253.0
+theme_override_fonts/font = SubResource("FontVariation_xe6sr")
+theme_override_font_sizes/font_size = 16
+text = "灵力"
+
+[node name="P点图标" type="TextureRect" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 229.0
+offset_right = 32.0
+offset_bottom = 252.0
+texture = ExtResource("6_3fn0i")
+
+[node name="点图标" type="TextureRect" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 255.0
+offset_right = 32.0
+offset_bottom = 278.0
+texture = ExtResource("5")
+
+[node name="得点" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 255.0
+offset_right = 68.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("13")
+theme_override_font_sizes/font_size = 16
+text = "得点"
+
+[node name="Point" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 255.0
+offset_right = 115.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("4_avm47")
+text = "0"
+
+[node name="擦弹" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 279.0
+offset_right = 68.0
+offset_bottom = 303.0
+theme_override_fonts/font = ExtResource("4")
+text = "擦弹"
+
+[node name="Graze" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 279.0
+offset_right = 115.0
+offset_bottom = 303.0
+theme_override_fonts/font = ExtResource("4_avm47")
+text = "0"
+
+[node name="FireBar" type="ProgressBar" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 231.0
+offset_right = 186.0
+offset_bottom = 252.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ke8b8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_balp2")
+show_percentage = false
+
+[node name="Label" type="Label" parent="GameWindow/NumberPanel/FireBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 62.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("1")
+text = "MAX"
+
+[node name="LifeGrid" type="GridContainer" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 156.0
+offset_right = 285.0
+offset_bottom = 176.0
+columns = 10
+
+[node name="Life1" type="TextureRect" parent="GameWindow/NumberPanel/LifeGrid"]
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("8")
+stretch_mode = 5
+
+[node name="Life2" type="TextureRect" parent="GameWindow/NumberPanel/LifeGrid"]
+layout_mode = 2
+offset_left = 24.0
+offset_right = 44.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("8")
+stretch_mode = 5
+
+[node name="Life3" type="TextureRect" parent="GameWindow/NumberPanel/LifeGrid"]
+layout_mode = 2
+offset_left = 48.0
+offset_right = 68.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("8")
+stretch_mode = 5
+
+[node name="Life4" type="TextureRect" parent="GameWindow/NumberPanel/LifeGrid"]
+layout_mode = 2
+offset_left = 72.0
+offset_right = 92.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("8")
+stretch_mode = 5
+
+[node name="Life5" type="TextureRect" parent="GameWindow/NumberPanel/LifeGrid"]
+layout_mode = 2
+offset_left = 96.0
+offset_right = 116.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("8")
+stretch_mode = 5
+
+[node name="Life6" type="TextureRect" parent="GameWindow/NumberPanel/LifeGrid"]
+layout_mode = 2
+offset_left = 120.0
+offset_right = 140.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("8")
+stretch_mode = 5
+
+[node name="Life7" type="TextureRect" parent="GameWindow/NumberPanel/LifeGrid"]
+layout_mode = 2
+offset_left = 144.0
+offset_right = 164.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("8")
+stretch_mode = 5
+
+[node name="Life8" type="TextureRect" parent="GameWindow/NumberPanel/LifeGrid"]
+layout_mode = 2
+offset_left = 168.0
+offset_right = 188.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("8")
+stretch_mode = 5
+
+[node name="Life9" type="TextureRect" parent="GameWindow/NumberPanel/LifeGrid"]
+layout_mode = 2
+offset_left = 192.0
+offset_right = 212.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("8")
+stretch_mode = 5
+
+[node name="Life10" type="TextureRect" parent="GameWindow/NumberPanel/LifeGrid"]
+layout_mode = 2
+offset_left = 216.0
+offset_right = 236.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("8")
+stretch_mode = 5
+
+[node name="BombGrid" type="GridContainer" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 181.0
+offset_right = 285.0
+offset_bottom = 201.0
+columns = 10
+
+[node name="Bomb1" type="TextureRect" parent="GameWindow/NumberPanel/BombGrid"]
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("10")
+
+[node name="Bomb2" type="TextureRect" parent="GameWindow/NumberPanel/BombGrid"]
+layout_mode = 2
+offset_left = 24.0
+offset_right = 44.0
+offset_bottom = 20.0
+texture = ExtResource("10")
+
+[node name="Bomb3" type="TextureRect" parent="GameWindow/NumberPanel/BombGrid"]
+layout_mode = 2
+offset_left = 48.0
+offset_right = 68.0
+offset_bottom = 20.0
+texture = ExtResource("10")
+stretch_mode = 5
+
+[node name="Bomb4" type="TextureRect" parent="GameWindow/NumberPanel/BombGrid"]
+layout_mode = 2
+offset_left = 72.0
+offset_right = 92.0
+offset_bottom = 20.0
+texture = ExtResource("10")
+
+[node name="Bomb5" type="TextureRect" parent="GameWindow/NumberPanel/BombGrid"]
+layout_mode = 2
+offset_left = 96.0
+offset_right = 116.0
+offset_bottom = 20.0
+texture = ExtResource("10")
+
+[node name="Bomb6" type="TextureRect" parent="GameWindow/NumberPanel/BombGrid"]
+layout_mode = 2
+offset_left = 120.0
+offset_right = 140.0
+offset_bottom = 20.0
+texture = ExtResource("10")
+
+[node name="Bomb7" type="TextureRect" parent="GameWindow/NumberPanel/BombGrid"]
+layout_mode = 2
+offset_left = 144.0
+offset_right = 164.0
+offset_bottom = 20.0
+texture = ExtResource("10")
+
+[node name="Bomb8" type="TextureRect" parent="GameWindow/NumberPanel/BombGrid"]
+layout_mode = 2
+offset_left = 168.0
+offset_right = 188.0
+offset_bottom = 20.0
+texture = ExtResource("10")
+
+[node name="Bomb9" type="TextureRect" parent="GameWindow/NumberPanel/BombGrid"]
+layout_mode = 2
+offset_left = 192.0
+offset_right = 212.0
+offset_bottom = 20.0
+texture = ExtResource("10")
+
+[node name="Bomb10" type="TextureRect" parent="GameWindow/NumberPanel/BombGrid"]
+layout_mode = 2
+offset_left = 216.0
+offset_right = 236.0
+offset_bottom = 20.0
+texture = ExtResource("10")
+
+[node name="TimeLeft" type="Label" parent="GameWindow/NumberPanel"]
+layout_mode = 0
+offset_left = -88.0
+offset_top = -10.0
+offset_right = -7.0
+offset_bottom = 14.0
+theme_override_fonts/font = ExtResource("4_avm47")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="GameOverWindow" type="Panel" parent="."]
+visible = false
+offset_right = 800.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eenx0")
+script = ExtResource("14")
+
+[node name="Label" type="Label" parent="GameOverWindow"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 95.0
+offset_right = 612.0
+offset_bottom = 187.0
+theme_override_fonts/font = ExtResource("13")
+theme_override_font_sizes/font_size = 70
+text = "游戏结束界面"
+
+[node name="FPS" type="Label" parent="."]
+offset_left = 648.0
+offset_top = 563.0
+offset_right = 799.0
+offset_bottom = 600.0
+auto_translate = false
+theme_override_fonts/font = ExtResource("13")
+theme_override_font_sizes/font_size = 26
+text = "FPS:60"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="UI" parent="." instance=ExtResource("6")]
+visible = false

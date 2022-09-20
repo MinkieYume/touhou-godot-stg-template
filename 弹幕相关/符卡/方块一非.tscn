@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5miubddjgdb0"]
+
+[ext_resource type="PackedScene" path="res://弹幕相关/符卡/基础符卡.tscn" id="1_safqm"]
+[ext_resource type="PackedScene" uid="uid://xiy36hf3s4pl" path="res://弹幕相关/发弹点/敌机发射器.tscn" id="2_5yubr"]
+
+[sub_resource type="GDScript" id="GDScript_o78hv"]
+resource_name = "方块一非"
+script/source = "extends SpellCard
+
+func _before_card_run():
+	pass
+
+func _card_running_event():
+	var left_time = floor(get_left_time())
+	var running_time = floor(get_card_run_time())
+	if running_time == 0:
+		if is_instance_valid(STGSYS.boss):
+			STGSYS.boss.move($\"符卡发弹点/方块一非发射器\".position,1)
+	if running_time == 1:
+		$\"符卡发弹点/方块一非发射器\".enable = true
+	if left_time == 90:
+		$\"符卡发弹点/方块一非发射器\".spawn_bullet_frame = 30
+	if left_time == 60:
+		$\"符卡发弹点/方块一非发射器\".way_num = 6
+	if left_time == 30:
+		$\"符卡发弹点/方块一非发射器\".way_num = 10
+		
+
+func _after_card_run():
+	pass
+
+"
+
+[sub_resource type="GDScript" id="GDScript_v7vnh"]
+resource_name = "方块一非发射器"
+script/source = "extends EnemyFlyerShooter
+
+#一个基础的发弹点，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	var direction = get_global_position().direction_to(player.get_global_position())
+	way_rotation = rad_to_deg(Vector2.DOWN.angle_to(direction))
+	var enemys = get_bullet_group(way_num)
+	set_way_bullet_spawn(enemys)
+	enemy_spawn_logic(enemys)
+	for enemy in enemys:
+		enemy.enable_move = true
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+
+"
+
+[node name="方块一非" instance=ExtResource("1_safqm")]
+script = SubResource("GDScript_o78hv")
+keep_sec = 120.0
+
+[node name="方块一非发射器" parent="符卡发弹点" index="0" instance=ExtResource("2_5yubr")]
+position = Vector2(252, 217)
+script = SubResource("GDScript_v7vnh")
+never_end = true
+way_num = 4
+way_range = 180.0
+spawn_bullet_frame = 50
+
+[node name="测试背景" parent="." index="4"]
+metadata/_edit_lock_ = true

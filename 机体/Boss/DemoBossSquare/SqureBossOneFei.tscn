@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://弹幕相关/发弹点/敌机发射器.tscn" type="PackedScene" id=1]
+[ext_resource path="res://机体/Boss/DemoBossSquare/SqureBossOneFei.gd" type="Script" id=2]
+
+[node name="SqureBossOnefei" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+bullet_speed = 100
+spawn_bullet_type = "SmallYuBullet"

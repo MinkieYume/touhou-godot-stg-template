@@ -1,0 +1,218 @@
+[gd_scene load_steps=5 format=3 uid="uid://sw1vi562t4f3"]
+
+[ext_resource type="PackedScene" uid="uid://6xog4sfqd0yd" path="res://弹幕相关/符卡/基础符卡.tscn" id="1"]
+
+[sub_resource type="GDScript" id="1"]
+script/source = "extends SpellCard
+
+func _before_card_run():
+	pass
+
+func _card_running_event():
+	var left_time = floor(get_left_time())
+	var running_time = floor(get_card_run_time())
+	if running_time == 0:
+		if is_instance_valid(STGSYS.boss):
+			STGSYS.boss.self_move = false
+			STGSYS.boss.move($\"符卡发弹点/棱符：天棱地方——攻击\".position,1)
+	if running_time == 1:
+		$\"符卡发弹点/棱符：天棱地方——攻击\".enable = true
+		$\"符卡发弹点/棱符：天棱地方——绑定\".enable = true
+	$\"符卡发弹点/棱符：天棱地方——绑定\".bullets_len = \\
+	$\"符卡发弹点/棱符：天棱地方——攻击\".all_bullets
+
+func _after_card_run():
+	pass
+"
+
+[sub_resource type="GDScript" id="2"]
+script/source = "extends BulletSpawner
+
+var two_point = [Vector2(10,60),Vector2(470,60)]
+
+var moving_to_next = false
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	var bullets = get_bullet_group(way_num)
+	set_way_bullet_spawn(bullets)
+	spawn_group_of_bullet(bullets)
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	pass
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	var tween1 = create_tween()
+	var tween2 = create_tween()
+	if !moving_to_next:
+		if enable_shoot_bullet:
+			if position == two_point[1]:
+				tween1.tween_property(self,\"position\",two_point[0],10)
+				if is_instance_valid(STGSYS.boss):
+					STGSYS.boss.move(two_point[0],10)
+			else:
+				tween1.tween_property(self,\"position\",two_point[1],10)
+				if is_instance_valid(STGSYS.boss):
+					STGSYS.boss.move(two_point[1],10)
+			tween2.tween_property(self,\"way_rotation\",-way_rotation,10)
+		moving_to_next = true
+	else:
+		moving_to_next = false
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+"
+
+[sub_resource type="GDScript" id="3"]
+script/source = "extends BulletSpawner
+
+var bullets_len = []
+#一个基础的符卡，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+var position_only = false
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	var bullets = get_bullet_group(bullets_len.size()*2)
+	#set_way_bullet_spawn(bullets)
+	set_bullet_crab(bullets)
+	spawn_group_of_bullet(bullets)
+
+func set_bullet_crab(bullets):
+	#子弹绑定的设置方法
+	var bullet_id = 0
+	for bullet in bullets:
+		var bullet_len_id = floor(bullet_id/2)
+		bullet.real_position = bullets_len[bullet_len_id].position
+		if !position_only:
+			if bullet_id%2 == 0:
+				bullet.rotation = 90+bullets_len[bullet_len_id].rotation
+			else:
+				bullet.rotation = -90+bullets_len[bullet_len_id].rotation
+		bullet_id += 1
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	pass
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		position_only = !position_only
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+"
+
+[node name="棱符：天棱地方" instance=ExtResource("1")]
+script = SubResource("1")
+keep_sec = 80.0
+spellcard_name = "棱符：天棱地方"
+
+[node name="棱符：天棱地方——攻击" type="Marker2D" parent="符卡发弹点" index="0"]
+position = Vector2(470, 60)
+z_index = 4
+script = SubResource("2")
+cycle = true
+spawn_bullet_type = "棱弹"
+spawn_bullet_color = 5
+bullet_scale = Vector2(6, 9)
+way_num = 4
+way_range = 60.0
+way_rotation = 70.0
+spawn_bullet_frame = 40
+
+[node name="Direction" type="Marker2D" parent="符卡发弹点/棱符：天棱地方——攻击" index="0"]
+visible = false
+position = Vector2(8, 4)
+
+[node name="StartTimer" type="Timer" parent="符卡发弹点/棱符：天棱地方——攻击" index="1"]
+one_shot = true
+
+[node name="EndTimer" type="Timer" parent="符卡发弹点/棱符：天棱地方——攻击" index="2"]
+one_shot = true
+
+[node name="MoveStartTimer" type="Timer" parent="符卡发弹点/棱符：天棱地方——攻击" index="3"]
+
+[node name="RemoveSec" type="Timer" parent="符卡发弹点/棱符：天棱地方——攻击" index="4"]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="符卡发弹点/棱符：天棱地方——攻击" index="5"]
+position = Vector2(1.19209e-07, 1.19209e-07)
+
+[node name="棱符：天棱地方——绑定" type="Marker2D" parent="符卡发弹点" index="1"]
+position = Vector2(471, 84)
+z_index = 4
+script = SubResource("3")
+never_end = true
+spawn_bullet_type = "方玉"
+spawn_bullet_color = 7
+bullet_scale = Vector2(2, 2)
+spawn_bullet_frame = 100
+
+[node name="Direction" type="Marker2D" parent="符卡发弹点/棱符：天棱地方——绑定" index="0"]
+visible = false
+position = Vector2(8, 4)
+
+[node name="StartTimer" type="Timer" parent="符卡发弹点/棱符：天棱地方——绑定" index="1"]
+one_shot = true
+
+[node name="EndTimer" type="Timer" parent="符卡发弹点/棱符：天棱地方——绑定" index="2"]
+one_shot = true
+
+[node name="MoveStartTimer" type="Timer" parent="符卡发弹点/棱符：天棱地方——绑定" index="3"]
+
+[node name="RemoveSec" type="Timer" parent="符卡发弹点/棱符：天棱地方——绑定" index="4"]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="符卡发弹点/棱符：天棱地方——绑定" index="5"]
+position = Vector2(1.19209e-07, 1.19209e-07)
+
+[node name="Timer" parent="." index="3"]
+wait_time = 80.0
+
+[connection signal="timeout" from="符卡发弹点/棱符：天棱地方——攻击/StartTimer" to="符卡发弹点/棱符：天棱地方——攻击" method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="符卡发弹点/棱符：天棱地方——攻击/EndTimer" to="符卡发弹点/棱符：天棱地方——攻击" method="_on_EndTimer_timeout"]
+[connection signal="timeout" from="符卡发弹点/棱符：天棱地方——攻击/MoveStartTimer" to="符卡发弹点/棱符：天棱地方——攻击" method="_on_MoveStartTimer_timeout"]
+[connection signal="timeout" from="符卡发弹点/棱符：天棱地方——攻击/RemoveSec" to="符卡发弹点/棱符：天棱地方——攻击" method="_on_RemoveSec_timeout"]
+[connection signal="screen_exited" from="符卡发弹点/棱符：天棱地方——攻击/VisibleOnScreenNotifier2D" to="符卡发弹点/棱符：天棱地方——攻击" method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="符卡发弹点/棱符：天棱地方——绑定/StartTimer" to="符卡发弹点/棱符：天棱地方——绑定" method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="符卡发弹点/棱符：天棱地方——绑定/EndTimer" to="符卡发弹点/棱符：天棱地方——绑定" method="_on_EndTimer_timeout"]
+[connection signal="timeout" from="符卡发弹点/棱符：天棱地方——绑定/MoveStartTimer" to="符卡发弹点/棱符：天棱地方——绑定" method="_on_MoveStartTimer_timeout"]
+[connection signal="timeout" from="符卡发弹点/棱符：天棱地方——绑定/RemoveSec" to="符卡发弹点/棱符：天棱地方——绑定" method="_on_RemoveSec_timeout"]
+[connection signal="screen_exited" from="符卡发弹点/棱符：天棱地方——绑定/VisibleOnScreenNotifier2D" to="符卡发弹点/棱符：天棱地方——绑定" method="_on_VisibilityNotifier2D_screen_exited"]

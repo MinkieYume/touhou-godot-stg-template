@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlrgh5rcaxcqf"]
+
+[ext_resource type="PackedScene" uid="uid://6xog4sfqd0yd" path="res://弹幕相关/符卡/基础符卡.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://弹幕相关/符卡/符卡发弹点/方阵：完美立方体.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dsb4py3ya2mgj" path="res://弹幕相关/遮罩/基础遮罩.tscn" id="3"]
+
+[sub_resource type="GDScript" id="1"]
+script/source = "extends SpellCard
+
+func _before_card_run():
+	$\"符卡遮罩/完美立方体遮罩\".enable = true
+
+func _card_running_event():
+	var left_time = floor(get_left_time())
+	var running_time = floor(get_card_run_time())
+	if running_time == 0:
+		if is_instance_valid(STGSYS.boss):
+			STGSYS.boss.move($\"符卡发弹点/方阵：完美立方体\".position,1)
+	if running_time == 1:
+		$\"符卡发弹点/方阵：完美立方体\".enable = true
+	if left_time == 20:
+		$\"符卡发弹点/方阵：完美立方体\".bullet_speed = 2.5
+
+func _after_card_run():
+	pass
+"
+
+[sub_resource type="GDScript" id="2"]
+script/source = "extends Shade
+
+func _on_ready():
+	randomize()
+
+func shade_bullet_event(bullet):
+	if bullet is Bullet:
+		bullet.out_screen_remove = true
+		bullet.speed = bullet.speed.rotated(deg_to_rad(360*randf()))
+"
+
+[node name="方阵：完美立方体" instance=ExtResource("1")]
+script = SubResource("1")
+keep_sec = 80.0
+spellcard_name = "方阵：完美立方体"
+
+[node name="方阵：完美立方体" parent="符卡发弹点" index="0" instance=ExtResource("2")]
+position = Vector2(240, 280)
+cycle = true
+bullet_life = 800
+bullet_speed = 1.0
+bullet_out_screen_remove = false
+way_num = 16
+spawner_radius = 560.0
+
+[node name="完美立方体遮罩" parent="符卡遮罩" index="0" instance=ExtResource("3")]
+position = Vector2(240, 280)
+script = SubResource("2")
+enable = false
+shade_area = Vector2(10, 10)

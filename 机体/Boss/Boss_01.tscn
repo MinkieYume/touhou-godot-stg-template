@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://cyvk0eu1ylks4"]
+
+[ext_resource type="Script" path="res://机体/Boss/BossFlyer.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dir83bd4m2clj" path="res://机体/Boss/Boss_01.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://d1bmakohvgygy" path="res://弹幕相关/符卡/方符：摇曳方阵.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b5miubddjgdb0" path="res://弹幕相关/符卡/方块一非.tscn" id="3_hmxy1"]
+[ext_resource type="PackedScene" uid="uid://dlrgh5rcaxcqf" path="res://弹幕相关/符卡/方阵：完美立方体.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bfi1eeyo7tvgb" path="res://弹幕相关/符卡/方块二非.tscn" id="4_g3h5i"]
+[ext_resource type="PackedScene" uid="uid://sw1vi562t4f3" path="res://弹幕相关/符卡/棱符：天棱地方.tscn" id="5"]
+
+[sub_resource type="Shader" id="2"]
+code = "shader_type canvas_item;
+
+uniform float flash_state:hint_range(0,1);
+
+void fragment(){
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, vec4(1,1,1,1),flash_state);
+	COLOR.a = color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="3"]
+shader = SubResource("2")
+shader_parameter/flash_state = 0.0
+
+[sub_resource type="SpriteFrames" id="4"]
+animations = [{
+"frames": [ExtResource("2")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(96, 96)
+
+[node name="Boss_01" type="Node2D"]
+script = ExtResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("3")
+scale = Vector2(1.5, 1.5)
+frames = SubResource("4")
+
+[node name="AtkEndTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AtkChangeTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="BossMoveTimer" type="Timer" parent="."]
+wait_time = 8.0
+
+[node name="HitArea" type="Area2D" parent="."]
+position = Vector2(32, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(-32, -64)
+shape = SubResource("1")
+
+[node name="符卡" type="Node2D" parent="."]
+
+[node name="方块一非" parent="符卡" instance=ExtResource("3_hmxy1")]
+
+[node name="方块二非" parent="符卡" instance=ExtResource("4_g3h5i")]
+
+[node name="方符：摇曳方阵" parent="符卡" instance=ExtResource("3")]
+
+[node name="棱符：天棱地方" parent="符卡" instance=ExtResource("5")]
+
+[node name="方阵：完美立方体" parent="符卡" instance=ExtResource("4")]
+
+[connection signal="timeout" from="AtkEndTimer" to="." method="_on_AtkEndTimer_timeout"]
+[connection signal="timeout" from="AtkChangeTimer" to="." method="_on_AtkChangeTimer_timeout"]
+[connection signal="timeout" from="BossMoveTimer" to="." method="_on_BossMoveTimer_timeout"]

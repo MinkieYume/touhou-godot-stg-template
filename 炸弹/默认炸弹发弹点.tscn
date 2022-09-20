@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://弹幕相关/发弹点/炸弹发弹点.tscn" type="PackedScene" id=1]
+[ext_resource path="res://炸弹/默认炸弹发弹点.gd" type="Script" id=2]
+
+[node name="默认炸弹发弹点" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+spawn_bullet_type = "小玉"

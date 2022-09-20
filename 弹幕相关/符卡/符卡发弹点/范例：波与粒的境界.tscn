@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://弹幕相关/符卡/符卡发弹点/范例：波与粒的境界.gd" type="Script" id=1]
+[ext_resource path="res://弹幕相关/发弹点.tscn" type="PackedScene" id=2]
+
+[node name="范例：波与粒的境界" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+cycle = true
+start_sec = 0.0
+never_end = true
+bullet_speed = 2.5
+spawn_bullet_type = "米玉"
+spawn_bullet_color = 13
+way_num = 5
+way_rotation = -90.0

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://csdu4qaewb4lm"]
+
+[ext_resource type="Script" path="res://addons/version-check/views/version_check.gd" id="1_qp010"]
+[ext_resource type="Texture2D" uid="uid://beq55iai8q603" path="res://addons/version-check/icons/valid.svg" id="2_aouau"]
+
+[node name="version_check" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qp010")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_right = 85.0
+offset_bottom = 360.0
+text = "Version"
+icon = ExtResource("2_aouau")
+flat = true
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://owvd5kgiync6"]
+
+[ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://弹幕相关/发弹点.tscn" id="1"]
+[ext_resource type="Script" path="res://弹幕相关/发弹点/炸弹发弹点.gd" id="2"]
+
+[node name="炸弹发弹点" instance=ExtResource("1")]
+script = ExtResource("2")
+enable = true
+enable_shoot_bullet = false
+never_end = true
+spawn_bullet_type = "中玉"

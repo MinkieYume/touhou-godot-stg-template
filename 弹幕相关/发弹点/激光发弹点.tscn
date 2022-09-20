@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://弹幕相关/发弹点/激光发弹点.gd" type="Script" id=1]
+[ext_resource path="res://弹幕相关/发弹点.tscn" type="PackedScene" id=2]
+
+[node name="RaserSpawner" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+bullet_manager_type = 1
+spawn_bullet_type = "激光"

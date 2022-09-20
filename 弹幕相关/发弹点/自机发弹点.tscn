@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://弹幕相关/发弹点/自机发弹点.gd" type="Script" id=1]
+[ext_resource path="res://弹幕相关/发弹点.tscn" type="PackedScene" id=2]
+
+[node name="自机发弹点" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+never_end = true
+bullet_speed = 15.0

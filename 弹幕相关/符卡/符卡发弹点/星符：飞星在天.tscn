@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://弹幕相关/发弹点.tscn" type="PackedScene" id=1]
+[ext_resource path="res://弹幕相关/符卡/符卡发弹点/星符：飞星在天.gd" type="Script" id=2]
+
+[node name="星符：飞星在天" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+cycle = true
+start_sec = 0.0
+bullet_life = 400
+bullet_speed = 2.5
+spawn_bullet_color = 13
+way_num = 5
+way_rotation = -90.0

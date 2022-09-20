@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpw6bm7tetn5h"]
+
+[ext_resource type="Script" path="res://弹幕相关/反射板/基础反射板.gd" id="1"]
+
+[sub_resource type="SegmentShape2D" id="1"]
+b = Vector2(75, 0)
+
+[node name="基础反射板" type="Area2D"]
+script = ExtResource("1")
+never_end = true
+
+[node name="ReflectShape" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="EndTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-5, -5, 10, 10)
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
