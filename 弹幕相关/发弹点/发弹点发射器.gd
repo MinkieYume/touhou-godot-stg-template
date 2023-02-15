@@ -1,3 +1,4 @@
+class_name SpawnerSpawner
 extends BulletSpawner
 
 @export var spawner_set: Resource

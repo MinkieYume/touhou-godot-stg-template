@@ -2,18 +2,29 @@
 class_name SpellCard
 extends Node
 
+@export var spell_card_res:SpellCardRes:
+	set(scr):
+		spell_card_res = scr
+		if scr != null:
+			keep_sec = scr.keep_sec
+			spellcard_name = scr.spellcard_name
+
 @export var keep_sec = 60.0
-@export var never_end = false
 @export var spellcard_name := ""
 
-@onready var UI = get_node("/root/东方弹幕绘/UI")
+@onready var FUI = get_node("/root/东方弹幕绘/UI")
 
 var running = false
 var spawners = []
 var shades = []
 var reflectors = []
 
+var last_left_time = 0
 var frames = 0
+
+var this_second_runed = false
+
+signal spell_finish(spell)
 
 func _enter_tree():
 	if !Engine.is_editor_hint():
@@ -49,6 +60,9 @@ func _process(delta):
 	if running:
 		_card_running_event()
 		STGSYS.time_left = get_left_time()
+		if last_left_time != floori(get_left_time()):
+			this_second_runed = false
+		last_left_time = floori(get_left_time())
 		frames+=1
 
 func _set_spell_card_time(sec):
@@ -58,13 +72,13 @@ func _set_spell_card_time(sec):
 
 func run_spell_card():
 	_before_card_run()
-	UI.setSpellCardName(spellcard_name)
+	FUI.setSpellCardName(spellcard_name)
+	print("spellcard_name: %s" % spellcard_name)
 	if spellcard_name!="":
-		UI.play_SCN_anim()
+		FUI.play_SCN_anim()
 	running = true
-	if !never_end:
-		STGSYS.time_left = keep_sec
-		$Timer.start()
+	STGSYS.time_left = keep_sec
+	$Timer.start()
 
 func _card_running_event():
 	var left_time = floor(get_left_time())
@@ -100,6 +114,7 @@ func get_spawner(spawner_name):
 			return spawner
 
 func free_all():
+	emit_signal("spell_finish",self)
 	var obj = []
 	obj.append_array(spawners)
 	obj.append_array(shades)
@@ -111,12 +126,12 @@ func free_all():
 func stop_card():
 	$Timer.stop()
 	running = false
-	UI.setSpellCardName("")
+	FUI.setSpellCardName("")
 	_after_card_run()
 	free_all()
 
 func _on_Timer_timeout():
 	running = false
-	UI.setSpellCardName("")
+	FUI.setSpellCardName("")
 	_after_card_run()
 	free_all()

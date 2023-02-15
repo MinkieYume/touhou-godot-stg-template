@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d1omq51w37b8k"]
+
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/符卡/card_res.gd" id="1_567fc"]
+
+[resource]
+script = ExtResource("1_567fc")
+keep_sec = 999999.0
+spellcard_name = "风技「魔法少女小风」"
+variable_protect = {
+"水": 0.8
+}

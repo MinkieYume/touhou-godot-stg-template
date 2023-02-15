@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://cydffa5edppej"]
+
+[ext_resource type="PackedScene" uid="uid://efqimko7ykdr" path="res://战斗系统/弹幕相关/符卡/基础符卡.tscn" id="1_6c6is"]
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/符卡/角色符卡/小雨/犹格索托斯.gd" id="2_dqu5n"]
+[ext_resource type="Resource" uid="uid://bi7u72ldqrnrq" path="res://战斗系统/弹幕相关/符卡/角色符卡/小雨/犹格索托斯.tres" id="3_5c0j1"]
+[ext_resource type="PackedScene" uid="uid://dsb4py3ya2mgj" path="res://战斗系统/弹幕相关/遮罩/基础遮罩.tscn" id="3_ewdl4"]
+[ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://战斗系统/弹幕相关/发弹点.tscn" id="3_n7m64"]
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/符卡/发弹点组/相对发弹点组.gd" id="4_584cn"]
+
+[sub_resource type="GDScript" id="GDScript_cbfe0"]
+resource_name = "犹格索托斯发弹点"
+script/source = "extends BulletSpawner
+
+#一个基础的发弹点，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	way_num = randi_range(5,10)
+	var bullets = get_bullet_group(way_num)
+	set_way_bullet_spawn(bullets)
+	spawn_group_of_bullet(bullets)
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	pass
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+
+"
+
+[sub_resource type="GDScript" id="GDScript_m6t6c"]
+resource_name = "犹格索托斯遮罩"
+script/source = "@tool
+extends Shade
+
+func _on_ready():
+	pass
+
+func shade_event():
+	#遮罩层事件
+	pass
+
+func shade_bullet_event(bullet):
+	#遮罩层弹幕事件
+	if bullet.b_owner == \"none\":
+		bullet.b_owner = \"犹格索托斯\"
+		var scale_ = randf_range(1.0,4.0)
+		bullet.bullet_type = \"中玉\"
+		bullet.color = 11
+		bullet.scale = Vector2(scale_,scale_)
+		bullet.rotation = 180
+
+func other_obj_event(obj):
+	#遮罩层其它obj事件
+	pass
+
+"
+
+[node name="犹格索托斯" instance=ExtResource("1_6c6is")]
+script = ExtResource("2_dqu5n")
+spell_card_res = ExtResource("3_5c0j1")
+keep_sec = 99999.0
+spellcard_name = "魔技「犹格·索托斯」"
+
+[node name="相对发弹点" type="Node2D" parent="符卡发弹点" index="0"]
+script = ExtResource("4_584cn")
+
+[node name="犹格索托斯发弹点" parent="符卡发弹点/相对发弹点" index="0" instance=ExtResource("3_n7m64")]
+script = SubResource("GDScript_cbfe0")
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+bullet_speed = 2.0
+spawn_bullet_type = "书弹"
+spawn_bullet_color = 10
+way_range = 180.0
+spawn_bullet_frame = 100
+
+[node name="犹格索托斯遮罩" parent="符卡遮罩" index="0" instance=ExtResource("3_ewdl4")]
+z_index = 1
+position = Vector2(642, 807)
+script = SubResource("GDScript_m6t6c")
+enable = false
+out_screen_remove = false
+shade_area = Vector2(1000, 100)
+
+[node name="MoveTimer" type="Timer" parent="." index="5"]
+wait_time = 10.0
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

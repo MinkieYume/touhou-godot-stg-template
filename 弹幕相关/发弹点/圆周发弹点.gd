@@ -1,7 +1,7 @@
-
 extends BulletSpawner
 
 @export var r = 50
+@export var bullet_number = 1
 var angle_offset = 0
 
 func bullet_spawn_logic():

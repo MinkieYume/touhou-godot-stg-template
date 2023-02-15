@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bi7u72ldqrnrq"]
+
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/符卡/card_res.gd" id="1_uu1rj"]
+
+[resource]
+script = ExtResource("1_uu1rj")
+keep_sec = 99999.0
+spellcard_name = "魔技「犹格·索托斯」"
+variable_protect = {
+"冲击": 0.5
+}

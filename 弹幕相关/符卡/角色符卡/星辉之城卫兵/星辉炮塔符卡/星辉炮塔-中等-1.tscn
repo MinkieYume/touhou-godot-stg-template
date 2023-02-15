@@ -1,0 +1,167 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnhafkrhibfp"]
+
+[ext_resource type="PackedScene" uid="uid://6xog4sfqd0yd" path="res://战斗系统/弹幕相关/符卡/基础符卡.tscn" id="1_exjnf"]
+[ext_resource type="PackedScene" uid="uid://bryqf1a2gc6gb" path="res://战斗系统/机体/敌机/星辉炮塔.tscn" id="4_5icku"]
+[ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://战斗系统/弹幕相关/发弹点.tscn" id="5_rg1ky"]
+
+[sub_resource type="GDScript" id="GDScript_wne1m"]
+resource_name = "星辉炮塔中等1"
+script/source = "extends SpellCard
+
+#提示：道中设定也可以考虑使用AnimationPlayer安排
+
+func _before_card_run():
+	pass
+
+func _card_running_event():
+	var left_time = floor(get_left_time())
+	var running_time = floor(get_card_run_time())
+	if running_time == 1:
+		$\"符卡发弹点/星辉炮塔固定弹\".enable = true
+		$\"符卡发弹点/星辉炮塔随机弹\".enable = true
+
+func _after_card_run():
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_hm38g"]
+resource_name = "星辉炮塔固定弹"
+script/source = "extends BulletSpawner
+
+#一个基础的发弹点，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	if way_num == 10:
+		way_num = 5
+	else:
+		way_num = 10
+	var bullets = get_bullet_group(way_num)
+	set_way_bullet_spawn(bullets)
+	spawn_group_of_bullet(bullets)
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	pass
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+
+"
+
+[sub_resource type="GDScript" id="GDScript_m0kvp"]
+resource_name = "星辉炮塔随机弹"
+script/source = "extends BulletSpawner
+
+#一个基础的发弹点，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	way_num = randi_range(5,10)
+	var bullets = get_bullet_group(way_num)
+	set_way_bullet_spawn(bullets)
+	spawn_group_of_bullet(bullets)
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	randomize()
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+
+"
+
+[node name="星辉炮塔-中等-1" instance=ExtResource("1_exjnf")]
+script = SubResource("GDScript_wne1m")
+
+[node name="星辉炮塔固定弹" parent="符卡发弹点" index="0" instance=ExtResource("5_rg1ky")]
+position = Vector2(1247, 36)
+script = SubResource("GDScript_hm38g")
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+bullet_speed = 2.0
+spawn_bullet_type = "星弹"
+spawn_bullet_color = 6
+way_num = 10
+way_range = 100.0
+way_rotation = 45.0
+spawn_bullet_frame = 40
+rotate_bullet = true
+
+[node name="星辉炮塔随机弹" parent="符卡发弹点" index="1" instance=ExtResource("5_rg1ky")]
+position = Vector2(41, 677)
+script = SubResource("GDScript_m0kvp")
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+bullet_speed = 1.0
+spawn_bullet_type = "星弹"
+spawn_bullet_color = 8
+way_num = 10
+way_range = 100.0
+way_rotation = -135.0
+spawn_bullet_frame = 40
+rotate_bullet = true
+
+[node name="星辉炮塔" parent="符卡敌机" index="0" instance=ExtResource("4_5icku")]
+position = Vector2(41, 677)
+spawner_path = NodePath("../../符卡发弹点/星辉炮塔随机弹")
+
+[node name="星辉炮塔2" parent="符卡敌机" index="1" instance=ExtResource("4_5icku")]
+position = Vector2(1247, 36)
+spawner_path = NodePath("../../符卡发弹点/星辉炮塔固定弹")

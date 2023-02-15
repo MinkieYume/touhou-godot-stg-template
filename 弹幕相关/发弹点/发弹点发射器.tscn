@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://lakyayu5yndf"]
 
-[ext_resource path="res://弹幕相关/发弹点.tscn" type="PackedScene" id=1]
-[ext_resource path="res://弹幕相关/发弹点/发弹点发射器.gd" type="Script" id=2]
-[ext_resource path="res://弹幕相关/发弹点配置.gd" type="Script" id=3]
+[ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://弹幕相关/发弹点.tscn" id="1"]
+[ext_resource type="Script" path="res://弹幕相关/发弹点/发弹点发射器.gd" id="2_whv8w"]
 
-[sub_resource type="Resource" id=1]
-script = ExtResource( 3 )
-enable = true
+[node name="发弹点发射器" instance=ExtResource("1")]
+script = ExtResource("2_whv8w")
+spawner_set = null
+spawner_type = "BulletSpawner"
+enable = false
 enable_shoot_bullet = true
 cycle = false
 start_sec = 0.1
@@ -20,24 +21,24 @@ speed = 0.0
 aspeed = 0.0
 speed_rotation = 0.0
 aspeed_rotation = 0.0
-bullet_life = 50
+bullet_life = 0
 bullet_speed = 3.0
 bullet_aspeed = 0.0
-bullet_aspeed_rotation = 0
+bullet_aspeed_rotation = 0.0
 spawn_bullet_type = "小玉"
 spawn_bullet_color = 0
 spawn_bullet_owner = "none"
-bullet_scale = Vector2( 1, 1 )
+bullet_scale = Vector2(1, 1)
 bullet_moving_type = "linear"
-bullet_out_screen_remove = false
+bullet_out_screen_remove = true
+bullet_sin_amplitude = 0.0
+bullet_sin_period = 0.0
+bullet_tags = {}
 way_num = 1
 way_range = 360.0
-way_rotation = -90.0
+way_rotation = 0.0
 spawner_radius = 0.0
 spawner_radius_rotation = 0.0
 spawn_bullet_frame = 2
-
-[node name="发弹点发射器" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
-speed = 1.0
-spawner_set = SubResource( 1 )
+rotate_bullet = false
+use_offset_position = false

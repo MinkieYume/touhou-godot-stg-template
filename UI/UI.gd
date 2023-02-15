@@ -10,6 +10,7 @@ var boss = null
 #onready var viewport = get_node("/root/东方弹幕绘/GameWindow/SubViewportContainer/SubViewport")
 
 func _ready():
+	STGSYS.UI = self
 	visible = true
 	$"测试背景".visible = false
 

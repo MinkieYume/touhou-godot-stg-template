@@ -29,7 +29,8 @@ func get_bullet_polygon(bullet,texture:AtlasTexture):
 	#然后给多边形进行旋转和平移操作
 	for polygon_pos in scaled_polygon:
 		polygon_pos -= pos_offset
-		polygon_pos = polygon_pos.rotated(deg_to_rad(bullet.rotation))
+		if !bullet.no_pic_rotation:
+			polygon_pos = polygon_pos.rotated(deg_to_rad(bullet.show_rotation))
 		polygon_pos += bullet.position
 		polygon_array.append(polygon_pos)
 		polygon_array = PackedVector2Array(polygon_array)
@@ -46,14 +47,18 @@ func create_bullet_bul(bullet):
 	bullet._initlize()
 	bullets.append(bullet)
 
-func get_new_bullet():
+func get_new_bullet(attr := {}):
 	#获取一个没有任何配置的新的弹幕
-	return Bullet.new()
+	return Bullet.new(attr)
 
 func remove_bullet(bullet):
 	STGSYS.enemy_bullets.erase(bullet)
 	bullets.erase(bullet)
 	bullet.free()
+
+#消除所有弹幕
+func clear_all_bullets():
+	clear = true
 
 func add_bullet_to_update(bullet):
 	var pic = RS.bullet_pics[bullet.bullet_type][bullet.color]
@@ -65,18 +70,16 @@ func move_bullets(delta):
 	in_screen_bullet = 0
 	for bullet in bullets:
 		#开始处理子弹的移动逻辑
-		var before_position = bullet.position
 		bullet.move(delta)
 			
 		add_bullet_to_update(bullet)
-		#如果子弹位置发生变化，则将运行判定逻辑
-		if bullet.position != before_position:
-			bullet.collision_detect()
+		#运行判定逻辑
+		bullet.collision_detect()
 			
 		#判定子弹是否超出屏幕范围
-		if bullet.position.x > STGSYS.view_portsize.x + 40 or \
-		bullet.position.x < -40 or bullet.position.y < -40 or \
-		bullet.position.y > STGSYS.view_portsize.y + 40:
+		if bullet.position.x > STGSYS.view_portsize.x + 40*bullet.scale.x or \
+		bullet.position.x < -40*bullet.scale.x or bullet.position.y < -40*bullet.scale.y or \
+		bullet.position.y > STGSYS.view_portsize.y + 40*bullet.scale.y:
 			#超出屏幕后清理子弹
 			if bullet.out_screen_remove:
 				bullet.wait_for_remove = true

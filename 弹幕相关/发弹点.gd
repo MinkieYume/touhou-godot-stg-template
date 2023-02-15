@@ -4,6 +4,7 @@ extends Marker2D
 enum MANAGE_TYPE {COMMON,HIGHLIGHT}
 
 #基本配置
+@export_group("发弹点")
 @export var enable = false #启用弹幕发射，必须开启这个才开始计时发射
 @export var enable_shoot_bullet = true #启用发射弹幕，暂时消除发射出的弹幕时可以改为False
 @export var cycle = false #循环运行的选项，即endtimer到时后再次开始startTimer计时
@@ -14,21 +15,24 @@ enum MANAGE_TYPE {COMMON,HIGHLIGHT}
 var bullet_manager_name = "普通弹幕层"
 
 #自运动配置
+@export_group("发弹点运动")
 @export var move_start = true #启用自移动
 @export var self_move_start_sec = 0.1 #调用start_move_count方法几秒后开始移动
 @export var out_screen_free = true #启用离开屏幕范围自动消失
 @export var speed = 0.0 #自移动速度,仅用于ready前配置，ready后请改speed_vec属性
 @export var aspeed = 0.0 #自移动加速度,仅用于ready前配置，ready后请改aspeed_vec属性
 #注：这里的rotation单位是角度，而非弧度
-@export var speed_rotation = 0.0 #移动速度的方向，仅用于ready前配置，ready后请改rotation属性
-@export var aspeed_rotation = 0.0 #加速度的方向
+@export var speed_rotation = 0.0 #子弹旋转度，仅用于ready前配置，ready后请改rotation属性
+@export var aspeed_rotation = 0.0 #子弹加速旋转度
 @onready var speed_vec = Vector2.DOWN*speed #移动向量
 @onready var aspeed_vec = Vector2.DOWN*aspeed #加速度移动向量
 
 #子弹信息配置
+@export_group("子弹样式")
 @export var bullet_life = 0 #子弹生命，设置子弹离开屏幕后多少帧后消失
 @export var bullet_speed = 3.0 #子弹速度，决定子弹发射时的速度
 @export var bullet_aspeed = 0.0 #子弹加速度，决定子弹发射时的加速度
+var bullet_damage := 1.0 #子弹伤害，不可配置，根据技能自动计算伤害
 #注：这里的rotation单位是角度，而非弧度
 @export var bullet_aspeed_rotation = 0.0 #子弹加速度方向，决定子弹发射的加速度方向。
 @export var spawn_bullet_type = "小玉" #子弹类型名称，需要在RSLOADER注册子弹场景
@@ -37,19 +41,29 @@ var bullet_manager_name = "普通弹幕层"
 @export var bullet_scale = Vector2(1,1)
 @export var bullet_moving_type = "linear"
 @export var bullet_out_screen_remove = true
+@export var bullet_sin_amplitude = 0.0 #当bullet_moving_type=sinx时生效，sin的振幅，数值越大，振幅越大
+@export var bullet_sin_period = 0.0 #当bullet_moving_type=sinx时生效，sinx的周期公式B值(period=2pi/B)，数值越大，周期越短（快)
+@export var bullet_tags = {}
 
 #子弹发射配置
+@export_group("子弹运动")
 @export var way_num := 1 #Way数，决定单次发射子弹的数量。
 @export var way_range := 360.0 #子弹范围，决定多Way子弹发射的范围，360是一个圆周的范围
 @export var way_rotation := 0.0 #发射角度，决定子弹发射的方向
 @export var spawner_radius := 0.0 #发射点半径，若为0则该组所有发弹点集中在一个点。
 @export var spawner_radius_rotation := 0.0 #发弹点半径的方向
 @export var spawn_bullet_frame = 2 #隔多少帧发射一次子弹
+@export var rotate_bullet = false
+@export var use_offset_position = false #发射子弹时偏移到子弹的头部发出
+
+var tmp_skill #暂存当前技能实例
+var skill_name := "" : set = add_skill_name #当前技能名
 var bullet_groups = []
 
 var change_frames = 1 #变化时间，一次变化多少帧的量
 var shooting = false #是否正在射击
 
+var first_run = true
 var need_remove = false
 var start_timer_counted = false #为true表示StartTimer已经运行过一次了
 
@@ -59,6 +73,8 @@ var bullet_event_groups = []
 @onready var player = STGSYS.get_player()
 
 var all_bullets = []
+
+var spawner_tags = {}
 
 var frame = 0
 
@@ -80,9 +96,12 @@ func start_shoot_count():
 		$StartTimer.start()
 
 func _ready():
+	randomize()
 	if start_sec > 0:
 		$StartTimer.wait_time = start_sec
-	$EndTimer.wait_time = end_sec
+	if !never_end:
+		assert(end_sec > 0, "发弹点'%s'结束时间必须大于0" % get_path())
+		$EndTimer.wait_time = end_sec
 	$MoveStartTimer.wait_time = self_move_start_sec
 	STGSYS.bullet_spawners.append(self)
 	if has_node("SpawnerEventGroups"):
@@ -95,6 +114,7 @@ func _ready():
 	_on_ready()
 	if bullet_manager_type == MANAGE_TYPE.HIGHLIGHT:
 		bullet_manager_name = "高光弹幕层"
+	
 	if enable:
 		start_shoot_count()
 
@@ -123,6 +143,9 @@ func _process(delta):
 	if need_remove:
 		if all_bullets.is_empty():
 			self_free()
+	if enable and first_run:
+		bullet_spawn_logic()
+		first_run = false
 	if enable and !start_timer_counted:
 		start_shoot_count()
 	if enable and !out_screen_free:
@@ -131,27 +154,27 @@ func _process(delta):
 		event.run_event_group()
 	for event in bullet_event_groups:
 		event.run_event_group()
-	if shooting:
+	if enable_shoot_bullet and shooting:
 		if frame % spawn_bullet_frame == 0:
 			#生成子弹前运行
 			bullet_spawn_logic()
 
 func spawn_bullet(bullet):
-	if enable_shoot_bullet:
-		#子弹的特殊参数处理
-		
-		bullet.position = bullet.position_trans*bullet.real_position
-		
-		bullet.out_screen_remove = bullet_out_screen_remove
-		
-		#子弹的生成处理
-		if spawn_bullet_owner != "self" and \
-		spawn_bullet_owner != "self_bomb":
-			STGSYS.enemy_bullets.append(bullet)
-		all_bullets.append(bullet)
-		for bullet_event in bullet_event_groups:
-			bullet_event.add_target(bullet)
-		STGSYS.current_level.get_node(bullet_manager_name).create_bullet_bul(bullet)
+#	if enable_shoot_bullet:
+	#子弹的特殊参数处理
+	
+	bullet.position = bullet.position_trans*bullet.real_position
+	
+	bullet.out_screen_remove = bullet_out_screen_remove
+	
+	#子弹的生成处理
+	if spawn_bullet_owner != "self" and \
+	spawn_bullet_owner != "self_bomb":
+		STGSYS.enemy_bullets.append(bullet)
+	all_bullets.append(bullet)
+	for bullet_event in bullet_event_groups:
+		bullet_event.add_target(bullet)
+	STGSYS.current_level.get_node(bullet_manager_name).create_bullet_bul(bullet)
 
 func bullet_draw_polygon(bullets,n=4,mode="all",aspeed=false):
 	#n代表边数，mode有三个分别为rotation，position和all（position和rotation全开）
@@ -225,26 +248,79 @@ func set_way_bullet_spawn(bullets:Array):
 	for bullet in bullets:
 		bullet.rotation = bullet_rotation
 		bullet.real_position = to_global(bullet_position)
+		if use_offset_position:
+			#设置子弹偏移
+			var off_dist = bullet.scale.y*16
+			bullet.real_position += \
+			Vector2(0,off_dist).rotated(deg_to_rad(bullet.rotation))
 		bullet_rotation += bullet_rotation_distance
 		bullet_position = bullet_position.rotated(deg_to_rad(bullet_rotation_distance))
+		
 
+#创建一个子弹
 func get_bullet(bullet_name):
 	#获取单个子弹，给子弹赋值基础属性参数
-	#外观参数
-	var bullet = STGSYS.current_level.get_node(bullet_manager_name).get_new_bullet()
-	bullet.life = bullet_life
-	bullet.bullet_type = spawn_bullet_type
-	bullet.color = spawn_bullet_color
-	bullet.b_owner = spawn_bullet_owner
-	bullet.collision_shape = RS.bullet_collision_shapes[spawn_bullet_type]
-	bullet.scale = bullet_scale
+	var attr = {
+		#外观参数
+		"life":bullet_life,
+		"damage":bullet_damage,
+		"bullet_type":bullet_name,
+		"color":spawn_bullet_color,
+		"b_owner":spawn_bullet_owner,
+		"collision_shape":RS.bullet_collision_shapes[spawn_bullet_type],
+		"scale":bullet_scale,
+		"rotating":rotate_bullet,
+
+		#运动参数
+		"speed_value":bullet_speed,
+		"aspeed_value":bullet_aspeed,
+		"speed":bullet_speed * Vector2.DOWN,
+		"aspeed":bullet_aspeed * Vector2.DOWN,
+		"aspeed_rotation":bullet_aspeed_rotation,
+		"moving_type":bullet_moving_type,
+		"sin_amplitude":bullet_sin_amplitude,
+		"sin_period":bullet_sin_period,
+
+		#附加标签
+		"bullet_tags":{
+			"skill": skill_name,
+		},
+		
+		"target_enemy": null,
+	}
 	
-	#运动参数
-	bullet.speed = bullet_speed*Vector2.DOWN
-	bullet.aspeed = bullet_aspeed*Vector2.DOWN
-	bullet.aspeed_rotation = bullet_aspeed_rotation
-	bullet.moving_type = bullet_moving_type
+	for tags in bullet_tags.keys():
+		attr.bullet_tags[tags] = bullet_tags[tags]
+	
+	if bullet_moving_type == "chaser":
+		attr.target_enemy = get_chaser_target()
+
+	var bullet = STGSYS.current_level.get_node(bullet_manager_name).get_new_bullet(attr)
+	
 	return bullet
+
+#func get_bullet(bullet_name):
+#	#获取单个子弹，给子弹赋值基础属性参数
+#	#外观参数
+#	var bullet = STGSYS.current_level.get_node(bullet_manager_name).get_new_bullet()
+#	bullet.life = bullet_life
+#	bullet.bullet_type = bullet_name
+#	bullet.color = spawn_bullet_color
+#	bullet.b_owner = spawn_bullet_owner
+#	bullet.collision_shape = RS.bullet_collision_shapes[spawn_bullet_type]
+#	bullet.scale = bullet_scale
+#	bullet.rotating = rotate_bullet
+#
+#	#运动参数
+#	bullet.speed = bullet_speed*Vector2.DOWN
+#	bullet.aspeed = bullet_aspeed*Vector2.DOWN
+#	bullet.aspeed_rotation = bullet_aspeed_rotation
+#	bullet.moving_type = bullet_moving_type
+#
+#	if bullet_moving_type == "chaser":
+#		bullet.target_enemy = get_chaser_target()
+#
+#	return bullet
 
 func get_bullet_group(num):
 	#获取一组子弹
@@ -277,6 +353,30 @@ func stop_shoot():
 func remove_spawner():
 	need_remove = true
 	STGSYS.bullet_spawners.erase(self)
+	
+#检测诱导弹目标
+func get_chaser_target():
+	var nearest_enemy = find_closest_or_furthest(self, "enemy_flyer")
+	return nearest_enemy
+	
+#获取最靠近或者最远的节点
+func find_closest_or_furthest(node: Object, group_name: String, get_closest:= true) -> Object:
+	var target_group = get_tree().get_nodes_in_group(group_name)
+	
+	if target_group.is_empty():
+		return null
+	
+	var distance_away = node.global_transform.origin.distance_to(target_group[0].global_transform.origin)
+	var return_node = target_group[0]
+	for index in target_group.size():
+		var distance = node.global_transform.origin.distance_to(target_group[index].global_transform.origin)
+		if get_closest == true && distance < distance_away:
+			distance_away = distance
+			return_node = target_group[index]
+		elif get_closest == false && distance > distance_away:
+			distance_away = distance
+			return_node = target_group[index]
+	return return_node
 
 func self_run_logic():
 	pass
@@ -286,6 +386,10 @@ func bullet_run_logic(bull,delta):
 
 func add_bullet_group(group):
 	bullet_groups.append(group)
+
+func add_skill_name(sname):
+	skill_name = sname
+	tmp_skill = RS.fight_skills[skill_name].instantiate()
 
 func _on_StartTimer_timeout():
 	shoot()

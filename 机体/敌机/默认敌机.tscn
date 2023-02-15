@@ -25,7 +25,6 @@ shape = SubResource("1")
 
 [node name="自机狙发弹点" parent="." instance=ExtResource("2_ebdk7")]
 lock_aim_direction = true
-bullet_aim = true
 enable = true
 end_sec = 0.1
 spawn_bullet_type = "方玉"

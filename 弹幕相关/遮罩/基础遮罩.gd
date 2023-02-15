@@ -48,6 +48,7 @@ var vars = [] #该数组用于保存遮罩事件中可能会用到的所有全�
 var frame = 0
 
 func _ready():
+	randomize()
 	if not Engine.is_editor_hint():
 		STGSYS.shades.append(self)
 		$CollisionShape2D.shape.extents = shade_area

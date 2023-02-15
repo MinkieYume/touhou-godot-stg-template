@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcvff1fy6wpw5"]
+
+[ext_resource type="PackedScene" uid="uid://efqimko7ykdr" path="res://战斗系统/弹幕相关/符卡/基础符卡.tscn" id="1_adesf"]
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/符卡/发弹点组/相对发弹点--玩家.gd" id="2_hb726"]
+[ext_resource type="PackedScene" uid="uid://dflgl0nlmoc1v" path="res://战斗系统/弹幕相关/发弹点/自机发弹点.tscn" id="2_k6umt"]
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/符卡/角色符卡/小风/扳手风暴--自机.gd" id="2_naw3t"]
+
+[sub_resource type="GDScript" id="GDScript_fjqbc"]
+resource_name = "扳手风暴"
+script/source = "extends BulletSpawner
+
+func _on_ready():
+	bullet_manager_name = \"玩家子弹层\"
+	spawn_bullet_owner = \"self\"
+	out_screen_free = false
+
+func bullet_spawn_logic():
+	way_rotation +=25
+	var bullets = get_bullet_group(way_num)
+	set_way_bullet_spawn(bullets)
+	spawn_group_of_bullet(bullets)
+"
+
+[node name="扳手风暴--自机" instance=ExtResource("1_adesf")]
+script = ExtResource("2_naw3t")
+shoot_bullet = true
+keep_sec = 360.0
+never_end = true
+
+[node name="测试背景" parent="." index="0"]
+visible = false
+
+[node name="相对发弹点" type="Node2D" parent="符卡发弹点" index="0"]
+script = ExtResource("2_hb726")
+
+[node name="扳手风暴--自机" parent="符卡发弹点/相对发弹点" index="0" instance=ExtResource("2_k6umt")]
+script = SubResource("GDScript_fjqbc")
+start_sec = 0.0
+end_sec = 0.0
+bullet_speed = 3.0
+spawn_bullet_type = "扳手弹"
+spawn_bullet_color = 1
+way_num = 2
+spawn_bullet_frame = 5

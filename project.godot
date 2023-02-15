@@ -47,10 +47,6 @@ window/size/viewport_height=600
 window/stretch/mode="viewport"
 window/size/width=800
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/InstanceDock/plugin.cfg", "res://addons/annotations_tree/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/version-check/plugin.cfg")
-
 [importer_defaults]
 
 texture={

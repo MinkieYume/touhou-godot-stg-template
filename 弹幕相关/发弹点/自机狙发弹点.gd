@@ -5,6 +5,7 @@ extends BulletSpawner
 @export var bullet_aim = true #是否是子弹瞄准玩家的自机狙
 
 func bullet_spawn_logic():
+	player = STGSYS.player
 	var direction = get_global_position().direction_to(player.get_global_position())
 	var bullets = get_bullet_group(way_num)
 	if !lock_aim_direction and bullet_aim:

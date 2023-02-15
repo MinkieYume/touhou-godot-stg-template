@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4gylfywvvl1y"]
+
+[ext_resource type="PackedScene" uid="uid://6xog4sfqd0yd" path="res://战斗系统/弹幕相关/符卡/基础符卡.tscn" id="1_dfqyl"]
+[ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://战斗系统/弹幕相关/发弹点.tscn" id="2_shnqp"]
+
+[sub_resource type="GDScript" id="GDScript_swep2"]
+resource_name = "神奇弹幕收集"
+script/source = "extends SpellCard
+
+#提示：道中设定也可以考虑使用AnimationPlayer安排
+
+func _before_card_run():
+	pass
+
+func _card_running_event():
+	var left_time = floor(get_left_time())
+	var running_time = floor(get_card_run_time())
+	if running_time == 0:
+		$\"符卡发弹点/红网发散\".enable = true
+
+func _after_card_run():
+	pass
+
+"
+
+[sub_resource type="GDScript" id="GDScript_qyxnx"]
+resource_name = "手枪手发弹点"
+script/source = "extends BulletSpawner
+
+var move_positions = [
+	Vector2(950,50),
+	Vector2(950,180),
+	Vector2(950,330),
+	Vector2(950,460),
+	Vector2(950,620)
+]
+
+var current_position = 0
+
+#一个基础的发弹点，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	if enable_shoot_bullet:
+		var bullets = get_bullet_group(way_num)
+		set_way_bullet_spawn(bullets)
+		spawn_group_of_bullet(bullets)
+		way_rotation-=5
+	
+	if way_rotation == 20:
+		way_rotation = 90
+		enable_shoot_bullet = false
+		
+		if current_position == 4:
+			current_position = 0
+		else:
+			current_position +=1
+		await get_tree().create_timer(2.0).timeout
+		enable_shoot_bullet = true
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	pass
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+
+"
+
+[node name="神奇弹幕收集" instance=ExtResource("1_dfqyl")]
+script = SubResource("GDScript_swep2")
+keep_sec = 999999.0
+
+[node name="红网发散" parent="符卡发弹点" index="0" instance=ExtResource("2_shnqp")]
+position = Vector2(632, 349)
+script = SubResource("GDScript_qyxnx")
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+bullet_speed = 5.0
+bullet_aspeed = 0.1
+bullet_aspeed_rotation = -180.0
+spawn_bullet_type = "星弹"
+spawn_bullet_color = 1
+way_num = 9
+way_range = 90.0
+way_rotation = 90.0
+rotate_bullet = true
+
+[node name="甩弹" parent="符卡发弹点" index="1" instance=ExtResource("2_shnqp")]
+position = Vector2(632, 349)
+script = SubResource("GDScript_qyxnx")
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+bullet_speed = 5.0
+bullet_aspeed = 0.01
+spawn_bullet_type = "星弹"
+spawn_bullet_color = 1
+way_range = 90.0
+way_rotation = 90.0
+rotate_bullet = true

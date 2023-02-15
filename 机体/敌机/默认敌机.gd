@@ -21,7 +21,7 @@ var position_trans = Transform2D.IDENTITY
 var bullet_group = "none"
 
 
-signal hited
+signal hited(bullet,damage)
 
 func _ready():
 	randomize()
@@ -84,9 +84,9 @@ func spawn_random_pos_pack_dict(nam,num,pos_range):
 		),randf_range(pos_range["up"],pos_range["down"]))
 	return dic
 
-func _on_hit():
+func _on_hit(bullet,damage):
 	if health > 0:
-		health -= 1
+		health -= damage
 	else:
 		death()
 

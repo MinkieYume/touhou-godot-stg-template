@@ -1,0 +1,328 @@
+[gd_scene load_steps=12 format=3 uid="uid://ciymh1vcueef5"]
+
+[ext_resource type="PackedScene" uid="uid://efqimko7ykdr" path="res://战斗系统/弹幕相关/符卡/基础符卡.tscn" id="1_sh10d"]
+[ext_resource type="PackedScene" uid="uid://b2c6yfroa5w0" path="res://战斗系统/机体/敌机/星星卫兵-手枪手.tscn" id="2_acseq"]
+[ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://战斗系统/弹幕相关/发弹点.tscn" id="2_lle2i"]
+[ext_resource type="PackedScene" uid="uid://m2ihs5xcl7l0" path="res://战斗系统/弹幕相关/发弹点/激光发弹点.tscn" id="3_cxuom"]
+[ext_resource type="PackedScene" uid="uid://ee4pjr2xdkld" path="res://战斗系统/机体/敌机/星星卫兵-大炮手.tscn" id="3_lyne0"]
+[ext_resource type="PackedScene" uid="uid://degainxo1oxdg" path="res://战斗系统/机体/敌机/星星卫兵-召唤师.tscn" id="4_l8a3b"]
+
+[sub_resource type="GDScript" id="GDScript_ut8cl"]
+resource_name = "星星卫兵一非"
+script/source = "extends SpellCard
+
+#提示：道中设定也可以考虑使用AnimationPlayer安排
+const GUIRD_DEFAULT_POS = [
+	Vector2(980,350),#召唤师
+	Vector2(1142,490),#枪手
+	Vector2(1142,230) #炮手
+]
+
+@export_node_path var boss_show
+
+var disable_crab = false
+
+func _ready():
+	super()
+	for fly in $\"符卡敌机\".get_children():
+		fly.position = Vector2(2000,2000)
+
+func _before_card_run():
+	$\"符卡敌机/星星卫兵-召唤师\".position = GUIRD_DEFAULT_POS[0]
+	$\"符卡敌机/星星卫兵-手枪手\".position = GUIRD_DEFAULT_POS[1]
+	$\"符卡敌机/星星卫兵-大炮手\".position = GUIRD_DEFAULT_POS[2]
+
+func _card_running_event():
+	var left_time = floor(get_left_time())
+	var running_time = floor(get_card_run_time())
+	
+	var show = get_node(boss_show)
+	if is_instance_valid(show) and !disable_crab:
+		show.get_node(\"星星卫兵-召唤师\").position = $\"符卡敌机/星星卫兵-召唤师\".position
+		show.get_node(\"星星卫兵-手枪手\").position = $\"符卡敌机/星星卫兵-手枪手\".position
+		show.get_node(\"星星卫兵-大炮手\").position = $\"符卡敌机/星星卫兵-大炮手\".position
+	
+	if running_time == 1:
+		$\"符卡敌机/星星卫兵-召唤师\".move(Vector2(1350,350))
+		$\"符卡发弹点/手枪手发弹点1\".enable = true
+		$\"符卡发弹点/炮手激光组\".enable_all()
+		$\"符卡发弹点/炮手发弹点\".enable = true
+		for fly in $\"符卡敌机\".get_children():
+			fly.no_danmage = false
+
+func _after_card_run():
+	disable_crab = true
+	for fly in $\"符卡敌机\".get_children():
+		fly.position = Vector2(2000,2000)
+		fly.no_danmage = true
+
+"
+
+[sub_resource type="GDScript" id="GDScript_vo5bh"]
+resource_name = "手枪手发弹点"
+script/source = "extends BulletSpawner
+
+@export_node_path var bind_flyer
+var starflyer
+
+var max_bullet_one_shot = 5
+var count_spawn_num = 0
+
+#一个基础的发弹点，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	if !starflyer.moving:
+		if count_spawn_num == 0:
+			if spawn_bullet_frame == 40:
+				spawn_bullet_frame = 10
+			else:
+				spawn_bullet_frame = 40
+			starflyer.move(Vector2\\
+			(randf_range(800,1210),randf_range(400,640)))
+			var direction = get_global_position().direction_to(STGSYS.player.get_global_position())
+			way_rotation = rad_to_deg(Vector2.DOWN.angle_to(direction))-20
+		
+		count_spawn_num += 1
+		
+		if count_spawn_num == max_bullet_one_shot+1:
+			count_spawn_num = 0
+		
+		way_rotation += 10
+		
+		var bullets = get_bullet_group(way_num)
+		spawn_bullet_owner = \"guner\"
+		set_way_bullet_spawn(bullets)
+		spawn_group_of_bullet(bullets)
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	starflyer = get_node(bind_flyer)
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if is_instance_valid(starflyer):
+		position = starflyer.position
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+
+"
+
+[sub_resource type="GDScript" id="GDScript_2t6fg"]
+resource_name = "炮手激光组"
+script/source = "extends Node2D
+@export_node_path var ps_starflyer
+@export_node_path var next_ps_spawner
+
+func _process(delta):
+	if ps_starflyer != null:
+		position = get_node(ps_starflyer).position
+	if is_instance_valid($RaserSpawner2):
+		if $RaserSpawner2.shoot_out:
+			$RaserSpawner2.shoot_out = false
+			get_node(next_ps_spawner).enable_shoot_bullet = true
+
+func enable_all():
+	for raser in get_children():
+		raser.enable = true
+
+func shoot_rasers():
+	get_node(ps_starflyer).move(Vector2(randf_range(800,1210),randf_range(50,340)))
+	await get_node(ps_starflyer).move_out
+	await get_tree().create_timer(2.0).timeout
+	for raser in get_children():
+		raser.raser_shooting = false
+"
+
+[sub_resource type="GDScript" id="GDScript_t5bwd"]
+resource_name = "激光发弹点"
+script/source = "extends RaserSpawner
+
+var shoot_out = false
+
+func _on_keep_raser_timer_timeout():
+	for bullet in all_bullets:
+		bullet.wait_for_remove = true
+	for raser_collide in raser_collides:
+		raser_collide.queue_free()
+	raser_collides.clear()
+	all_bullets.clear()
+	#raser_shooting = false
+	shoot_out = true
+"
+
+[sub_resource type="GDScript" id="GDScript_vxcip"]
+resource_name = "炮手发弹点"
+script/source = "extends BulletSpawner
+
+@export_node_path var ps_starflyer
+@export_node_path var next_ps_spawner
+
+var max_shoot_twice = 6
+var shoot_twice = 0
+
+var start_shoot = false
+var start_move = false
+#一个基础的发弹点，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	if enable_shoot_bullet:
+		if shoot_twice == 6:
+			enable_shoot_bullet = false
+			start_move = false
+			start_shoot = false
+			shoot_twice = 0
+			get_node(next_ps_spawner).shoot_rasers()
+		
+		if !start_move:
+			start_move = true
+			get_node(ps_starflyer).move(Vector2(randf_range(800,1210),randf_range(50,340)))
+			await get_node(ps_starflyer).move_out
+			start_shoot = true
+		
+		if start_shoot:
+			shoot_twice +=1
+			bullet_aspeed_rotation = -bullet_aspeed_rotation
+			var bullets = get_bullet_group(way_num)
+			set_way_bullet_spawn(bullets)
+			spawn_group_of_bullet(bullets)
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	pass
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	position = get_node(ps_starflyer).position
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+
+"
+
+[node name="流星高阁-星星卫兵一非" instance=ExtResource("1_sh10d")]
+script = SubResource("GDScript_ut8cl")
+boss_show = null
+keep_sec = 999999.0
+
+[node name="手枪手发弹点1" parent="符卡发弹点" index="0" instance=ExtResource("2_lle2i")]
+position = Vector2(1065, 370)
+scale = Vector2(1.5, 1.5)
+script = SubResource("GDScript_vo5bh")
+bind_flyer = NodePath("../../符卡敌机/星星卫兵-手枪手")
+bullet_speed = 3.5
+spawn_bullet_type = "星弹"
+spawn_bullet_color = 4
+way_num = 3
+way_range = 45.0
+way_rotation = 90.0
+spawn_bullet_frame = 40
+rotate_bullet = true
+
+[node name="炮手激光组" type="Node2D" parent="符卡发弹点" index="1"]
+script = SubResource("GDScript_2t6fg")
+ps_starflyer = NodePath("../../符卡敌机/星星卫兵-大炮手")
+next_ps_spawner = NodePath("../炮手发弹点")
+metadata/_edit_lock_ = true
+
+[node name="RaserSpawner" parent="符卡发弹点/炮手激光组" index="0" instance=ExtResource("3_cxuom")]
+script = SubResource("GDScript_t5bwd")
+keep_sec = 1.0
+max_sec = 1.0
+before_sec = 1.0
+start_collide_sec = 1.2
+max_width = 2.0
+min_width = 0.0
+aim_self_flyer = true
+spawn_bullet_color = 3
+
+[node name="RaserSpawner2" parent="符卡发弹点/炮手激光组" index="1" instance=ExtResource("3_cxuom")]
+position = Vector2(0, 4)
+script = SubResource("GDScript_t5bwd")
+await_sec = 0.4
+keep_sec = 1.0
+max_sec = 1.0
+before_sec = 1.0
+start_collide_sec = 1.2
+max_width = 2.0
+min_width = 0.0
+aim_self_flyer = true
+spawn_bullet_color = 3
+
+[node name="炮手发弹点" parent="符卡发弹点" index="2" instance=ExtResource("2_lle2i")]
+script = SubResource("GDScript_vxcip")
+ps_starflyer = NodePath("../../符卡敌机/星星卫兵-大炮手")
+next_ps_spawner = NodePath("../炮手激光组")
+enable_shoot_bullet = false
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+bullet_aspeed = 0.01
+bullet_aspeed_rotation = 90.0
+spawn_bullet_type = "星弹"
+spawn_bullet_color = 5
+way_num = 30
+spawn_bullet_frame = 20
+rotate_bullet = true
+
+[node name="星星卫兵-手枪手" parent="符卡敌机" index="0" instance=ExtResource("2_acseq")]
+visible = false
+position = Vector2(1142, 490)
+
+[node name="星星卫兵-大炮手" parent="符卡敌机" index="1" instance=ExtResource("3_lyne0")]
+visible = false
+position = Vector2(1139, 50)
+
+[node name="星星卫兵-召唤师" parent="符卡敌机" index="2" instance=ExtResource("4_l8a3b")]
+visible = false
+position = Vector2(980, 353)

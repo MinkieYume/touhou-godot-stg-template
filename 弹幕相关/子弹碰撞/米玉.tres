@@ -1,5 +1,5 @@
-[gd_resource type="RectangleShape2D" format=2]
+[gd_resource type="RectangleShape2D" format=3 uid="uid://di7i8uke2jcu0"]
 
 [resource]
 resource_local_to_scene = true
-extents = Vector2( 1, 2 )
+size = Vector2(2, 4)

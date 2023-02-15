@@ -37,7 +37,7 @@ var now_sub_round = 0 #当前子回合（回合内的第几个攻击模式）
 @onready var player = STGSYS.get_player()
 
 signal before_atk
-signal hited
+signal hited(bullet,damage)
 
 func _ready():
 	STGSYS.set_boss(self)
@@ -202,8 +202,8 @@ func _on_AtkChangeTimer_timeout():
 	next_round()
 	process_atk()
 
-func _on_HitArea_hit():
-	hp -= player.damage
+func _on_HitArea_hit(bullet,damage):
+	hp -= damage
 	if hp < 0:
 		hp = 0
 	

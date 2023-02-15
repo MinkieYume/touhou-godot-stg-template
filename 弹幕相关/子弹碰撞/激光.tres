@@ -1,5 +1,4 @@
-[gd_resource type="RectangleShape2D" format=2]
+[gd_resource type="ConvexPolygonShape2D" format=3 uid="uid://cmb625db2kmjv"]
 
 [resource]
-resource_local_to_scene = true
-extents = Vector2( 3, 13 )
+points = PackedVector2Array(0, -14, -5, -5, -5, 5, 0, 14, 5, 5, 5, -5)

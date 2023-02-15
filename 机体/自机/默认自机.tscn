@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://机体/自机/自机判定点.gd" id="1"]
 [ext_resource type="Script" path="res://机体/自机/默认自机.gd" id="2"]
-[ext_resource type="PackedScene" path="res://弹幕相关/发弹点/自机发弹点.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dflgl0nlmoc1v" path="res://弹幕相关/发弹点/自机发弹点.tscn" id="3"]
 [ext_resource type="Script" path="res://机体/自机/GrazeArea.gd" id="3_3lxu7"]
 [ext_resource type="PackedScene" uid="uid://88dab7331ear" path="res://炸弹/默认炸弹.tscn" id="4"]
 
@@ -86,19 +86,31 @@ position = Vector2(11, 16)
 position = Vector2(-10, -17)
 enable = true
 enable_shoot_bullet = false
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
 out_screen_free = false
+bullet_speed = 15.0
 
 [node name="自机发弹点2" parent="Shooter" instance=ExtResource("3")]
 position = Vector2(0, -17)
 enable = true
 enable_shoot_bullet = false
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
 out_screen_free = false
+bullet_speed = 15.0
 
 [node name="自机发弹点3" parent="Shooter" instance=ExtResource("3")]
 position = Vector2(10, -17)
 enable = true
 enable_shoot_bullet = false
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
 out_screen_free = false
+bullet_speed = 15.0
 
 [node name="Bombs" type="Node2D" parent="."]
 
