@@ -1,3 +1,6 @@
 res://东方弹幕绘.tscn
 res://弹幕相关/子弹样式组.tres
 res://UI/spell_name_container.tres
+res://UI/UI.tscn
+res://Util.gd
+res://RSLOADER.gd

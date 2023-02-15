@@ -5,8 +5,9 @@ extends Node
 static func scan(path:String) -> Array:
 	var file_name := ""
 	var files := []
-	var dir := Directory.new()
-	if dir.open(path) != OK:
+	# Standard
+	var dir = DirAccess.open(path)
+	if dir != OK:
 		print("Failed to open:"+path)
 	else:
 		dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547

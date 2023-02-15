@@ -101,7 +101,7 @@ func _ready():
 			var frame_count = sprite_frame.get_frame_count(sprite_name)
 			var frame_pics = []
 			for frame in range(frame_count):
-				frame_pics.append(sprite_frame.get_frame(sprite_name,frame))
+				frame_pics.append(sprite_frame.get_frame_texture(sprite_name,frame))
 			bullet_pics[sprite_name] = frame_pics
 	
 	#获取所有子弹对应的多边形参数
