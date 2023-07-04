@@ -166,18 +166,20 @@ func increase_bomb():
 
 func _unhandled_input(event):
 	#统一处理案按键操作
-	if Input.is_action_just_pressed("ui_z"):
+	if Input.is_action_just_pressed("fire"):
 		shooting = true
-	if Input.is_action_just_released("ui_z"):
+	if Input.is_action_just_released("fire"):
 		shooting = false
 	if Input.is_action_just_pressed("low_speed"):
 		lowSpeedMode = true
 	if Input.is_action_just_released("low_speed"):
 		lowSpeedMode = false
-	if Input.is_action_just_pressed("ui_bomb"):
+	if Input.is_action_just_pressed("bomb"):
 		if bomb > 0:
 			emit_signal("use_bomb")
 			decrease_bomb()
+	if Input.is_action_just_pressed("special"):
+		pass
 	
 	fxInput()
 

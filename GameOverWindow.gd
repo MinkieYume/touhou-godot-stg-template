@@ -1,5 +1,7 @@
 extends Panel
 
+@onready var main_menu = $"../MainMenu"
+
 func _ready():
 	visible = false
 	STGSYS.connect("game_over",Callable(self,"_on_gameover"))

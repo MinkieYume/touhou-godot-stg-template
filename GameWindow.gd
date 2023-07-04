@@ -3,6 +3,8 @@ extends Panel
 @export var enable = false
 @export var level_name = "默认测试"
 
+@onready var main_menu = $"../MainMenu"
+
 var loaded = false
 
 func _ready():

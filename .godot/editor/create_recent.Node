@@ -1,10 +1,11 @@
-TextureRect
-Panel
+Button
 Control
+Label
+Panel
+TextureRect
 PanelContainer
 CenterContainer
 AnimationPlayer
-Label
 CanvasLayer
 Node
 Node2D
