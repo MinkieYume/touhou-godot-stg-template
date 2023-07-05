@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://lakvsrra3wdc"]
+[gd_scene load_steps=49 format=3 uid="uid://lakvsrra3wdc"]
 
 [ext_resource type="FontFile" uid="uid://bfulrtgnpdxb5" path="res://字体/进度条文本.tres" id="1"]
+[ext_resource type="Script" path="res://main.gd" id="1_d073v"]
 [ext_resource type="FontFile" path="res://字体/标题.tres" id="4"]
 [ext_resource type="FontFile" path="res://字体/number.tres" id="4_avm47"]
 [ext_resource type="Texture2D" uid="uid://wnvy23lfk22n" path="res://Resource/texture/Point.png" id="5"]
@@ -16,6 +17,11 @@
 [ext_resource type="Script" path="res://GameOverWindow.gd" id="14"]
 [ext_resource type="Script" path="res://MainMenu.gd" id="14_otkbh"]
 [ext_resource type="FontFile" uid="uid://cqaf3f2x2dgg8" path="res://字体/VonwaonBitmap-16px.ttf" id="14_vor10"]
+[ext_resource type="FontFile" uid="uid://c44n1uvn6kupv" path="res://字体/VonwaonBitmap-12px.ttf" id="16_8uqvo"]
+[ext_resource type="AudioStream" uid="uid://c0culew7ap6gs" path="res://Audio/SE/toggle_003.wav" id="17_067iu"]
+[ext_resource type="StyleBox" uid="uid://h25cxnkvn8hj" path="res://UI/difficult_panel.tres" id="18_gvgl1"]
+[ext_resource type="Shader" path="res://UI/difficult_panel.gdshader" id="18_sl2nt"]
+[ext_resource type="Script" path="res://difficult_panel.gd" id="19_dftaq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i56db"]
 bg_color = Color(0.192157, 0.666667, 0.772549, 1)
@@ -35,6 +41,13 @@ bg_color = Color(0.192157, 0.666667, 0.772549, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_536y6"]
 font = ExtResource("13")
 font_size = 76
+outline_size = 10
+outline_color = Color(0, 0.839216, 0.964706, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hn2q6"]
+font = ExtResource("16_8uqvo")
+font_size = 24
+font_color = Color(0.513726, 0.972549, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odvdl"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -51,13 +64,106 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4ptj"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_nebbg"]
+font = ExtResource("13")
+font_size = 48
+outline_size = 8
+outline_color = Color(1, 0.152941, 0.0470588, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.698039)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d50pq"]
+shader = ExtResource("18_sl2nt")
+shader_parameter/alpha = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_wmw1a"]
+font = ExtResource("13")
+font_size = 48
+font_color = Color(0, 0.760784, 0.560784, 1)
+outline_size = 4
+outline_color = Color(0, 0.4, 0, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qtcyd"]
+font = ExtResource("14_vor10")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axj0y"]
+shader = ExtResource("18_sl2nt")
+shader_parameter/alpha = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_iovxw"]
+font = ExtResource("13")
+font_size = 48
+font_color = Color(0, 0.713726, 0.901961, 1)
+outline_size = 4
+outline_color = Color(0.0313726, 0.34902, 0.517647, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5t5ys"]
+shader = ExtResource("18_sl2nt")
+shader_parameter/alpha = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_b7rjf"]
+font = ExtResource("13")
+font_size = 48
+font_color = Color(0.92549, 0.541176, 0, 1)
+outline_size = 4
+outline_color = Color(0.47451, 0.270588, 0, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_406pp"]
+shader = ExtResource("18_sl2nt")
+shader_parameter/alpha = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_4t204"]
+font = ExtResource("13")
+font_size = 48
+font_color = Color(0.92549, 0, 0, 1)
+outline_size = 4
+outline_color = Color(0.623529, 0, 0.12549, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4e33h"]
+shader = ExtResource("18_sl2nt")
+shader_parameter/alpha = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_wwbk8"]
+font = ExtResource("13")
+font_size = 48
+font_color = Color(0.486275, 0.631373, 1, 1)
+outline_size = 4
+outline_color = Color(0.294118, 0, 0.87451, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yloco"]
+shader = ExtResource("18_sl2nt")
+shader_parameter/alpha = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_pmvka"]
+font = ExtResource("13")
+font_size = 48
+font_color = Color(0.756863, 0.513726, 1, 1)
+outline_size = 4
+outline_color = Color(0.435294, 0.00392157, 0.729412, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.439216)
+
 [node name="东方弹幕绘" type="Node2D"]
+script = ExtResource("1_d073v")
 
 [node name="GameWindow" type="Panel" parent="."]
 offset_right = 800.0
 offset_bottom = 600.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i56db")
 script = ExtResource("11")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="GameWindow"]
 layout_mode = 0
@@ -398,8 +504,14 @@ offset_right = 800.0
 offset_bottom = 600.0
 theme_override_styles/panel = ExtResource("13_0rpnd")
 script = ExtResource("14_otkbh")
+metadata/_edit_lock_ = true
 
-[node name="标题" type="Label" parent="MainMenu"]
+[node name="标题" type="Control" parent="MainMenu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="主标题" type="Label" parent="MainMenu/标题"]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 33.0
@@ -409,6 +521,15 @@ text = "东方弹幕绘"
 label_settings = SubResource("LabelSettings_536y6")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="副标题" type="Label" parent="MainMenu/标题"]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 130.0
+offset_right = 509.0
+offset_bottom = 157.0
+text = "A Simple STG Template"
+label_settings = SubResource("LabelSettings_hn2q6")
 
 [node name="Buttons" type="Control" parent="MainMenu"]
 anchors_preset = 0
@@ -437,6 +558,7 @@ theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("14_vor10")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
@@ -466,6 +588,7 @@ theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("14_vor10")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
@@ -495,6 +618,7 @@ theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("14_vor10")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
@@ -523,6 +647,7 @@ theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("14_vor10")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
@@ -552,6 +677,7 @@ theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("14_vor10")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
@@ -580,6 +706,7 @@ theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("14_vor10")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
@@ -609,6 +736,7 @@ theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("14_vor10")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
@@ -638,6 +766,7 @@ theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("14_vor10")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
@@ -667,6 +796,7 @@ theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("14_vor10")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
@@ -696,6 +826,7 @@ theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("14_vor10")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
@@ -705,6 +836,248 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
 theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
 text = "退出游戏
 "
+
+[node name="LevelChose" type="Control" parent="MainMenu"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 800.0
+offset_bottom = 600.0
+metadata/_edit_lock_ = true
+
+[node name="HardChose" type="Control" parent="MainMenu/LevelChose"]
+anchors_preset = 0
+offset_right = 800.0
+offset_bottom = 600.0
+metadata/_edit_lock_ = true
+
+[node name="ChoseHard" type="Label" parent="MainMenu/LevelChose/HardChose"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -284.0
+offset_right = 147.5
+offset_bottom = -217.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "难度选择"
+label_settings = SubResource("LabelSettings_nebbg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HardPanels" type="VBoxContainer" parent="MainMenu/LevelChose/HardChose"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -26.0
+offset_right = 122.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+metadata/_edit_lock_ = true
+
+[node name="Easy" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
+material = SubResource("ShaderMaterial_d50pq")
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Lunatic")
+focus_neighbor_bottom = NodePath("../Normal")
+focus_next = NodePath("../Normal")
+focus_previous = NodePath("../Lunatic")
+focus_mode = 2
+theme_override_styles/panel = ExtResource("18_gvgl1")
+script = ExtResource("19_dftaq")
+
+[node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Easy"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = -3.0
+offset_right = 105.0
+offset_bottom = 62.0
+text = "Easy"
+label_settings = SubResource("LabelSettings_wmw1a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Easy"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 58.0
+offset_right = 236.0
+offset_bottom = 115.0
+text = "面向萌新的难度水准，在这个难度下通关对于萌新来说也是值得骄傲的一件事了。"
+label_settings = SubResource("LabelSettings_qtcyd")
+autowrap_mode = 1
+
+[node name="Normal" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
+material = SubResource("ShaderMaterial_axj0y")
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+focus_mode = 2
+theme_override_styles/panel = ExtResource("18_gvgl1")
+script = ExtResource("19_dftaq")
+
+[node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Normal"]
+use_parent_material = true
+offset_left = 7.0
+offset_top = -3.0
+offset_right = 105.0
+offset_bottom = 62.0
+text = "Normal"
+label_settings = SubResource("LabelSettings_iovxw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Normal"]
+use_parent_material = true
+offset_left = 10.0
+offset_top = 58.0
+offset_right = 236.0
+offset_bottom = 115.0
+text = "正常的难度水准，你将面临正常的弹幕考验，小心不要被弹雨包围哦。"
+label_settings = SubResource("LabelSettings_qtcyd")
+autowrap_mode = 1
+
+[node name="Hard" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
+material = SubResource("ShaderMaterial_5t5ys")
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+focus_mode = 2
+theme_override_styles/panel = ExtResource("18_gvgl1")
+script = ExtResource("19_dftaq")
+
+[node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Hard"]
+use_parent_material = true
+offset_left = 7.0
+offset_top = -3.0
+offset_right = 105.0
+offset_bottom = 62.0
+text = "Hard"
+label_settings = SubResource("LabelSettings_b7rjf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Hard"]
+use_parent_material = true
+offset_left = 10.0
+offset_top = 58.0
+offset_right = 236.0
+offset_bottom = 115.0
+text = "值得骄傲的难度，在这个难度下通关可以成为炫耀的资本了，但还请加油吧。"
+label_settings = SubResource("LabelSettings_qtcyd")
+autowrap_mode = 1
+
+[node name="Lunatic" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
+material = SubResource("ShaderMaterial_406pp")
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Hard")
+focus_neighbor_bottom = NodePath("../Easy")
+focus_next = NodePath("../Easy")
+focus_previous = NodePath("../Hard")
+focus_mode = 2
+theme_override_styles/panel = ExtResource("18_gvgl1")
+script = ExtResource("19_dftaq")
+
+[node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Lunatic"]
+use_parent_material = true
+offset_left = 7.0
+offset_top = -3.0
+offset_right = 105.0
+offset_bottom = 62.0
+text = "Lunatic"
+label_settings = SubResource("LabelSettings_4t204")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Lunatic"]
+use_parent_material = true
+offset_left = 10.0
+offset_top = 58.0
+offset_right = 236.0
+offset_bottom = 115.0
+text = "真实的弹幕难度，尽情享受精彩且激烈的视觉盛宴吧！"
+label_settings = SubResource("LabelSettings_qtcyd")
+autowrap_mode = 1
+
+[node name="Extra" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
+visible = false
+material = SubResource("ShaderMaterial_4e33h")
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Phatom")
+focus_neighbor_bottom = NodePath("../Phatom")
+focus_next = NodePath("../Phatom")
+focus_previous = NodePath("../Phatom")
+focus_mode = 2
+theme_override_styles/panel = ExtResource("18_gvgl1")
+script = ExtResource("19_dftaq")
+
+[node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Extra"]
+use_parent_material = true
+offset_left = 7.0
+offset_top = -3.0
+offset_right = 105.0
+offset_bottom = 62.0
+text = "Extra"
+label_settings = SubResource("LabelSettings_wwbk8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Extra"]
+use_parent_material = true
+offset_left = 10.0
+offset_top = 58.0
+offset_right = 236.0
+offset_bottom = 115.0
+text = "你疯了吗？确定要玩这个？"
+label_settings = SubResource("LabelSettings_qtcyd")
+autowrap_mode = 1
+
+[node name="Phatom" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
+visible = false
+material = SubResource("ShaderMaterial_yloco")
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Extra")
+focus_neighbor_bottom = NodePath("../Extra")
+focus_next = NodePath("../Extra")
+focus_previous = NodePath("../Extra")
+focus_mode = 2
+theme_override_styles/panel = ExtResource("18_gvgl1")
+script = ExtResource("19_dftaq")
+
+[node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Phatom"]
+use_parent_material = true
+offset_left = 7.0
+offset_top = -3.0
+offset_right = 105.0
+offset_bottom = 62.0
+text = "Phatom"
+label_settings = SubResource("LabelSettings_pmvka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Phatom"]
+use_parent_material = true
+offset_left = 10.0
+offset_top = 58.0
+offset_right = 236.0
+offset_bottom = 115.0
+text = "既然来了就别想走了。"
+label_settings = SubResource("LabelSettings_qtcyd")
+autowrap_mode = 1
 
 [node name="FPS" type="Label" parent="."]
 offset_left = 648.0
@@ -721,5 +1094,21 @@ vertical_alignment = 1
 [node name="UI" parent="." instance=ExtResource("6")]
 visible = false
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="ToggleButton" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("17_067iu")
+volume_db = -10.242
+
+[connection signal="focus_exited" from="MainMenu/Buttons/GameStart" to="." method="_on_buttons_toggle"]
 [connection signal="pressed" from="MainMenu/Buttons/GameStart" to="MainMenu" method="_on_game_start_pressed"]
+[connection signal="focus_exited" from="MainMenu/Buttons/ExtraStart" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/Buttons/Practice" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/Buttons/SpellCard" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/Buttons/Replay" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/Buttons/PlayerData" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/Buttons/Music Room" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/Buttons/Option" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/Buttons/Manual" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/Buttons/Quit" to="." method="_on_buttons_toggle"]
 [connection signal="pressed" from="MainMenu/Buttons/Quit" to="MainMenu" method="_on_quit_pressed"]
