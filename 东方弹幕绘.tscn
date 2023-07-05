@@ -629,6 +629,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
 text = "练习模式"
 
 [node name="SpellCard" type="Button" parent="MainMenu/Buttons"]
+layout_mode = 0
 offset_left = 91.0
 offset_top = 146.0
 offset_right = 219.0
@@ -688,6 +689,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
 text = "回放模式"
 
 [node name="PlayerData" type="Button" parent="MainMenu/Buttons"]
+layout_mode = 0
 offset_left = 66.0
 offset_top = 237.0
 offset_right = 194.0
@@ -930,6 +932,7 @@ script = ExtResource("19_dftaq")
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Normal"]
 use_parent_material = true
+layout_mode = 0
 offset_left = 7.0
 offset_top = -3.0
 offset_right = 105.0
@@ -941,6 +944,7 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Normal"]
 use_parent_material = true
+layout_mode = 0
 offset_left = 10.0
 offset_top = 58.0
 offset_right = 236.0
@@ -959,6 +963,7 @@ script = ExtResource("19_dftaq")
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Hard"]
 use_parent_material = true
+layout_mode = 0
 offset_left = 7.0
 offset_top = -3.0
 offset_right = 105.0
@@ -970,6 +975,7 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Hard"]
 use_parent_material = true
+layout_mode = 0
 offset_left = 10.0
 offset_top = 58.0
 offset_right = 236.0
@@ -992,6 +998,7 @@ script = ExtResource("19_dftaq")
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Lunatic"]
 use_parent_material = true
+layout_mode = 0
 offset_left = 7.0
 offset_top = -3.0
 offset_right = 105.0
@@ -1003,6 +1010,7 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Lunatic"]
 use_parent_material = true
+layout_mode = 0
 offset_left = 10.0
 offset_top = 58.0
 offset_right = 236.0
@@ -1026,6 +1034,7 @@ script = ExtResource("19_dftaq")
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Extra"]
 use_parent_material = true
+layout_mode = 0
 offset_left = 7.0
 offset_top = -3.0
 offset_right = 105.0
@@ -1037,6 +1046,7 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Extra"]
 use_parent_material = true
+layout_mode = 0
 offset_left = 10.0
 offset_top = 58.0
 offset_right = 236.0
@@ -1060,6 +1070,7 @@ script = ExtResource("19_dftaq")
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Phatom"]
 use_parent_material = true
+layout_mode = 0
 offset_left = 7.0
 offset_top = -3.0
 offset_right = 105.0
@@ -1071,6 +1082,7 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Phatom"]
 use_parent_material = true
+layout_mode = 0
 offset_left = 10.0
 offset_top = 58.0
 offset_right = 236.0
