@@ -29,7 +29,7 @@ bg_color = Color(0.129412, 0.658824, 0.827451, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_balp2"]
 bg_color = Color(0.443137, 0.768627, 0.909804, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eenx0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wbd7"]
 bg_color = Color(0.192157, 0.666667, 0.772549, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_536y6"]
@@ -375,7 +375,7 @@ vertical_alignment = 1
 visible = false
 offset_right = 800.0
 offset_bottom = 600.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eenx0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7wbd7")
 script = ExtResource("14")
 
 [node name="Label" type="Label" parent="GameOverWindow"]
@@ -401,10 +401,10 @@ script = ExtResource("14_otkbh")
 
 [node name="标题" type="Label" parent="MainMenu"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 58.0
-offset_right = 402.0
-offset_bottom = 163.0
+offset_left = 48.0
+offset_top = 33.0
+offset_right = 428.0
+offset_bottom = 138.0
 text = "东方弹幕绘"
 label_settings = SubResource("LabelSettings_536y6")
 horizontal_alignment = 1
@@ -412,17 +412,17 @@ vertical_alignment = 1
 
 [node name="Buttons" type="Control" parent="MainMenu"]
 anchors_preset = 0
-offset_left = 438.0
-offset_top = 133.0
-offset_right = 817.0
-offset_bottom = 569.0
+offset_left = 435.0
+offset_top = 130.0
+offset_right = 814.0
+offset_bottom = 566.0
 
 [node name="GameStart" type="Button" parent="MainMenu/Buttons"]
 layout_mode = 0
-offset_left = 186.0
-offset_top = 81.0
-offset_right = 314.0
-offset_bottom = 113.0
+offset_left = 184.0
+offset_top = 29.0
+offset_right = 312.0
+offset_bottom = 61.0
 focus_neighbor_left = NodePath("../Quit")
 focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_right = NodePath("../ExtraStart")
@@ -448,10 +448,10 @@ text = "开始游戏"
 
 [node name="ExtraStart" type="Button" parent="MainMenu/Buttons"]
 layout_mode = 0
-offset_left = 162.0
-offset_top = 122.0
-offset_right = 290.0
-offset_bottom = 154.0
+offset_left = 160.0
+offset_top = 70.0
+offset_right = 288.0
+offset_bottom = 102.0
 focus_neighbor_left = NodePath("../GameStart")
 focus_neighbor_top = NodePath("../GameStart")
 focus_neighbor_right = NodePath("../Practice")
@@ -477,15 +477,15 @@ text = "特殊关卡"
 
 [node name="Practice" type="Button" parent="MainMenu/Buttons"]
 layout_mode = 0
-offset_left = 130.0
-offset_top = 159.0
-offset_right = 258.0
-offset_bottom = 191.0
+offset_left = 128.0
+offset_top = 107.0
+offset_right = 256.0
+offset_bottom = 139.0
 focus_neighbor_left = NodePath("../ExtraStart")
 focus_neighbor_top = NodePath("../ExtraStart")
-focus_neighbor_right = NodePath("../Replay")
-focus_neighbor_bottom = NodePath("../Replay")
-focus_next = NodePath("../Replay")
+focus_neighbor_right = NodePath("../SpellCard")
+focus_neighbor_bottom = NodePath("../SpellCard")
+focus_next = NodePath("../SpellCard")
 focus_previous = NodePath("../ExtraStart")
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -504,18 +504,46 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
 theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
 text = "练习模式"
 
-[node name="Replay" type="Button" parent="MainMenu/Buttons"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 199.0
-offset_right = 228.0
-offset_bottom = 231.0
+[node name="SpellCard" type="Button" parent="MainMenu/Buttons"]
+offset_left = 91.0
+offset_top = 146.0
+offset_right = 219.0
+offset_bottom = 178.0
 focus_neighbor_left = NodePath("../Practice")
 focus_neighbor_top = NodePath("../Practice")
+focus_neighbor_right = NodePath("../Replay")
+focus_neighbor_bottom = NodePath("../Replay")
+focus_next = NodePath("../Replay")
+focus_previous = NodePath("../Practice")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "符卡练习"
+
+[node name="Replay" type="Button" parent="MainMenu/Buttons"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 191.0
+offset_right = 193.0
+offset_bottom = 223.0
+focus_neighbor_left = NodePath("../SpellCard")
+focus_neighbor_top = NodePath("../SpellCard")
 focus_neighbor_right = NodePath("../PlayerData")
 focus_neighbor_bottom = NodePath("../PlayerData")
 focus_next = NodePath("../PlayerData")
-focus_previous = NodePath("../Practice")
+focus_previous = NodePath("../SpellCard")
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
@@ -534,10 +562,10 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
 text = "回放模式"
 
 [node name="PlayerData" type="Button" parent="MainMenu/Buttons"]
-offset_left = 68.0
-offset_top = 234.0
-offset_right = 196.0
-offset_bottom = 266.0
+offset_left = 66.0
+offset_top = 237.0
+offset_right = 194.0
+offset_bottom = 269.0
 focus_neighbor_left = NodePath("../Replay")
 focus_neighbor_top = NodePath("../Replay")
 focus_neighbor_right = NodePath("../Music Room")
@@ -563,10 +591,10 @@ text = "玩家排名"
 
 [node name="Music Room" type="Button" parent="MainMenu/Buttons"]
 layout_mode = 0
-offset_left = 99.0
-offset_top = 275.0
-offset_right = 227.0
-offset_bottom = 307.0
+offset_left = 100.0
+offset_top = 277.0
+offset_right = 228.0
+offset_bottom = 309.0
 focus_neighbor_left = NodePath("../PlayerData")
 focus_neighbor_top = NodePath("../PlayerData")
 focus_neighbor_right = NodePath("../Option")
@@ -592,10 +620,10 @@ text = "音乐欣赏"
 
 [node name="Option" type="Button" parent="MainMenu/Buttons"]
 layout_mode = 0
-offset_left = 99.0
-offset_top = 315.0
-offset_right = 227.0
-offset_bottom = 347.0
+offset_left = 103.0
+offset_top = 318.0
+offset_right = 231.0
+offset_bottom = 350.0
 focus_neighbor_left = NodePath("../Music Room")
 focus_neighbor_top = NodePath("../Music Room")
 focus_neighbor_right = NodePath("../Manual")
@@ -621,10 +649,10 @@ text = "设置"
 
 [node name="Manual" type="Button" parent="MainMenu/Buttons"]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 354.0
-offset_right = 291.0
-offset_bottom = 386.0
+offset_left = 167.0
+offset_top = 355.0
+offset_right = 295.0
+offset_bottom = 387.0
 focus_neighbor_left = NodePath("../Option")
 focus_neighbor_top = NodePath("../Option")
 focus_neighbor_right = NodePath("../Quit")
@@ -650,10 +678,10 @@ text = "游玩手册"
 
 [node name="Quit" type="Button" parent="MainMenu/Buttons"]
 layout_mode = 0
-offset_left = 195.0
-offset_top = 394.0
-offset_right = 323.0
-offset_bottom = 426.0
+offset_left = 202.0
+offset_top = 396.0
+offset_right = 330.0
+offset_bottom = 428.0
 focus_neighbor_left = NodePath("../Manual")
 focus_neighbor_top = NodePath("../Manual")
 focus_neighbor_right = NodePath("../GameStart")
