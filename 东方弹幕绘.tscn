@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://lakvsrra3wdc"]
+[gd_scene load_steps=57 format=3 uid="uid://lakvsrra3wdc"]
 
 [ext_resource type="FontFile" uid="uid://bfulrtgnpdxb5" path="res://字体/进度条文本.tres" id="1"]
 [ext_resource type="Script" path="res://main.gd" id="1_d073v"]
@@ -22,6 +22,8 @@
 [ext_resource type="StyleBox" uid="uid://h25cxnkvn8hj" path="res://UI/difficult_panel.tres" id="18_gvgl1"]
 [ext_resource type="Shader" path="res://UI/difficult_panel.gdshader" id="18_sl2nt"]
 [ext_resource type="Script" path="res://difficult_panel.gd" id="19_dftaq"]
+[ext_resource type="AudioStream" uid="uid://cdn4s2l4rohgl" path="res://Audio/SE/select_003.wav" id="23_jrf53"]
+[ext_resource type="AudioStream" uid="uid://chouswpba0p6h" path="res://Audio/SE/back_003.wav" id="24_7ves0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i56db"]
 bg_color = Color(0.192157, 0.666667, 0.772549, 1)
@@ -154,12 +156,284 @@ outline_color = Color(0.435294, 0.00392157, 0.729412, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
 
+[sub_resource type="Animation" id="Animation_rrae4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/标题:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/Buttons:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(435, 130)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/标题:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu/Buttons:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainMenu/LevelChose/HardChose/HardPanels:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(806, 79)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MainMenu/LevelChose/HardChose/ChoseHard:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(252.5, -66)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MainMenu/LevelChose/HardChose:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ppgc8"]
+resource_name = "菜单切入"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/Buttons:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/标题:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/标题:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-525, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu/Buttons:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(799, 130), Vector2(435, 130)]
+}
+
+[sub_resource type="Animation" id="Animation_ox8ir"]
+resource_name = "从菜单切换到难度选择"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/标题:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-525, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/Buttons:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(435, 130), Vector2(799, 130)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/标题:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu/Buttons:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_1d0cr"]
 resource_name = "从难度选择切换到自机选择"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/LevelChose/HardChose/HardPanels:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(806, 79), Vector2(278, 79)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/LevelChose/HardChose/ChoseHard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(252.5, -66), Vector2(252.5, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/LevelChose/HardChose:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_df1da"]
+resource_name = "难度选择切出"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/LevelChose/HardChose/ChoseHard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(252.5, 16), Vector2(252.5, -66)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/LevelChose/HardChose/HardPanels:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(278, 79), Vector2(806, 79)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/LevelChose/HardChose:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p677"]
 _data = {
-"从难度选择切换到自机选择": SubResource("Animation_1d0cr")
+"RESET": SubResource("Animation_rrae4"),
+"菜单切入": SubResource("Animation_ppgc8"),
+"菜单切出": SubResource("Animation_ox8ir"),
+"难度选择切入": SubResource("Animation_1d0cr"),
+"难度选择切出": SubResource("Animation_df1da")
 }
 
 [node name="东方弹幕绘" type="Node2D"]
@@ -516,8 +790,9 @@ metadata/_edit_lock_ = true
 
 [node name="标题" type="Control" parent="MainMenu"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 523.0
+offset_bottom = 166.0
+metadata/_edit_group_ = true
 
 [node name="主标题" type="Label" parent="MainMenu/标题"]
 layout_mode = 0
@@ -543,8 +818,9 @@ label_settings = SubResource("LabelSettings_hn2q6")
 anchors_preset = 0
 offset_left = 435.0
 offset_top = 130.0
-offset_right = 814.0
+offset_right = 813.997
 offset_bottom = 566.0
+metadata/_edit_group_ = true
 
 [node name="GameStart" type="Button" parent="MainMenu/Buttons"]
 layout_mode = 0
@@ -848,6 +1124,7 @@ text = "退出游戏
 "
 
 [node name="LevelChose" type="Control" parent="MainMenu"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 800.0
@@ -859,7 +1136,6 @@ visible = false
 anchors_preset = 0
 offset_right = 800.0
 offset_bottom = 600.0
-metadata/_edit_lock_ = true
 
 [node name="ChoseHard" type="Label" parent="MainMenu/LevelChose/HardChose"]
 layout_mode = 1
@@ -869,9 +1145,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -147.5
-offset_top = -284.0
+offset_top = -366.0
 offset_right = 147.5
-offset_bottom = -217.0
+offset_bottom = -298.999
 grow_horizontal = 2
 grow_vertical = 2
 text = "难度选择"
@@ -886,14 +1162,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -122.0
-offset_top = -26.0
-offset_right = 122.0
-offset_bottom = 94.0
+offset_left = 406.0
+offset_top = -221.0
+offset_right = 649.998
+offset_bottom = 289.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
-metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Easy" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
 material = SubResource("ShaderMaterial_d50pq")
@@ -1118,7 +1394,12 @@ visible = false
 
 [node name="ToggleButton" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("17_067iu")
-volume_db = -10.242
+
+[node name="PressedButton" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("23_jrf53")
+
+[node name="CancelButton" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("24_7ves0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1126,14 +1407,24 @@ libraries = {
 }
 
 [connection signal="focus_exited" from="MainMenu/Buttons/GameStart" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/Buttons/GameStart" to="." method="_on_buttons_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/GameStart" to="MainMenu" method="_on_game_start_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/ExtraStart" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/Buttons/ExtraStart" to="." method="_on_buttons_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/Practice" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/Buttons/Practice" to="." method="_on_buttons_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/SpellCard" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/Buttons/SpellCard" to="." method="_on_buttons_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/Replay" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/Buttons/Replay" to="." method="_on_buttons_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/PlayerData" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/Buttons/PlayerData" to="." method="_on_buttons_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/Music Room" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/Buttons/Music Room" to="." method="_on_buttons_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/Option" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/Buttons/Option" to="." method="_on_buttons_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/Manual" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/Buttons/Manual" to="." method="_on_buttons_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/Quit" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/Buttons/Quit" to="." method="_on_buttons_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/Quit" to="MainMenu" method="_on_quit_pressed"]

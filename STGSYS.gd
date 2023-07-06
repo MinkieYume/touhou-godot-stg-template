@@ -92,7 +92,8 @@ func remove_boss():
 	enemys.erase(boss)
 	boss = null
 	
-func set_level(node):
+func set_level(node,flyer_name):
+	node.load_flyer(flyer_name)
 	level = node
 	
 func get_level():

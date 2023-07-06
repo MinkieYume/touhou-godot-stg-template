@@ -1,10 +1,11 @@
+Marker2D
+AudioStreamPlayer
 RichTextLabel
 Label
 Panel
 VBoxContainer
 Control
 Node
-AudioStreamPlayer
 Button
 TextureRect
 PanelContainer

@@ -2,6 +2,7 @@ extends Panel
 
 @export var enable = false
 @export var level_name = "默认测试"
+@export var self_flyer_name = "默认自机"
 
 @onready var main_menu = $"../MainMenu"
 
@@ -22,5 +23,5 @@ func _load():
 	$NumberPanel.update_bomb()
 	$NumberPanel.update_power()
 	$NumberPanel.update_text()
-	STGSYS.set_level(level)
+	STGSYS.set_level(level,self_flyer_name)
 	loaded = true
