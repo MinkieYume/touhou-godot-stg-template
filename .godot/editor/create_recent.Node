@@ -1,10 +1,10 @@
+Label
+Panel
+Control
 Marker2D
 AudioStreamPlayer
 RichTextLabel
-Label
-Panel
 VBoxContainer
-Control
 Node
 Button
 TextureRect

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://lakvsrra3wdc"]
+[gd_scene load_steps=59 format=3 uid="uid://lakvsrra3wdc"]
 
 [ext_resource type="FontFile" uid="uid://bfulrtgnpdxb5" path="res://字体/进度条文本.tres" id="1"]
 [ext_resource type="Script" path="res://main.gd" id="1_d073v"]
@@ -155,6 +155,13 @@ outline_size = 4
 outline_color = Color(0.435294, 0.00392157, 0.729412, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t1sjm"]
+font_size = 48
+outline_size = 16
+outline_color = Color(0, 0.560784, 0.737255, 1)
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_rrae4"]
 length = 0.001
@@ -427,13 +434,42 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_lds55"]
+resource_name = "难度选择切关卡选择"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/LevelChose/HardChose/ChoseHard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(252.5, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/LevelChose/HardChose/HardPanels:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(243.998, 510)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p677"]
 _data = {
 "RESET": SubResource("Animation_rrae4"),
 "菜单切入": SubResource("Animation_ppgc8"),
 "菜单切出": SubResource("Animation_ox8ir"),
 "难度选择切入": SubResource("Animation_1d0cr"),
-"难度选择切出": SubResource("Animation_df1da")
+"难度选择切出": SubResource("Animation_df1da"),
+"难度选择切自机选择": SubResource("Animation_lds55")
 }
 
 [node name="东方弹幕绘" type="Node2D"]
@@ -789,6 +825,7 @@ script = ExtResource("14_otkbh")
 metadata/_edit_lock_ = true
 
 [node name="标题" type="Control" parent="MainMenu"]
+visible = false
 anchors_preset = 0
 offset_right = 523.0
 offset_bottom = 166.0
@@ -815,6 +852,7 @@ text = "A Simple STG Template"
 label_settings = SubResource("LabelSettings_hn2q6")
 
 [node name="Buttons" type="Control" parent="MainMenu"]
+visible = false
 anchors_preset = 0
 offset_left = 435.0
 offset_top = 130.0
@@ -1124,7 +1162,6 @@ text = "退出游戏
 "
 
 [node name="LevelChose" type="Control" parent="MainMenu"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 800.0
@@ -1173,7 +1210,7 @@ metadata/_edit_group_ = true
 
 [node name="Easy" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
 material = SubResource("ShaderMaterial_d50pq")
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(243.998, 120)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Lunatic")
 focus_neighbor_bottom = NodePath("../Normal")
@@ -1374,6 +1411,84 @@ offset_bottom = 115.0
 text = "既然来了就别想走了。"
 label_settings = SubResource("LabelSettings_qtcyd")
 autowrap_mode = 1
+
+[node name="SelfChose" type="Control" parent="MainMenu/LevelChose"]
+anchors_preset = 0
+offset_right = 799.0
+offset_bottom = 600.0
+
+[node name="Easy" type="Panel" parent="MainMenu/LevelChose/SelfChose"]
+material = SubResource("ShaderMaterial_d50pq")
+custom_minimum_size = Vector2(243.998, 120)
+offset_left = 39.0
+offset_top = 444.0
+offset_right = 282.998
+offset_bottom = 564.0
+focus_neighbor_top = NodePath("../Lunatic")
+focus_neighbor_bottom = NodePath("../Normal")
+focus_next = NodePath("../Normal")
+focus_previous = NodePath("../Lunatic")
+focus_mode = 2
+theme_override_styles/panel = ExtResource("18_gvgl1")
+script = ExtResource("19_dftaq")
+
+[node name="难度" type="Label" parent="MainMenu/LevelChose/SelfChose/Easy"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = -3.0
+offset_right = 105.0
+offset_bottom = 62.0
+text = "Easy"
+label_settings = SubResource("LabelSettings_wmw1a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MainMenu/LevelChose/SelfChose/Easy"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 58.0
+offset_right = 236.0
+offset_bottom = 115.0
+text = "面向萌新的难度水准，在这个难度下通关对于萌新来说也是值得骄傲的一件事了。"
+label_settings = SubResource("LabelSettings_qtcyd")
+autowrap_mode = 1
+
+[node name="SelfChosePanel" type="Panel" parent="MainMenu/LevelChose/SelfChose"]
+layout_mode = 0
+offset_left = 317.0
+offset_right = 736.0
+offset_bottom = 600.0
+
+[node name="ChoseHard" type="Label" parent="MainMenu/LevelChose/SelfChose"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -295.0
+offset_right = 148.5
+offset_bottom = -227.999
+grow_horizontal = 2
+grow_vertical = 2
+text = "选择你的主角"
+label_settings = SubResource("LabelSettings_nebbg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MainMenu/LevelChose/SelfChose/ChoseHard"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 345.0
+offset_right = 482.0
+offset_bottom = 415.0
+text = "A号机体小方"
+label_settings = SubResource("LabelSettings_t1sjm")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="FPS" type="Label" parent="."]
 offset_left = 648.0

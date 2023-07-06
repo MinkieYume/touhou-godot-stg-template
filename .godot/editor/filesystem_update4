@@ -12,3 +12,4 @@ res://关卡/关卡模板.tscn
 res://关卡/符卡测试关卡.tscn
 res://GameWindow.gd
 res://STGSYS.gd
+res://UI/difficult_panel.gdshader
