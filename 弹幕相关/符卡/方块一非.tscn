@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5miubddjgdb0"]
 
-[ext_resource type="PackedScene" path="res://弹幕相关/符卡/基础符卡.tscn" id="1_safqm"]
+[ext_resource type="PackedScene" uid="uid://c7p2ie5pouyjq" path="res://弹幕相关/符卡/基础符卡.tscn" id="1_safqm"]
 [ext_resource type="PackedScene" uid="uid://xiy36hf3s4pl" path="res://弹幕相关/发弹点/敌机发射器.tscn" id="2_5yubr"]
 
 [sub_resource type="GDScript" id="GDScript_o78hv"]
@@ -48,6 +48,7 @@ func bullet_spawn_logic():
 	#重写该函数以自定义生成子弹初始设定
 	#也可以重写生成子弹前运行的逻辑
 	#每次发射子弹的时候运行
+	var player = STGSYS.player
 	var direction = get_global_position().direction_to(player.get_global_position())
 	way_rotation = rad_to_deg(Vector2.DOWN.angle_to(direction))
 	var enemys = get_bullet_group(way_num)
@@ -90,6 +91,3 @@ never_end = true
 way_num = 4
 way_range = 180.0
 spawn_bullet_frame = 50
-
-[node name="测试背景" parent="." index="4"]
-metadata/_edit_lock_ = true

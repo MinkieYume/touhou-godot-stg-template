@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bfi1eeyo7tvgb"]
 
-[ext_resource type="PackedScene" path="res://弹幕相关/符卡/基础符卡.tscn" id="1_glkca"]
+[ext_resource type="PackedScene" uid="uid://c7p2ie5pouyjq" path="res://弹幕相关/符卡/基础符卡.tscn" id="1_glkca"]
 [ext_resource type="PackedScene" path="res://弹幕相关/发弹点/自机狙发弹点.tscn" id="2_mqopy"]
 
 [sub_resource type="GDScript" id="GDScript_0y511"]
@@ -61,6 +61,7 @@ script/source = "extends \"res://弹幕相关/发弹点/自机狙发弹点.gd\"
 var bullets_len_frame = {}
 
 func bullet_spawn_logic():
+	var player = STGSYS.player
 	var direction = get_global_position().direction_to(player.get_global_position())
 	var bullets = get_bullet_group(way_num)
 	if !lock_aim_direction and bullet_aim:
@@ -83,6 +84,7 @@ func _on_end():
 
 func draw_len(bullets):
 	#画棱形的方法
+	var player = STGSYS.player
 	var rota =way_range/way_num
 	var leng_line = sqrt(pow(position.x-player.position.x,2)+\\
 	pow(position.y-player.position.y,2))
@@ -110,6 +112,7 @@ func follow_player():
 	#无意间做出了会周期性往玩家方向追踪的弹幕效果
 	for bullet in all_bullets:
 		if is_instance_valid(bullet):
+			var player = STGSYS.player
 			var direction = bullet.position.direction_to(player.get_global_position())
 			bullet.rotation = rad_to_deg(Vector2.DOWN.angle_to(direction))
 
@@ -154,6 +157,7 @@ func bullet_spawn_logic():
 
 func draw_len(bullets):
 	#画棱形的方法
+	var player = STGSYS.player
 	var rota =way_range/way_num
 	var leng_line = sqrt(pow(position.x-player.position.x,2)+\\
 	pow(position.y-player.position.y,2))
@@ -213,7 +217,6 @@ keep_sec = 160.0
 position = Vector2(180, 43)
 script = SubResource("GDScript_ch4wr")
 lock_aim_direction = true
-bullet_aim = true
 cycle = true
 start_sec = 0.01
 end_sec = 10.0
@@ -227,7 +230,6 @@ spawn_bullet_frame = 10
 position = Vector2(60, 43)
 script = SubResource("GDScript_ch4wr")
 lock_aim_direction = true
-bullet_aim = true
 cycle = true
 start_sec = 0.01
 end_sec = 10.0
@@ -241,7 +243,6 @@ spawn_bullet_frame = 10
 position = Vector2(300, 43)
 script = SubResource("GDScript_ch4wr")
 lock_aim_direction = true
-bullet_aim = true
 cycle = true
 start_sec = 0.01
 end_sec = 10.0
@@ -255,7 +256,6 @@ spawn_bullet_frame = 10
 position = Vector2(420, 43)
 script = SubResource("GDScript_ch4wr")
 lock_aim_direction = true
-bullet_aim = true
 cycle = true
 start_sec = 0.01
 end_sec = 10.0
@@ -409,6 +409,3 @@ spawn_bullet_color = 7
 way_num = 2
 way_range = 40.0
 spawn_bullet_frame = 20
-
-[node name="测试背景" parent="." index="4"]
-metadata/_edit_lock_ = true
