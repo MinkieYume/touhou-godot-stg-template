@@ -24,10 +24,10 @@ var bullet_pics = {}
 var bullet_polygons = {}
 
 var items = {
-	"Point":load("res://掉落物/Point.gd"),
-	"Power":load("res://掉落物/Power.gd"),
-	"MegaPower":load("res://掉落物/MegaPower.gd"),
-	"BiggerPower":load("res://掉落物/BiggerPower.gd")
+	"Point":preload("res://掉落物/Point.gd"),
+	"Power":preload("res://掉落物/Power.gd"),
+	"MegaPower":preload("res://掉落物/MegaPower.gd"),
+	"BiggerPower":preload("res://掉落物/BiggerPower.gd")
 }
 
 var item_pics = {
@@ -40,20 +40,24 @@ var item_pics = {
 var item_rects = {}
 
 var levels = {
-	"符卡测试":load("res://关卡/符卡测试关卡.tscn"),
-	"默认测试":load("res://关卡/默认测试关卡.tscn"),
+	"符卡测试":preload("res://关卡/符卡测试关卡.tscn"),
+	"默认测试":preload("res://关卡/默认测试关卡.tscn"),
+}
+
+var self_flyers = {
+	"默认自机":preload("res://机体/自机/默认自机.tscn"),
 }
 
 var enemys = {
-#	"SqureBossEnemy":load("res://机体/敌机/Squre_BOSS_EnemyFlyer.tscn"),
-#	"EnemyFlyerFollowPath":load("res://机体/敌机/EnemyFlyerFollowPath.tscn"),
-	"EnemyFlyer":load("res://机体/敌机/默认敌机.tscn"),
-#	"Boss_01":load("res://机体/Boss/Boss_01.tscn"),
+#	"SqureBossEnemy":preload("res://机体/敌机/Squre_BOSS_EnemyFlyer.tscn"),
+#	"EnemyFlyerFollowPath":preload("res://机体/敌机/EnemyFlyerFollowPath.tscn"),
+	"EnemyFlyer":preload("res://机体/敌机/默认敌机.tscn"),
+#	"Boss_01":preload("res://机体/Boss/Boss_01.tscn"),
 }
 
 var UI = {
-	"HpBar": load("res://UI/HpBar.tscn"),
-	"HpBarRed": load("res://UI/HpBarRed.tscn"),
+	"HpBar": preload("res://UI/HpBar.tscn"),
+	"HpBarRed": preload("res://UI/HpBarRed.tscn"),
 }
 
 func get_bullet_polygon(texture:AtlasTexture):

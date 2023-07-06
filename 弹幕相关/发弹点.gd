@@ -70,8 +70,6 @@ var start_timer_counted = false #为true表示StartTimer已经运行过一次了
 var spawner_event_groups = []
 var bullet_event_groups = []
 
-@onready var player = STGSYS.get_player()
-
 var all_bullets = []
 
 var spawner_tags = {}

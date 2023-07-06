@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://lakvsrra3wdc"]
+[gd_scene load_steps=51 format=3 uid="uid://lakvsrra3wdc"]
 
 [ext_resource type="FontFile" uid="uid://bfulrtgnpdxb5" path="res://字体/进度条文本.tres" id="1"]
 [ext_resource type="Script" path="res://main.gd" id="1_d073v"]
@@ -153,6 +153,14 @@ outline_size = 4
 outline_color = Color(0.435294, 0.00392157, 0.729412, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="Animation" id="Animation_1d0cr"]
+resource_name = "从难度选择切换到自机选择"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7p677"]
+_data = {
+"从难度选择切换到自机选择": SubResource("Animation_1d0cr")
+}
 
 [node name="东方弹幕绘" type="Node2D"]
 script = ExtResource("1_d073v")
@@ -840,7 +848,6 @@ text = "退出游戏
 "
 
 [node name="LevelChose" type="Control" parent="MainMenu"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 800.0
@@ -848,6 +855,7 @@ offset_bottom = 600.0
 metadata/_edit_lock_ = true
 
 [node name="HardChose" type="Control" parent="MainMenu/LevelChose"]
+visible = false
 anchors_preset = 0
 offset_right = 800.0
 offset_bottom = 600.0
@@ -1111,6 +1119,11 @@ visible = false
 [node name="ToggleButton" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("17_067iu")
 volume_db = -10.242
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7p677")
+}
 
 [connection signal="focus_exited" from="MainMenu/Buttons/GameStart" to="." method="_on_buttons_toggle"]
 [connection signal="pressed" from="MainMenu/Buttons/GameStart" to="MainMenu" method="_on_game_start_pressed"]

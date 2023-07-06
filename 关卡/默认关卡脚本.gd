@@ -1,11 +1,18 @@
 extends Node2D
 
+@onready var self_spawner = $"自机出生点"
+
 func _process(delta):
 	#print(get_tree().get_nodes_in_group("bullet").size())
 	pass
 
 func _enter_tree():
 	STGSYS.current_level = self
+
+func load_flyer(flyer_name:String):
+	var self_flyer = RS.self_flyers[flyer_name].instantiate()
+	add_child(self_flyer)
+	self_flyer.position = self_spawner.position
 
 func _ready():
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
