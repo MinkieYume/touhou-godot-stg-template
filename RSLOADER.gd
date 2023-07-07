@@ -46,6 +46,41 @@ var levels = {
 
 var self_flyers = {
 	"默认自机":preload("res://机体/自机/默认自机.tscn"),
+	"默认自机2":preload("res://机体/自机/默认自机2.tscn"),
+	"默认自机3":preload("res://机体/自机/默认自机3.tscn"),
+	"默认自机4":preload("res://机体/自机/默认自机4.tscn")
+}
+
+var self_flyer_menu = {
+	"A机小方":{
+		"标题效果":preload("res://UI/self_chose_panel_title1_squre.tres"),
+		"图片":preload("res://机体/自机/A Square.png"),
+		"称号效果":preload("res://UI/self_chose_panel_title2_squre.tres"),
+		"称号":"非常可爱的方形",
+		"介绍":\
+"""不管怎么说，总之就是非常可爱的方形
+容易被方块王国的怪物盯上
+比较擅长追踪大范围攻击""",
+		"介绍效果":preload("res://UI/self_chose_panel_discus_squre.tres"),
+		"机体列表":{
+			"买萌型":"默认自机",
+			"卖萌型":"默认自机2",
+		},
+	},
+	"B机小圆":{
+		"标题效果":preload("res://UI/self_chose_panel_title1_squre.tres"),
+		"图片":preload("res://机体/自机/A Round.png"),
+		"称号":"粉嫩少女小圆",
+		"称号效果":preload("res://UI/self_chose_panel_title2_round.tres"),
+		"介绍":\
+"""小圆我啊，可是粉嫩的美少女哦！
+粉粉的魔法少女，擅长格斗和狙击""",
+		"介绍效果":preload("res://UI/self_chose_panel_discus_squre.tres"),
+		"机体列表":{
+			"狙击型":"默认自机3",
+			"格斗型":"默认自机4",
+		},
+	}
 }
 
 var enemys = {

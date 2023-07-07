@@ -1,0 +1,134 @@
+[gd_scene load_steps=11 format=3 uid="uid://lptjhafyt2mi"]
+
+[ext_resource type="Script" path="res://机体/自机/默认自机.gd" id="1_o5ifk"]
+[ext_resource type="Script" path="res://机体/自机/自机判定点.gd" id="2_upwij"]
+[ext_resource type="Script" path="res://机体/自机/GrazeArea.gd" id="3_fgnbj"]
+[ext_resource type="PackedScene" uid="uid://dflgl0nlmoc1v" path="res://弹幕相关/发弹点/自机发弹点.tscn" id="4_0rxhm"]
+[ext_resource type="PackedScene" uid="uid://88dab7331ear" path="res://炸弹/默认炸弹.tscn" id="5_u6x63"]
+
+[sub_resource type="CircleShape2D" id="2"]
+radius = 2.0
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 28.0
+height = 56.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1frt"]
+radius = 8.0
+
+[sub_resource type="Animation" id="3"]
+resource_name = "受击效果"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x7555"]
+_data = {
+"受击效果": SubResource("3")
+}
+
+[node name="默认自机" type="CharacterBody2D" groups=["self_area"]]
+script = ExtResource("1_o5ifk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -11.0
+offset_top = -16.0
+offset_right = 11.0
+offset_bottom = 16.0
+pivot_offset = Vector2(16, 16)
+color = Color(0, 1, 1, 1)
+
+[node name="DeadPoint" type="Area2D" parent="." groups=["self_dead_point"]]
+z_index = 100
+priority = 1.0
+script = ExtResource("2_upwij")
+
+[node name="ColorRect" type="ColorRect" parent="DeadPoint"]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+color = Color(0, 1, 0.952941, 1)
+
+[node name="Point" type="Sprite2D" parent="DeadPoint"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadPoint"]
+shape = SubResource("2")
+
+[node name="CollectArea" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="GrazeArea" type="Area2D" parent="."]
+script = ExtResource("3_fgnbj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrazeArea"]
+shape = SubResource("CapsuleShape2D_a1frt")
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="UPLeft" type="Marker2D" parent="Borders"]
+position = Vector2(-11, -16)
+
+[node name="DownRight" type="Marker2D" parent="Borders"]
+position = Vector2(11, 16)
+
+[node name="Shooter" type="Node2D" parent="."]
+
+[node name="自机发弹点" parent="Shooter" instance=ExtResource("4_0rxhm")]
+position = Vector2(-10, -17)
+enable = true
+enable_shoot_bullet = false
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+out_screen_free = false
+bullet_speed = 15.0
+
+[node name="自机发弹点2" parent="Shooter" instance=ExtResource("4_0rxhm")]
+position = Vector2(0, -17)
+enable = true
+enable_shoot_bullet = false
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+out_screen_free = false
+bullet_speed = 15.0
+
+[node name="自机发弹点3" parent="Shooter" instance=ExtResource("4_0rxhm")]
+position = Vector2(10, -17)
+enable = true
+enable_shoot_bullet = false
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+out_screen_free = false
+bullet_speed = 15.0
+
+[node name="Bombs" type="Node2D" parent="."]
+
+[node name="默认炸弹" parent="Bombs" instance=ExtResource("5_u6x63")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x7555")
+}
+
+[node name="UnbreakableAnimTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="UnbreakableBombTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="hit" from="DeadPoint" to="." method="_on_hit_by"]
+[connection signal="graze" from="GrazeArea" to="." method="_on_SelfFlyer_graze"]
+[connection signal="timeout" from="UnbreakableAnimTimer" to="." method="_on_UnbreakableAnimTimer_timeout"]
+[connection signal="timeout" from="UnbreakableBombTimer" to="." method="_on_UnbreakableBombTimer_timeout"]

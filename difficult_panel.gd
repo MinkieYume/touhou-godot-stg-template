@@ -3,7 +3,11 @@ extends Panel
 
 @export var level_name = "默认测试"
 @onready var toggle_audio = $"../../../../../Audio/ToggleButton"
+@onready var pressed_audio = $"../../../../../Audio/PressedButton"
+@onready var cancel_audio = $"../../../../../Audio/CancelButton"
 @onready var game_window = $"../../../../../GameWindow"
+@onready var self_chose_menu = $"../../../SelfChose"
+@onready var animation_player = $"../../../../../AnimationPlayer"
 
 func _ready():
 	focus_entered.connect(Callable(self,"_on_focus_entered"))
@@ -16,9 +20,25 @@ func _on_focus_entered():
 func _unhandled_input(event):
 	if has_focus():
 		if event.is_action_pressed("ui_accept"):
-			pass
+			pressed_audio.play()
+			
+			#处理块平移到左下角的动画效果
+			var new_panel = self.duplicate()
+			new_panel.name = "chosed_hard"
+			self_chose_menu.add_child(new_panel)
+			new_panel.position = global_position
+			new_panel.material = material.duplicate()
+			new_panel.material.set_shader_parameter("alpha",0.5)
+			var tween = get_tree().create_tween()
+			tween.bind_node(new_panel)
+			tween.set_trans(Tween.TRANS_LINEAR)
+			material.set_shader_parameter("alpha",0.0)
+			tween.tween_property(new_panel,"position",Vector2(39,444),0.5)
+			animation_player.play("难度选择切自机选择")
+			await animation_player.animation_finished
+			
 		if event.is_action_pressed("ui_cancel"):
-			pass
+			cancel_audio.play()
 
 func switch_to_flayer_chose():
 	pass

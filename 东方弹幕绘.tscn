@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://lakvsrra3wdc"]
+[gd_scene load_steps=68 format=3 uid="uid://lakvsrra3wdc"]
 
 [ext_resource type="FontFile" uid="uid://bfulrtgnpdxb5" path="res://字体/进度条文本.tres" id="1"]
 [ext_resource type="Script" path="res://main.gd" id="1_d073v"]
@@ -22,8 +22,15 @@
 [ext_resource type="StyleBox" uid="uid://h25cxnkvn8hj" path="res://UI/difficult_panel.tres" id="18_gvgl1"]
 [ext_resource type="Shader" path="res://UI/difficult_panel.gdshader" id="18_sl2nt"]
 [ext_resource type="Script" path="res://difficult_panel.gd" id="19_dftaq"]
+[ext_resource type="Texture2D" uid="uid://bmwy0x7fskwo" path="res://机体/自机/A Square.png" id="21_piywt"]
+[ext_resource type="Script" path="res://SelfChose.gd" id="21_ul30j"]
+[ext_resource type="LabelSettings" uid="uid://l67qcxfjtn70" path="res://UI/self_chose_panel_title2_squre.tres" id="22_hv7hy"]
+[ext_resource type="LabelSettings" uid="uid://xg6xkg03cqkb" path="res://UI/self_chose_panel_title1_squre.tres" id="23_iofjg"]
 [ext_resource type="AudioStream" uid="uid://cdn4s2l4rohgl" path="res://Audio/SE/select_003.wav" id="23_jrf53"]
 [ext_resource type="AudioStream" uid="uid://chouswpba0p6h" path="res://Audio/SE/back_003.wav" id="24_7ves0"]
+[ext_resource type="LabelSettings" uid="uid://ng434208a7ed" path="res://UI/self_chose_panel_discus_squre.tres" id="24_il2f7"]
+[ext_resource type="Texture2D" uid="uid://ccq8108411owj" path="res://机体/自机/A Round.png" id="25_dboor"]
+[ext_resource type="LabelSettings" uid="uid://catdlal5xu5sw" path="res://UI/self_chose_panel_title2_round.tres" id="26_yi7fs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i56db"]
 bg_color = Color(0.192157, 0.666667, 0.772549, 1)
@@ -91,7 +98,7 @@ shadow_color = Color(0, 0, 0, 0.439216)
 font = ExtResource("14_vor10")
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_axj0y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tejpm"]
 shader = ExtResource("18_sl2nt")
 shader_parameter/alpha = 0.5
 
@@ -104,7 +111,7 @@ outline_color = Color(0.0313726, 0.34902, 0.517647, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5t5ys"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8o74"]
 shader = ExtResource("18_sl2nt")
 shader_parameter/alpha = 0.5
 
@@ -117,7 +124,7 @@ outline_color = Color(0.47451, 0.270588, 0, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_406pp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7loml"]
 shader = ExtResource("18_sl2nt")
 shader_parameter/alpha = 0.5
 
@@ -130,7 +137,7 @@ outline_color = Color(0.623529, 0, 0.12549, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4e33h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h0ymk"]
 shader = ExtResource("18_sl2nt")
 shader_parameter/alpha = 0.5
 
@@ -143,7 +150,7 @@ outline_color = Color(0.294118, 0, 0.87451, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yloco"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vbvi5"]
 shader = ExtResource("18_sl2nt")
 shader_parameter/alpha = 0.5
 
@@ -156,12 +163,9 @@ outline_color = Color(0.435294, 0.00392157, 0.729412, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
 
-[sub_resource type="LabelSettings" id="LabelSettings_t1sjm"]
-font_size = 48
-outline_size = 16
-outline_color = Color(0, 0.560784, 0.737255, 1)
-shadow_size = 9
-shadow_color = Color(0, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nt1xv"]
+shader = ExtResource("18_sl2nt")
+shader_parameter/alpha = 1.0
 
 [sub_resource type="Animation" id="Animation_rrae4"]
 length = 0.001
@@ -248,6 +252,66 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MainMenu/LevelChose/SelfChose/ChoseCharacter:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(253, -67)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(803, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(419, 600)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(419, 600)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(317, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ppgc8"]
@@ -444,27 +508,157 @@ tracks/0/path = NodePath("MainMenu/LevelChose/HardChose/ChoseHard:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(252.5, 16)]
+"values": [Vector2(252.5, 16), Vector2(-298, 16)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenu/LevelChose/HardChose/HardPanels:size")
+tracks/1/path = NodePath("MainMenu/LevelChose/HardChose/HardPanels:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(243.998, 510)]
+"values": [Vector2(278, 79), Vector2(-272.5, 79)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/LevelChose/SelfChose/ChoseCharacter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(253, -67), Vector2(253, 5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(803, 0), Vector2(317, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gwpt6"]
+resource_name = "自机选项切换"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(419, 600), Vector2(0, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(317, 0), Vector2(317, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 600), Vector2(419, 600)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(736, 0), Vector2(317, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0wa1s"]
+resource_name = "自机选项切换_右"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(419, 600), Vector2(0, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(317, 0), Vector2(736, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 600), Vector2(419, 600)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(317, 0), Vector2(317, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p677"]
 _data = {
 "RESET": SubResource("Animation_rrae4"),
+"自机选项切换_右": SubResource("Animation_0wa1s"),
+"自机选项切换_左": SubResource("Animation_gwpt6"),
 "菜单切入": SubResource("Animation_ppgc8"),
 "菜单切出": SubResource("Animation_ox8ir"),
 "难度选择切入": SubResource("Animation_1d0cr"),
@@ -825,7 +1019,6 @@ script = ExtResource("14_otkbh")
 metadata/_edit_lock_ = true
 
 [node name="标题" type="Control" parent="MainMenu"]
-visible = false
 anchors_preset = 0
 offset_right = 523.0
 offset_bottom = 166.0
@@ -852,7 +1045,6 @@ text = "A Simple STG Template"
 label_settings = SubResource("LabelSettings_hn2q6")
 
 [node name="Buttons" type="Control" parent="MainMenu"]
-visible = false
 anchors_preset = 0
 offset_left = 435.0
 offset_top = 130.0
@@ -1175,6 +1367,7 @@ offset_right = 800.0
 offset_bottom = 600.0
 
 [node name="ChoseHard" type="Label" parent="MainMenu/LevelChose/HardChose"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1193,6 +1386,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HardPanels" type="VBoxContainer" parent="MainMenu/LevelChose/HardChose"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1201,7 +1395,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 406.0
 offset_top = -221.0
-offset_right = 649.998
+offset_right = 649.997
 offset_bottom = 289.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1217,6 +1411,7 @@ focus_neighbor_bottom = NodePath("../Normal")
 focus_next = NodePath("../Normal")
 focus_previous = NodePath("../Lunatic")
 focus_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
 
@@ -1244,10 +1439,11 @@ label_settings = SubResource("LabelSettings_qtcyd")
 autowrap_mode = 1
 
 [node name="Normal" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
-material = SubResource("ShaderMaterial_axj0y")
+material = SubResource("ShaderMaterial_tejpm")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
 
@@ -1275,10 +1471,11 @@ label_settings = SubResource("LabelSettings_qtcyd")
 autowrap_mode = 1
 
 [node name="Hard" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
-material = SubResource("ShaderMaterial_5t5ys")
+material = SubResource("ShaderMaterial_a8o74")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
 
@@ -1306,7 +1503,7 @@ label_settings = SubResource("LabelSettings_qtcyd")
 autowrap_mode = 1
 
 [node name="Lunatic" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
-material = SubResource("ShaderMaterial_406pp")
+material = SubResource("ShaderMaterial_7loml")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Hard")
@@ -1314,6 +1511,7 @@ focus_neighbor_bottom = NodePath("../Easy")
 focus_next = NodePath("../Easy")
 focus_previous = NodePath("../Hard")
 focus_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
 
@@ -1342,7 +1540,7 @@ autowrap_mode = 1
 
 [node name="Extra" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
 visible = false
-material = SubResource("ShaderMaterial_4e33h")
+material = SubResource("ShaderMaterial_h0ymk")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Phatom")
@@ -1350,6 +1548,7 @@ focus_neighbor_bottom = NodePath("../Phatom")
 focus_next = NodePath("../Phatom")
 focus_previous = NodePath("../Phatom")
 focus_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
 
@@ -1378,7 +1577,7 @@ autowrap_mode = 1
 
 [node name="Phatom" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
 visible = false
-material = SubResource("ShaderMaterial_yloco")
+material = SubResource("ShaderMaterial_vbvi5")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Extra")
@@ -1386,6 +1585,7 @@ focus_neighbor_bottom = NodePath("../Extra")
 focus_next = NodePath("../Extra")
 focus_previous = NodePath("../Extra")
 focus_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
 
@@ -1416,52 +1616,155 @@ autowrap_mode = 1
 anchors_preset = 0
 offset_right = 799.0
 offset_bottom = 600.0
+script = ExtResource("21_ul30j")
 
-[node name="Easy" type="Panel" parent="MainMenu/LevelChose/SelfChose"]
-material = SubResource("ShaderMaterial_d50pq")
-custom_minimum_size = Vector2(243.998, 120)
-offset_left = 39.0
-offset_top = 444.0
-offset_right = 282.998
-offset_bottom = 564.0
-focus_neighbor_top = NodePath("../Lunatic")
-focus_neighbor_bottom = NodePath("../Normal")
-focus_next = NodePath("../Normal")
-focus_previous = NodePath("../Lunatic")
-focus_mode = 2
-theme_override_styles/panel = ExtResource("18_gvgl1")
-script = ExtResource("19_dftaq")
+[node name="focues" type="Control" parent="MainMenu/LevelChose/SelfChose"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="难度" type="Label" parent="MainMenu/LevelChose/SelfChose/Easy"]
-use_parent_material = true
+[node name="focus" type="Button" parent="MainMenu/LevelChose/SelfChose/focues"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = -3.0
-offset_right = 105.0
-offset_bottom = 62.0
-text = "Easy"
-label_settings = SubResource("LabelSettings_wmw1a")
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="SelfChosePanel" type="SubViewportContainer" parent="MainMenu/LevelChose/SelfChose"]
+layout_mode = 0
+offset_left = 803.0
+offset_right = 1222.0
+offset_bottom = 600.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MainMenu/LevelChose/SelfChose/SelfChosePanel"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(419, 600)
+size_2d_override = Vector2i(419, 600)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Background" type="TextureRect" parent="MainMenu/LevelChose/SelfChose/SelfChosePanel/SubViewport"]
+material = SubResource("ShaderMaterial_nt1xv")
+offset_right = 419.0
+offset_bottom = 600.0
+texture = ExtResource("21_piywt")
+stretch_mode = 5
+
+[node name="Title2" type="Label" parent="MainMenu/LevelChose/SelfChose/SelfChosePanel/SubViewport/Background"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 65.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "非常可爱的方形"
+label_settings = ExtResource("22_hv7hy")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="MainMenu/LevelChose/SelfChose/Easy"]
-use_parent_material = true
-layout_mode = 0
-offset_left = 10.0
-offset_top = 58.0
-offset_right = 236.0
-offset_bottom = 115.0
-text = "面向萌新的难度水准，在这个难度下通关对于萌新来说也是值得骄傲的一件事了。"
-label_settings = SubResource("LabelSettings_qtcyd")
+[node name="Title1" type="Label" parent="MainMenu/LevelChose/SelfChose/SelfChosePanel/SubViewport/Background"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 98.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "A机小方"
+label_settings = ExtResource("23_iofjg")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Discus" type="Label" parent="MainMenu/LevelChose/SelfChose/SelfChosePanel/SubViewport/Background"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -133.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "不管怎么说，总之就是非常可爱的方形容易被方块王国的怪物盯上
+比较擅长追踪大范围攻击"
+label_settings = ExtResource("24_il2f7")
+horizontal_alignment = 2
 autowrap_mode = 1
 
-[node name="SelfChosePanel" type="Panel" parent="MainMenu/LevelChose/SelfChose"]
-layout_mode = 0
+[node name="SwitchChosePanel" type="SubViewportContainer" parent="MainMenu/LevelChose/SelfChose"]
+visible = false
 offset_left = 317.0
 offset_right = 736.0
 offset_bottom = 600.0
+stretch = true
 
-[node name="ChoseHard" type="Label" parent="MainMenu/LevelChose/SelfChose"]
+[node name="SubViewport" type="SubViewport" parent="MainMenu/LevelChose/SelfChose/SwitchChosePanel"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(419, 600)
+size_2d_override = Vector2i(419, 600)
+size_2d_override_stretch = true
+render_target_update_mode = 0
+
+[node name="Background" type="TextureRect" parent="MainMenu/LevelChose/SelfChose/SwitchChosePanel/SubViewport"]
+material = SubResource("ShaderMaterial_nt1xv")
+offset_right = 419.0
+offset_bottom = 600.0
+texture = ExtResource("25_dboor")
+stretch_mode = 5
+
+[node name="Title2" type="Label" parent="MainMenu/LevelChose/SelfChose/SwitchChosePanel/SubViewport/Background"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 65.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "粉嫩少女小圆"
+label_settings = ExtResource("26_yi7fs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title1" type="Label" parent="MainMenu/LevelChose/SelfChose/SwitchChosePanel/SubViewport/Background"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 98.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "B机小圆"
+label_settings = ExtResource("23_iofjg")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Discus" type="Label" parent="MainMenu/LevelChose/SelfChose/SwitchChosePanel/SubViewport/Background"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -133.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "小圆我啊，可是粉嫩的美少女哦！
+粉粉的魔法少女，擅长格斗和狙击"
+label_settings = ExtResource("24_il2f7")
+horizontal_alignment = 2
+autowrap_mode = 1
+
+[node name="ChoseCharacter" type="Label" parent="MainMenu/LevelChose/SelfChose"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1469,25 +1772,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -146.5
-offset_top = -295.0
+offset_top = -367.0
 offset_right = 148.5
-offset_bottom = -227.999
+offset_bottom = -299.999
 grow_horizontal = 2
 grow_vertical = 2
 text = "选择你的主角"
 label_settings = SubResource("LabelSettings_nebbg")
 horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="MainMenu/LevelChose/SelfChose/ChoseHard"]
-layout_mode = 0
-offset_left = 67.0
-offset_top = 345.0
-offset_right = 482.0
-offset_bottom = 415.0
-text = "A号机体小方"
-label_settings = SubResource("LabelSettings_t1sjm")
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="FPS" type="Label" parent="."]
@@ -1509,12 +1801,15 @@ visible = false
 
 [node name="ToggleButton" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("17_067iu")
+volume_db = -10.0
 
 [node name="PressedButton" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("23_jrf53")
+volume_db = -10.0
 
 [node name="CancelButton" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("24_7ves0")
+volume_db = -10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
