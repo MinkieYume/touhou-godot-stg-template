@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://lakvsrra3wdc"]
+[gd_scene load_steps=73 format=3 uid="uid://lakvsrra3wdc"]
 
 [ext_resource type="FontFile" uid="uid://bfulrtgnpdxb5" path="res://字体/进度条文本.tres" id="1"]
 [ext_resource type="Script" path="res://main.gd" id="1_d073v"]
@@ -163,6 +163,16 @@ outline_color = Color(0.435294, 0.00392157, 0.729412, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8x1oe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5ai2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_od1os"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g6d8m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q54s0"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nt1xv"]
 shader = ExtResource("18_sl2nt")
 shader_parameter/alpha = 1.0
@@ -312,6 +322,110 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(317, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0wa1s"]
+resource_name = "自机选项切换_右"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(419, 600), Vector2(0, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(317, 0), Vector2(736, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 600), Vector2(419, 600)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(317, 0), Vector2(317, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gwpt6"]
+resource_name = "自机选项切换"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(419, 600), Vector2(0, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(317, 0), Vector2(317, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 600), Vector2(419, 600)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(736, 0), Vector2(317, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ppgc8"]
@@ -548,110 +662,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(803, 0), Vector2(317, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_gwpt6"]
-resource_name = "自机选项切换"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(419, 600), Vector2(0, 600)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(317, 0), Vector2(317, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 600), Vector2(419, 600)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(736, 0), Vector2(317, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_0wa1s"]
-resource_name = "自机选项切换_右"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(419, 600), Vector2(0, 600)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(317, 0), Vector2(736, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 600), Vector2(419, 600)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(317, 0), Vector2(317, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p677"]
@@ -1404,7 +1414,9 @@ metadata/_edit_group_ = true
 material = SubResource("ShaderMaterial_d50pq")
 custom_minimum_size = Vector2(243.998, 120)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Lunatic")
 focus_neighbor_top = NodePath("../Lunatic")
+focus_neighbor_right = NodePath("../Normal")
 focus_neighbor_bottom = NodePath("../Normal")
 focus_next = NodePath("../Normal")
 focus_previous = NodePath("../Lunatic")
@@ -1440,6 +1452,12 @@ autowrap_mode = 1
 material = SubResource("ShaderMaterial_tejpm")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Easy")
+focus_neighbor_top = NodePath("../Easy")
+focus_neighbor_right = NodePath("../Hard")
+focus_neighbor_bottom = NodePath("../Hard")
+focus_next = NodePath("../Hard")
+focus_previous = NodePath("../Easy")
 focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
@@ -1472,6 +1490,12 @@ autowrap_mode = 1
 material = SubResource("ShaderMaterial_a8o74")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Normal")
+focus_neighbor_top = NodePath("../Normal")
+focus_neighbor_right = NodePath("../Lunatic")
+focus_neighbor_bottom = NodePath("../Lunatic")
+focus_next = NodePath("../Lunatic")
+focus_previous = NodePath("../Normal")
 focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
@@ -1504,7 +1528,9 @@ autowrap_mode = 1
 material = SubResource("ShaderMaterial_7loml")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Hard")
 focus_neighbor_top = NodePath("../Hard")
+focus_neighbor_right = NodePath("../Easy")
 focus_neighbor_bottom = NodePath("../Easy")
 focus_next = NodePath("../Easy")
 focus_previous = NodePath("../Hard")
@@ -1541,7 +1567,9 @@ visible = false
 material = SubResource("ShaderMaterial_h0ymk")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Phatom")
 focus_neighbor_top = NodePath("../Phatom")
+focus_neighbor_right = NodePath("../Phatom")
 focus_neighbor_bottom = NodePath("../Phatom")
 focus_next = NodePath("../Phatom")
 focus_previous = NodePath("../Phatom")
@@ -1578,7 +1606,9 @@ visible = false
 material = SubResource("ShaderMaterial_vbvi5")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Extra")
 focus_neighbor_top = NodePath("../Extra")
+focus_neighbor_right = NodePath("../Extra")
 focus_neighbor_bottom = NodePath("../Extra")
 focus_next = NodePath("../Extra")
 focus_previous = NodePath("../Extra")
@@ -1625,6 +1655,17 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8x1oe")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t5ai2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_od1os")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g6d8m")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q54s0")
 
 [node name="SelfChosePanel" type="SubViewportContainer" parent="MainMenu/LevelChose/SelfChose"]
 layout_mode = 0
@@ -1696,6 +1737,7 @@ autowrap_mode = 1
 
 [node name="SwitchChosePanel" type="SubViewportContainer" parent="MainMenu/LevelChose/SelfChose"]
 visible = false
+layout_mode = 0
 offset_left = 317.0
 offset_right = 736.0
 offset_bottom = 600.0

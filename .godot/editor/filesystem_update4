@@ -1,11 +1,6 @@
 res://东方弹幕绘.tscn
 res://弹幕相关/子弹样式组.tres
 res://UI/spell_name_container.tres
-res://机体/自机/默认自机2.tscn
-res://RSLOADER.gd
-res://UI/self_chose_panel_discus_squre.tres
+res://SelfChose.gd
 res://difficult_panel.gd
 res://UI/difficult_panel.gdshader
-res://UI/self_chose_panel_title2_squre.tres
-res://UI/self_chose_panel_title2_round.tres
-res://SelfChose.gd

@@ -36,12 +36,10 @@ func _unhandled_input(event):
 			tween.tween_property(new_panel,"position",Vector2(39,444),0.5)
 			animation_player.play("难度选择切自机选择")
 			await animation_player.animation_finished
+			self_chose_menu.get_focus()
 			
 		if event.is_action_pressed("ui_cancel"):
 			cancel_audio.play()
-
-func switch_to_flayer_chose():
-	pass
 
 func _on_focus_exited():
 	material.set_shader_parameter("alpha",0.5)
