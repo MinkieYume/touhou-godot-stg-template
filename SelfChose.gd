@@ -47,7 +47,9 @@ func get_focus():
 
 func _unhandled_input(event):
 	if focus.has_focus():
-		if event.is_action_pressed("right"):
+		print("1111")
+		if event.is_action_pressed("ui_right"):
+			print("iiii")
 			toggle_audio.play()
 			var index = character_list.find(current_character)
 			var next_character
@@ -59,7 +61,7 @@ func _unhandled_input(event):
 			animation_player.play("自机选项切换_左")
 			await animation_player.animation_finished
 			reload_chose_panel(next_character)
-		if event.is_action_pressed("left"):
+		if event.is_action_pressed("ui_left"):
 			toggle_audio.play()
 			var index = character_list.find(current_character)
 			var last_character = character_list[index-1]
