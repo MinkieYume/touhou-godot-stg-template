@@ -17,7 +17,7 @@ func _on_focus_entered():
 	material.set_shader_parameter("alpha",1.0)
 	game_window.level_name = level_name
 
-func _unhandled_input(event):
+func _input(event):
 	if has_focus():
 		if event.is_action_pressed("ui_accept"):
 			pressed_audio.play()

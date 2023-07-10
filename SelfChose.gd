@@ -8,6 +8,7 @@ extends Control
 @onready var self_chose_panel = $SelfChosePanel
 @onready var switch_chose_panel = $SwitchChosePanel
 @onready var animation_player = $"../../../AnimationPlayer"
+@onready var spellcard_chose = $"../SpellCardChose/Spellcard Chose"
 
 var current_character
 
@@ -45,12 +46,9 @@ func reload_chose_panel(character_name,is_switch_panel=false):
 func get_focus():
 	focus.grab_focus()
 
-func _unhandled_input(event):
+func _input(event):
 	if focus.has_focus():
-		print("1111")
 		if event.is_action_pressed("ui_right"):
-			print("iiii")
-			toggle_audio.play()
 			var index = character_list.find(current_character)
 			var next_character
 			if index == character_list.size()-1:
@@ -59,17 +57,60 @@ func _unhandled_input(event):
 				next_character = character_list[index+1]
 			reload_chose_panel(next_character,true)
 			animation_player.play("自机选项切换_左")
+			toggle_audio.play()
 			await animation_player.animation_finished
 			reload_chose_panel(next_character)
 		if event.is_action_pressed("ui_left"):
-			toggle_audio.play()
 			var index = character_list.find(current_character)
 			var last_character = character_list[index-1]
 			reload_chose_panel(last_character,true)
 			animation_player.play("自机选项切换_右")
+			toggle_audio.play()
 			await animation_player.animation_finished
 			reload_chose_panel(last_character)
 		if event.is_action_pressed("ui_accept"):
-			pass
+			spellcard_chose.get_node("Spellcard1").visible = true
+			var flyer_list = RS.self_flyer_menu[current_character]["机体列表"]
+			var flyer_names = flyer_list.keys()
+			var flyer_num = flyer_list.keys().size()
+			var flyer_panel_list = []
+			#批量设置每一个机型面板的属性
+			for n in range(flyer_num):
+				var panel_name = "Spellcard%d"%(n+1)
+				var flyer_name = flyer_names[n]
+				var flyer_data = flyer_list[flyer_name]
+				var spellcard_panel = spellcard_chose.get_node(panel_name)
+				var title_label = spellcard_panel.get_node("title")
+				var discuss_label = spellcard_panel.get_node("Label")
+				title_label.text = flyer_name
+				title_label.label_settings = flyer_data[0]
+				discuss_label.text = flyer_data[1]
+				discuss_label.label_settings = flyer_data[2]
+				spellcard_panel.flyer_type = flyer_data[3]
+				spellcard_panel.visible = true
+				flyer_panel_list.append(spellcard_panel)
+			#设置机型面板的焦点
+			var last_panel = flyer_panel_list[-1]
+			var flyer_panel_index = 0
+			for flyer_panel in flyer_panel_list:
+				var next_panel
+				if flyer_panel_index+1 >= flyer_panel_list.size():
+					next_panel = flyer_panel_list[0]
+				else:
+					next_panel = flyer_panel_list[flyer_panel_index+1]
+				print(last_panel.get_path())
+				flyer_panel.focus_neighbor_left = last_panel.get_path()
+				flyer_panel.focus_neighbor_bottom = next_panel.get_path()
+				flyer_panel.focus_neighbor_right = next_panel.get_path()
+				flyer_panel.focus_neighbor_top = last_panel.get_path()
+				flyer_panel.focus_next = next_panel.get_path()
+				flyer_panel.focus_previous = last_panel.get_path()
+				last_panel = flyer_panel
+				flyer_panel_index += 1
+			spellcard_chose.get_node("Spellcard1").grab_focus()
+			pressed_audio.play()
+			animation_player.play("自机选择切符卡选择")
+			await  animation_player.animation_finished
+			
 		if event.is_action_pressed("ui_cancel"):
-			pass
+			cancel_audio.play()

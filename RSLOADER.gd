@@ -63,8 +63,8 @@ var self_flyer_menu = {
 比较擅长追踪大范围攻击""",
 		"介绍效果":preload("res://UI/self_chose_panel_discus_squre.tres"),
 		"机体列表":{
-			"买萌型":"默认自机",
-			"卖萌型":"默认自机2",
+			"买萌型":[preload("res://UI/spellcard_title.tres"),"一点都不萌的机型，还需要特地买萌",preload("res://UI/spell_card_discus.tres"),"默认自机"],
+			"卖萌型":[preload("res://UI/spellcard_title.tres"),"除了卖萌之外没什么用的机型",preload("res://UI/spell_card_discus.tres"),"默认自机2"],
 		},
 	},
 	"B机小圆":{
@@ -77,8 +77,8 @@ var self_flyer_menu = {
 粉粉的魔法少女，擅长格斗和狙击""",
 		"介绍效果":preload("res://UI/self_chose_panel_discus_squre.tres"),
 		"机体列表":{
-			"狙击型":"默认自机3",
-			"格斗型":"默认自机4",
+			"狙击型":[preload("res://UI/spellcard_title.tres"),"适合远程小范围攻击的机型",preload("res://UI/spell_card_discus.tres"),"默认自机3"],
+			"格斗型":[preload("res://UI/spellcard_title.tres"),"适合近战小范围攻击的机型",preload("res://UI/spell_card_discus.tres"),"默认自机4"],
 		},
 	}
 }

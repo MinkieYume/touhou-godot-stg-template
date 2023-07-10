@@ -4,3 +4,7 @@ res://UI/spell_name_container.tres
 res://SelfChose.gd
 res://difficult_panel.gd
 res://UI/difficult_panel.gdshader
+res://MainMenu.gd
+res://HardPanels.gd
+res://RSLOADER.gd
+res://Spellcard_Chose.gd
