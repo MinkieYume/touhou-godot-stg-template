@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://lakvsrra3wdc"]
+[gd_scene load_steps=91 format=3 uid="uid://lakvsrra3wdc"]
 
 [ext_resource type="FontFile" uid="uid://bfulrtgnpdxb5" path="res://字体/进度条文本.tres" id="1"]
 [ext_resource type="Script" path="res://main.gd" id="1_d073v"]
@@ -50,6 +50,16 @@ bg_color = Color(0.443137, 0.768627, 0.909804, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wbd7"]
 bg_color = Color(0.192157, 0.666667, 0.772549, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kq5y4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f547c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8rkw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dubx6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxr85"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_536y6"]
 font = ExtResource("13")
@@ -188,6 +198,28 @@ shader_parameter/alpha = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_22080"]
 shader = ExtResource("18_sl2nt")
 shader_parameter/alpha = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dodn6"]
+shader = ExtResource("18_sl2nt")
+shader_parameter/alpha = 0.5
+
+[sub_resource type="Shader" id="Shader_y77n3"]
+code = "shader_type canvas_item;
+
+uniform float alpha = 0.5;
+void fragment() {
+	// Place fragment code here.
+	COLOR.a*=alpha;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx7i6"]
+shader = SubResource("Shader_y77n3")
+shader_parameter/alpha = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fo1fj"]
+shader = ExtResource("18_sl2nt")
+shader_parameter/alpha = 0.0
 
 [sub_resource type="Animation" id="Animation_rrae4"]
 length = 0.001
@@ -382,6 +414,30 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [805.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("BlackScreen:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_irep1"]
@@ -788,9 +844,67 @@ tracks/3/keys = {
 "values": [278.0, -272.5]
 }
 
+[sub_resource type="Animation" id="Animation_am5vg"]
+resource_name = "淡出画面"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_bl26j"]
+resource_name = "淡入画面"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p677"]
 _data = {
 "RESET": SubResource("Animation_rrae4"),
+"淡入画面": SubResource("Animation_bl26j"),
+"淡出画面": SubResource("Animation_am5vg"),
 "自机选择切符卡选择": SubResource("Animation_irep1"),
 "自机选项切换_右": SubResource("Animation_0wa1s"),
 "自机选项切换_左": SubResource("Animation_gwpt6"),
@@ -1152,6 +1266,22 @@ offset_bottom = 600.0
 theme_override_styles/panel = ExtResource("13_0rpnd")
 script = ExtResource("14_otkbh")
 metadata/_edit_lock_ = true
+
+[node name="No_Focus" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kq5y4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f547c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d8rkw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dubx6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vxr85")
 
 [node name="标题" type="Control" parent="MainMenu"]
 anchors_preset = 0
@@ -2028,7 +2158,7 @@ autowrap_mode = 1
 
 [node name="Spellcard2" type="Panel" parent="MainMenu/LevelChose/SpellCardChose/Spellcard Chose"]
 visible = false
-material = SubResource("ShaderMaterial_d50pq")
+material = SubResource("ShaderMaterial_dodn6")
 custom_minimum_size = Vector2(243.998, 80)
 layout_mode = 2
 focus_mode = 2
@@ -2060,7 +2190,7 @@ autowrap_mode = 1
 
 [node name="Spellcard3" type="Panel" parent="MainMenu/LevelChose/SpellCardChose/Spellcard Chose"]
 visible = false
-material = SubResource("ShaderMaterial_d50pq")
+material = SubResource("ShaderMaterial_cx7i6")
 custom_minimum_size = Vector2(243.998, 80)
 layout_mode = 2
 focus_mode = 2
@@ -2092,7 +2222,7 @@ autowrap_mode = 1
 
 [node name="Spellcard4" type="Panel" parent="MainMenu/LevelChose/SpellCardChose/Spellcard Chose"]
 visible = false
-material = SubResource("ShaderMaterial_d50pq")
+material = SubResource("ShaderMaterial_cx7i6")
 custom_minimum_size = Vector2(243.998, 80)
 layout_mode = 2
 focus_mode = 2
@@ -2124,7 +2254,7 @@ autowrap_mode = 1
 
 [node name="Spellcard5" type="Panel" parent="MainMenu/LevelChose/SpellCardChose/Spellcard Chose"]
 visible = false
-material = SubResource("ShaderMaterial_d50pq")
+material = SubResource("ShaderMaterial_cx7i6")
 custom_minimum_size = Vector2(243.998, 80)
 layout_mode = 2
 focus_mode = 2
@@ -2165,6 +2295,13 @@ theme_override_font_sizes/font_size = 26
 text = "FPS:60"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_fo1fj")
+offset_right = 801.0
+offset_bottom = 599.0
+color = Color(0, 0, 0, 1)
 
 [node name="UI" parent="." instance=ExtResource("6")]
 visible = false

@@ -8,6 +8,8 @@ extends Panel
 @onready var game_window = $"../../../../../GameWindow"
 @onready var self_chose_menu = $"../../../SelfChose"
 @onready var animation_player = $"../../../../../AnimationPlayer"
+@onready var main_menu = $"../../../.."
+@onready var no_focus = $"../../../../No_Focus"
 
 func _ready():
 	focus_entered.connect(Callable(self,"_on_focus_entered"))
@@ -21,11 +23,13 @@ func _input(event):
 	if has_focus():
 		if event.is_action_pressed("ui_accept"):
 			pressed_audio.play()
+			no_focus.grab_focus()
 			
 			#处理块平移到左下角的动画效果
 			var new_panel = self.duplicate()
 			new_panel.name = "chosed_hard"
 			self_chose_menu.add_child(new_panel)
+			self_chose_menu.last_chosed_hard = self
 			new_panel.position = global_position
 			new_panel.material = material.duplicate()
 			new_panel.material.set_shader_parameter("alpha",0.5)
@@ -40,6 +44,10 @@ func _input(event):
 			
 		if event.is_action_pressed("ui_cancel"):
 			cancel_audio.play()
+			no_focus.grab_focus()
+			animation_player.play("难度选择切出")
+			await animation_player.animation_finished
+			main_menu.play_mainmenu_enter()
 
 func _on_focus_exited():
 	material.set_shader_parameter("alpha",0.5)

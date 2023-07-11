@@ -17,6 +17,8 @@ extends Panel
 @onready var extra_hard_panel = $LevelChose/HardChose/HardPanels/Extra
 @onready var phatom_hard_panel = $LevelChose/HardChose/HardPanels/Phatom
 
+@onready var no_focus = $No_Focus
+
 @export var quick_test_mode = false
 
 var current_page = "main_menu"
@@ -46,6 +48,7 @@ func play_mainmenu_enter():
 	game_start_button.grab_focus()
 
 func _on_game_start_pressed():
+	no_focus.grab_focus()
 	animation_player.play("菜单切出")
 	await animation_player.animation_finished
 	level_chose_panel.visible = true

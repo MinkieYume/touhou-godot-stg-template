@@ -9,7 +9,9 @@ extends Control
 @onready var switch_chose_panel = $SwitchChosePanel
 @onready var animation_player = $"../../../AnimationPlayer"
 @onready var spellcard_chose = $"../SpellCardChose/Spellcard Chose"
+@onready var no_focus = $"../../No_Focus"
 
+var last_chosed_hard
 var current_character
 
 func _ready():
@@ -69,6 +71,7 @@ func _input(event):
 			await animation_player.animation_finished
 			reload_chose_panel(last_character)
 		if event.is_action_pressed("ui_accept"):
+			no_focus.grab_focus()
 			spellcard_chose.get_node("Spellcard1").visible = true
 			var flyer_list = RS.self_flyer_menu[current_character]["机体列表"]
 			var flyer_names = flyer_list.keys()
@@ -107,10 +110,16 @@ func _input(event):
 				flyer_panel.focus_previous = last_panel.get_path()
 				last_panel = flyer_panel
 				flyer_panel_index += 1
-			spellcard_chose.get_node("Spellcard1").grab_focus()
 			pressed_audio.play()
 			animation_player.play("自机选择切符卡选择")
 			await  animation_player.animation_finished
+			spellcard_chose.get_node("Spellcard1").grab_focus()
 			
 		if event.is_action_pressed("ui_cancel"):
 			cancel_audio.play()
+			no_focus.grab_focus()
+			if is_instance_valid(get_node("chosed_hard")):
+				get_node("chosed_hard").queue_free()
+			animation_player.play_backwards("难度选择切自机选择")
+			await animation_player.animation_finished
+			last_chosed_hard.grab_focus()

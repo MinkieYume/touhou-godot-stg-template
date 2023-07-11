@@ -6,7 +6,11 @@ extends Panel
 @onready var game_window = $"../../../../../GameWindow"
 @onready var main_menu = $"../../../.."
 @onready var spell_card_chose = $".."
+@onready var animation_player = $"../../../../../AnimationPlayer"
+@onready var self_chose = $"../../../SelfChose"
+@onready var no_focus = $"../../../../No_Focus"
 @export var flyer_type = "默认自机"
+
 
 func _ready():
 	focus_entered.connect(Callable(self,"_on_focus_entered"))
@@ -24,14 +28,23 @@ func _input(event):
 	if has_focus():
 		if event.is_action_pressed("ui_accept"):
 			pressed_audio.play()
-			#处理选中与淡出特效
-			
+			no_focus.grab_focus()
+			#处理淡出特效
+			animation_player.play("淡出画面")
+			await animation_player.animation_finished
 			#切入游戏面板
 			for panel in spell_card_chose.get_children():
 				panel.visible = false
 			main_menu.visible = false
 			game_window.visible = true
 			game_window.enable = true
+			animation_player.play("淡入画面")
 		
 		if event.is_action_pressed("ui_cancel"):
 			cancel_audio.play()
+			no_focus.grab_focus()
+			animation_player.play_backwards("自机选择切符卡选择")
+			await animation_player.animation_finished
+			self_chose.get_focus()
+			for panel in spell_card_chose.get_children():
+				panel.visible = false
