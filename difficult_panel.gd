@@ -2,6 +2,7 @@ extends Panel
 
 
 @export var level_name = "默认测试"
+@export var hard = "easy"
 @onready var toggle_audio = $"../../../../../Audio/ToggleButton"
 @onready var pressed_audio = $"../../../../../Audio/PressedButton"
 @onready var cancel_audio = $"../../../../../Audio/CancelButton"
@@ -17,6 +18,7 @@ func _ready():
 
 func _on_focus_entered():
 	material.set_shader_parameter("alpha",1.0)
+	game_window.difficult = hard
 	game_window.level_name = level_name
 
 func _input(event):
@@ -30,6 +32,7 @@ func _input(event):
 			new_panel.name = "chosed_hard"
 			self_chose_menu.add_child(new_panel)
 			self_chose_menu.last_chosed_hard = self
+			self_chose_menu.last_chosed_pos = global_position
 			new_panel.position = global_position
 			new_panel.material = material.duplicate()
 			new_panel.material.set_shader_parameter("alpha",0.5)

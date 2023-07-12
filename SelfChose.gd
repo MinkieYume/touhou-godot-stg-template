@@ -12,6 +12,7 @@ extends Control
 @onready var no_focus = $"../../No_Focus"
 
 var last_chosed_hard
+var last_chosed_pos
 var current_character
 
 func _ready():
@@ -51,6 +52,7 @@ func get_focus():
 func _input(event):
 	if focus.has_focus():
 		if event.is_action_pressed("ui_right"):
+			no_focus.grab_focus()
 			var index = character_list.find(current_character)
 			var next_character
 			if index == character_list.size()-1:
@@ -61,14 +63,17 @@ func _input(event):
 			animation_player.play("自机选项切换_左")
 			toggle_audio.play()
 			await animation_player.animation_finished
+			get_focus()
 			reload_chose_panel(next_character)
 		if event.is_action_pressed("ui_left"):
+			no_focus.grab_focus()
 			var index = character_list.find(current_character)
 			var last_character = character_list[index-1]
 			reload_chose_panel(last_character,true)
 			animation_player.play("自机选项切换_右")
 			toggle_audio.play()
 			await animation_player.animation_finished
+			get_focus()
 			reload_chose_panel(last_character)
 		if event.is_action_pressed("ui_accept"):
 			no_focus.grab_focus()
@@ -114,12 +119,22 @@ func _input(event):
 			animation_player.play("自机选择切符卡选择")
 			await  animation_player.animation_finished
 			spellcard_chose.get_node("Spellcard1").grab_focus()
-			
 		if event.is_action_pressed("ui_cancel"):
 			cancel_audio.play()
 			no_focus.grab_focus()
-			if is_instance_valid(get_node("chosed_hard")):
-				get_node("chosed_hard").queue_free()
+			var ch = get_node("chosed_hard")
+			if is_instance_valid(ch):
+				var tween = get_tree().create_tween()
+				tween.bind_node(ch)
+				tween.set_trans(Tween.TRANS_LINEAR)
+				tween.tween_property(ch,"position",last_chosed_pos,0.5)
 			animation_player.play_backwards("难度选择切自机选择")
 			await animation_player.animation_finished
+			if is_instance_valid(ch):
+				ch.queue_free()
 			last_chosed_hard.grab_focus()
+
+func delete_chosed_panel():
+	var ch = get_node("chosed_hard")
+	if is_instance_valid(ch):
+		ch.queue_free()

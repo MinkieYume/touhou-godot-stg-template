@@ -83,6 +83,13 @@ var self_flyer_menu = {
 	}
 }
 
+var diff_levels = {
+	"easy":["默认测试","默认测试","默认测试","默认测试","默认测试","默认测试"],
+	"normal":["默认测试","默认测试","默认测试","默认测试","默认测试","默认测试"],
+	"hard":["默认测试","默认测试","默认测试","默认测试","默认测试","默认测试"],
+	"lunatic":["默认测试","默认测试","默认测试","默认测试","默认测试","默认测试"],
+}
+
 var enemys = {
 #	"SqureBossEnemy":preload("res://机体/敌机/Squre_BOSS_EnemyFlyer.tscn"),
 #	"EnemyFlyerFollowPath":preload("res://机体/敌机/EnemyFlyerFollowPath.tscn"),

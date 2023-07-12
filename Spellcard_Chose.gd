@@ -9,6 +9,10 @@ extends Panel
 @onready var animation_player = $"../../../../../AnimationPlayer"
 @onready var self_chose = $"../../../SelfChose"
 @onready var no_focus = $"../../../../No_Focus"
+@onready var black_screen = $"../../../../../BlackScreen"
+@onready var pratice_chose = $"../../../PraticeChose"
+@onready var pratice_level1 = $"../../../PraticeChose/Levels/Level1"
+
 @export var flyer_type = "默认自机"
 
 
@@ -35,10 +39,23 @@ func _input(event):
 			#切入游戏面板
 			for panel in spell_card_chose.get_children():
 				panel.visible = false
-			main_menu.visible = false
-			game_window.visible = true
-			game_window.enable = true
-			animation_player.play("淡入画面")
+			match main_menu.character_chose_mode:
+				0:
+					main_menu.visible = false
+					game_window.visible = true
+					game_window.enable = true
+					animation_player.play("淡入画面")
+				1:
+					pratice_chose.visible = true
+					animation_player.play("RESET")
+					await animation_player.animation_finished
+					self_chose.delete_chosed_panel()
+					animation_player.play_backwards("淡入淡出练习关卡选择")
+					await animation_player.animation_finished
+					pratice_level1.grab_focus()
+					black_screen.visible = false
+				2:
+					pass
 		
 		if event.is_action_pressed("ui_cancel"):
 			cancel_audio.play()

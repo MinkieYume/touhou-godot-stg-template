@@ -22,6 +22,8 @@ extends Panel
 @export var quick_test_mode = false
 
 var current_page = "main_menu"
+var character_chose_mode = 0 #选择角色的模式，影响的是机体选中后进入游戏还是进入练习模式选框。
+#0是默认进入关卡，1是关卡练习模式，2是符卡练习模式
 
 func _ready():
 	if quick_test_mode:
@@ -33,6 +35,7 @@ func _ready():
 	
 
 func play_mainmenu_enter():
+	character_chose_mode = 0
 	level_chose_panel.visible = false
 	buttons.visible = true
 	title.visible = true
@@ -60,5 +63,35 @@ func _on_game_start_pressed():
 	await animation_player.animation_finished
 	easy_hard_penel.grab_focus()
 
+func _on_practice_pressed():
+	no_focus.grab_focus()
+	character_chose_mode = 1
+	animation_player.play("菜单切出")
+	await animation_player.animation_finished
+	level_chose_panel.visible = true
+	easy_hard_panel.visible = true
+	normal_hard_panel.visible = true
+	hard_hard_panel.visible = true
+	lunatic_hard_panel.visible = true
+	animation_player.play("难度选择切入")
+	await animation_player.animation_finished
+	easy_hard_penel.grab_focus()
+	
+
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_spell_card_pressed():
+	no_focus.grab_focus()
+	character_chose_mode = 2
+	animation_player.play("菜单切出")
+	await animation_player.animation_finished
+	level_chose_panel.visible = true
+	easy_hard_panel.visible = true
+	normal_hard_panel.visible = true
+	hard_hard_panel.visible = true
+	lunatic_hard_panel.visible = true
+	animation_player.play("难度选择切入")
+	await animation_player.animation_finished
+	easy_hard_penel.grab_focus()

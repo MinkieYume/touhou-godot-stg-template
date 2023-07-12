@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://lakvsrra3wdc"]
+[gd_scene load_steps=96 format=3 uid="uid://lakvsrra3wdc"]
 
 [ext_resource type="FontFile" uid="uid://bfulrtgnpdxb5" path="res://字体/进度条文本.tres" id="1"]
 [ext_resource type="Script" path="res://main.gd" id="1_d073v"]
@@ -35,6 +35,8 @@
 [ext_resource type="Script" path="res://Spellcard_Chose.gd" id="29_jxtjf"]
 [ext_resource type="LabelSettings" uid="uid://rn4noi27mi6" path="res://UI/spellcard_title.tres" id="29_k3kqf"]
 [ext_resource type="LabelSettings" uid="uid://65dplqqp1b0l" path="res://UI/spell_card_discus.tres" id="31_gcsf2"]
+[ext_resource type="Script" path="res://PraticeChose.gd" id="32_cbo5b"]
+[ext_resource type="Script" path="res://practice_levelchose_button.gd" id="33_prq2n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i56db"]
 bg_color = Color(0.192157, 0.666667, 0.772549, 1)
@@ -112,7 +114,7 @@ shadow_color = Color(0, 0, 0, 0.439216)
 font = ExtResource("14_vor10")
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tejpm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qjhi"]
 shader = ExtResource("18_sl2nt")
 shader_parameter/alpha = 0.5
 
@@ -125,7 +127,7 @@ outline_color = Color(0.0313726, 0.34902, 0.517647, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8o74"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ptih"]
 shader = ExtResource("18_sl2nt")
 shader_parameter/alpha = 0.5
 
@@ -138,7 +140,7 @@ outline_color = Color(0.47451, 0.270588, 0, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7loml"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_852g1"]
 shader = ExtResource("18_sl2nt")
 shader_parameter/alpha = 0.5
 
@@ -151,8 +153,18 @@ outline_color = Color(0.623529, 0, 0.12549, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h0ymk"]
-shader = ExtResource("18_sl2nt")
+[sub_resource type="Shader" id="Shader_s4qsq"]
+code = "shader_type canvas_item;
+
+uniform float alpha = 0.5;
+void fragment() {
+	// Place fragment code here.
+	COLOR.a*=alpha;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ghiba"]
+shader = SubResource("Shader_s4qsq")
 shader_parameter/alpha = 0.5
 
 [sub_resource type="LabelSettings" id="LabelSettings_wwbk8"]
@@ -164,8 +176,18 @@ outline_color = Color(0.294118, 0, 0.87451, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.439216)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vbvi5"]
-shader = ExtResource("18_sl2nt")
+[sub_resource type="Shader" id="Shader_76ait"]
+code = "shader_type canvas_item;
+
+uniform float alpha = 0.5;
+void fragment() {
+	// Place fragment code here.
+	COLOR.a*=alpha;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_prou0"]
+shader = SubResource("Shader_76ait")
 shader_parameter/alpha = 0.5
 
 [sub_resource type="LabelSettings" id="LabelSettings_pmvka"]
@@ -250,194 +272,226 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenu/标题:visible")
+tracks/2/path = NodePath("MainMenu/LevelChose/HardChose/ChoseHard:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(252.5, -66)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenu/Buttons:visible")
+tracks/3/path = NodePath("MainMenu/LevelChose/HardChose:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("MainMenu/LevelChose/HardChose/ChoseHard:position")
+tracks/4/path = NodePath("MainMenu/LevelChose/SelfChose/ChoseCharacter:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(252.5, -66)]
+"values": [Vector2(253, -67)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("MainMenu/LevelChose/HardChose:visible")
+tracks/5/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(803, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("MainMenu/LevelChose/SelfChose/ChoseCharacter:position")
+tracks/6/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(253, -67)]
+"values": [Vector2(419, 600)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
+tracks/7/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(803, 0)]
+"values": [Vector2(419, 600)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
+tracks/8/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(419, 600)]
+"values": [Vector2(317, 0)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
+tracks/9/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:material:shader_parameter/alpha")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(419, 600)]
+"values": [1.0]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
+tracks/10/path = NodePath("MainMenu/LevelChose/SpellCardChose/ChoseSpellCard:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(317, 0)]
+"values": [Vector2(381, -71)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:material:shader_parameter/alpha")
+tracks/11/path = NodePath("MainMenu/LevelChose/HardChose/HardPanels:size")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [Vector2(243.997, 120)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("MainMenu/LevelChose/SpellCardChose/ChoseSpellCard:position")
+tracks/12/path = NodePath("MainMenu/LevelChose/HardChose/HardPanels:position_x")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(381, -71)]
+"values": [806.0]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("MainMenu/LevelChose/HardChose/HardPanels:size")
+tracks/13/path = NodePath("MainMenu/LevelChose/SpellCardChose/Spellcard Chose:position_x")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(243.997, 120)]
+"values": [805.0]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("MainMenu/LevelChose/HardChose/HardPanels:position_x")
+tracks/14/path = NodePath("MainMenu/LevelChose/PraticeChose/Levels:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [806.0]
+"values": [Vector2(241, 115)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("MainMenu/LevelChose/SpellCardChose/Spellcard Chose:position_x")
+tracks/15/path = NodePath("MainMenu/LevelChose/PraticeChose/ChoseSpellCard:position")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [805.0]
+"values": [Vector2(222, 28)]
 }
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("BlackScreen:visible")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+
+[sub_resource type="Animation" id="Animation_bl26j"]
+resource_name = "淡入画面"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_am5vg"]
+resource_name = "淡出画面"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("BlackScreen:material:shader_parameter/alpha")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_irep1"]
@@ -844,65 +898,50 @@ tracks/3/keys = {
 "values": [278.0, -272.5]
 }
 
-[sub_resource type="Animation" id="Animation_am5vg"]
-resource_name = "淡出画面"
+[sub_resource type="Animation" id="Animation_q58p5"]
+resource_name = "淡入淡出练习关卡选择"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BlackScreen:visible")
+tracks/0/path = NodePath("MainMenu/LevelChose/PraticeChose/Levels:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(241, 115), Vector2(805, 115)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/1/path = NodePath("MainMenu/LevelChose/PraticeChose/ChoseSpellCard:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(222, 28), Vector2(222, -74)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_bl26j"]
-resource_name = "淡入画面"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BlackScreen:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BlackScreen:material:shader_parameter/alpha")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p677"]
 _data = {
 "RESET": SubResource("Animation_rrae4"),
+"淡入淡出练习关卡选择": SubResource("Animation_q58p5"),
 "淡入画面": SubResource("Animation_bl26j"),
 "淡出画面": SubResource("Animation_am5vg"),
 "自机选择切符卡选择": SubResource("Animation_irep1"),
@@ -1284,6 +1323,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_dubx6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vxr85")
 
 [node name="标题" type="Control" parent="MainMenu"]
+visible = false
 anchors_preset = 0
 offset_right = 523.0
 offset_bottom = 166.0
@@ -1310,6 +1350,7 @@ text = "A Simple STG Template"
 label_settings = SubResource("LabelSettings_hn2q6")
 
 [node name="Buttons" type="Control" parent="MainMenu"]
+visible = false
 anchors_preset = 0
 offset_left = 435.0
 offset_top = 130.0
@@ -1708,7 +1749,7 @@ autowrap_mode = 1
 
 [node name="Normal" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
 visible = false
-material = SubResource("ShaderMaterial_tejpm")
+material = SubResource("ShaderMaterial_3qjhi")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Easy")
@@ -1721,6 +1762,7 @@ focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
+hard = "normal"
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Normal"]
 use_parent_material = true
@@ -1747,7 +1789,7 @@ autowrap_mode = 1
 
 [node name="Hard" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
 visible = false
-material = SubResource("ShaderMaterial_a8o74")
+material = SubResource("ShaderMaterial_5ptih")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Normal")
@@ -1760,6 +1802,7 @@ focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
+hard = "hard"
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Hard"]
 use_parent_material = true
@@ -1786,7 +1829,7 @@ autowrap_mode = 1
 
 [node name="Lunatic" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
 visible = false
-material = SubResource("ShaderMaterial_7loml")
+material = SubResource("ShaderMaterial_852g1")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Hard")
@@ -1799,6 +1842,7 @@ focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
+hard = "lunatic"
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Lunatic"]
 use_parent_material = true
@@ -1825,7 +1869,7 @@ autowrap_mode = 1
 
 [node name="Extra" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
 visible = false
-material = SubResource("ShaderMaterial_h0ymk")
+material = SubResource("ShaderMaterial_ghiba")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Phatom")
@@ -1838,6 +1882,7 @@ focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
+hard = "extra"
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Extra"]
 use_parent_material = true
@@ -1864,7 +1909,7 @@ autowrap_mode = 1
 
 [node name="Phatom" type="Panel" parent="MainMenu/LevelChose/HardChose/HardPanels"]
 visible = false
-material = SubResource("ShaderMaterial_vbvi5")
+material = SubResource("ShaderMaterial_prou0")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Extra")
@@ -1877,6 +1922,7 @@ focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
+hard = "phatom"
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Phatom"]
 use_parent_material = true
@@ -2284,6 +2330,297 @@ text = "除了卖萌之外没什么用的机型"
 label_settings = ExtResource("31_gcsf2")
 autowrap_mode = 1
 
+[node name="PraticeChose" type="Control" parent="MainMenu/LevelChose"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("32_cbo5b")
+
+[node name="ChoseSpellCard" type="Label" parent="MainMenu/LevelChose/PraticeChose"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 202.0
+offset_top = 8.0
+offset_right = 538.0
+offset_bottom = 75.0009
+grow_horizontal = 2
+grow_vertical = 2
+text = "选择练习关卡"
+label_settings = SubResource("LabelSettings_nebbg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Levels" type="Control" parent="MainMenu/LevelChose/PraticeChose"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 241.0
+offset_top = 95.0
+offset_right = 500.001
+offset_bottom = 519.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level1" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+offset_left = 81.0
+offset_top = 20.0
+offset_right = 209.0
+offset_bottom = 52.0
+focus_neighbor_left = NodePath("../Level8")
+focus_neighbor_top = NodePath("../Level8")
+focus_neighbor_right = NodePath("../Level2")
+focus_neighbor_bottom = NodePath("../Level2")
+focus_next = NodePath("../Level2")
+focus_previous = NodePath("../Level8")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "关卡1"
+script = ExtResource("33_prq2n")
+
+[node name="Level2" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+offset_left = 81.0
+offset_top = 70.0
+offset_right = 209.0
+offset_bottom = 102.0
+focus_neighbor_left = NodePath("../Level1")
+focus_neighbor_top = NodePath("../Level1")
+focus_neighbor_right = NodePath("../Level3")
+focus_neighbor_bottom = NodePath("../Level3")
+focus_next = NodePath("../Level3")
+focus_previous = NodePath("../Level1")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "关卡2"
+script = ExtResource("33_prq2n")
+level_index = 1
+
+[node name="Level3" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+offset_left = 81.0
+offset_top = 119.0
+offset_right = 209.0
+offset_bottom = 151.0
+focus_neighbor_left = NodePath("../Level2")
+focus_neighbor_top = NodePath("../Level2")
+focus_neighbor_right = NodePath("../Level4")
+focus_neighbor_bottom = NodePath("../Level4")
+focus_next = NodePath("../Level4")
+focus_previous = NodePath("../Level2")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "关卡3"
+script = ExtResource("33_prq2n")
+level_index = 2
+
+[node name="Level4" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+offset_left = 81.0
+offset_top = 172.0
+offset_right = 209.0
+offset_bottom = 204.0
+focus_neighbor_left = NodePath("../Level3")
+focus_neighbor_top = NodePath("../Level3")
+focus_neighbor_right = NodePath("../Level5")
+focus_neighbor_bottom = NodePath("../Level5")
+focus_next = NodePath("../Level5")
+focus_previous = NodePath("../Level3")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "关卡4"
+script = ExtResource("33_prq2n")
+level_index = 3
+
+[node name="Level5" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+offset_left = 81.0
+offset_top = 226.0
+offset_right = 209.0
+offset_bottom = 258.0
+focus_neighbor_left = NodePath("../Level4")
+focus_neighbor_top = NodePath("../Level4")
+focus_neighbor_right = NodePath("../Level6")
+focus_neighbor_bottom = NodePath("../Level6")
+focus_next = NodePath("../Level6")
+focus_previous = NodePath("../Level4")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "关卡5"
+script = ExtResource("33_prq2n")
+level_index = 4
+
+[node name="Level6" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+offset_left = 81.0
+offset_top = 274.0
+offset_right = 209.0
+offset_bottom = 306.0
+focus_neighbor_left = NodePath("../Level5")
+focus_neighbor_top = NodePath("../Level5")
+focus_neighbor_right = NodePath("../Level7")
+focus_neighbor_bottom = NodePath("../Level7")
+focus_next = NodePath("../Level7")
+focus_previous = NodePath("../Level5")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "关卡6"
+script = ExtResource("33_prq2n")
+level_index = 5
+
+[node name="Level7" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+offset_left = 81.0
+offset_top = 324.0
+offset_right = 225.0
+offset_bottom = 356.0
+focus_neighbor_left = NodePath("../Level6")
+focus_neighbor_top = NodePath("../Level6")
+focus_neighbor_right = NodePath("../Level8")
+focus_neighbor_bottom = NodePath("../Level8")
+focus_next = NodePath("../Level8")
+focus_previous = NodePath("../Level6")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "Extra关卡"
+script = ExtResource("33_prq2n")
+level_index = -1
+
+[node name="Level8" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+offset_left = 81.0
+offset_top = 373.0
+offset_right = 241.0
+offset_bottom = 405.0
+focus_neighbor_left = NodePath("../Level7")
+focus_neighbor_top = NodePath("../Level7")
+focus_neighbor_right = NodePath("../Level1")
+focus_neighbor_bottom = NodePath("../Level1")
+focus_next = NodePath("../Level1")
+focus_previous = NodePath("../Level7")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "Phatom关卡"
+script = ExtResource("33_prq2n")
+level_index = -2
+
+[node name="SpellCardPracticeChose" type="Control" parent="MainMenu/LevelChose"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="FPS" type="Label" parent="."]
 offset_left = 648.0
 offset_top = 563.0
@@ -2332,8 +2669,10 @@ libraries = {
 [connection signal="pressed" from="MainMenu/Buttons/ExtraStart" to="." method="_on_buttons_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/Practice" to="." method="_on_buttons_toggle"]
 [connection signal="pressed" from="MainMenu/Buttons/Practice" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/Practice" to="MainMenu" method="_on_practice_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/SpellCard" to="." method="_on_buttons_toggle"]
 [connection signal="pressed" from="MainMenu/Buttons/SpellCard" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/SpellCard" to="MainMenu" method="_on_spell_card_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/Replay" to="." method="_on_buttons_toggle"]
 [connection signal="pressed" from="MainMenu/Buttons/Replay" to="." method="_on_buttons_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/PlayerData" to="." method="_on_buttons_toggle"]
@@ -2347,3 +2686,28 @@ libraries = {
 [connection signal="focus_exited" from="MainMenu/Buttons/Quit" to="." method="_on_buttons_toggle"]
 [connection signal="pressed" from="MainMenu/Buttons/Quit" to="." method="_on_buttons_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/Quit" to="MainMenu" method="_on_quit_pressed"]
+[connection signal="focus_entered" from="MainMenu/LevelChose/PraticeChose/Levels/Level1" to="MainMenu/LevelChose/PraticeChose/Levels/Level1" method="_on_focus_entered"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/PraticeChose/Levels/Level1" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level1" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level1" to="MainMenu/LevelChose/PraticeChose" method="_on_level_1_pressed"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/PraticeChose/Levels/Level2" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level2" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level2" to="MainMenu/LevelChose/PraticeChose" method="_on_level_1_pressed"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/PraticeChose/Levels/Level3" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level3" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level3" to="MainMenu/LevelChose/PraticeChose" method="_on_level_1_pressed"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/PraticeChose/Levels/Level4" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level4" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level4" to="MainMenu/LevelChose/PraticeChose" method="_on_level_1_pressed"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/PraticeChose/Levels/Level5" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level5" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level5" to="MainMenu/LevelChose/PraticeChose" method="_on_level_1_pressed"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/PraticeChose/Levels/Level6" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level6" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level6" to="MainMenu/LevelChose/PraticeChose" method="_on_level_1_pressed"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/PraticeChose/Levels/Level7" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level7" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level7" to="MainMenu/LevelChose/PraticeChose" method="_on_level_1_pressed"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/PraticeChose/Levels/Level8" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level8" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level8" to="MainMenu/LevelChose/PraticeChose" method="_on_level_1_pressed"]

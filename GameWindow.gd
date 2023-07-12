@@ -1,8 +1,17 @@
 extends Panel
 
+enum PRACTICE_MODE{
+	NOPE,
+	LEVEL,
+	SPELLCARD
+}
+
 @export var enable = false
+@export var difficult = "easy"
 @export var level_name = "默认测试"
 @export var self_flyer_name = "默认自机"
+
+var practice_mode = PRACTICE_MODE.NOPE
 
 @onready var main_menu = $"../MainMenu"
 
