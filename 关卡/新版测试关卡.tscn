@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://csk7m2ehwphwa"]
+
+[ext_resource type="Script" path="res://关卡/新版测试关卡.gd" id="1_cxps3"]
+[ext_resource type="PackedScene" uid="uid://b4lfu2fpv2kw6" path="res://core/shooter/shooter.tscn" id="2_f0e8m"]
+[ext_resource type="PackedScene" uid="uid://dcfx8cs3igl73" path="res://core/bullet_manager/bullet_manager.tscn" id="3_863bx"]
+[ext_resource type="PackedScene" uid="uid://ds03eapgeji4p" path="res://弹幕相关/弹幕管理器.tscn" id="4_d5m0s"]
+[ext_resource type="PackedScene" uid="uid://o2n0y8txkeca" path="res://掉落物/道具管理器.tscn" id="5_qls5o"]
+
+[sub_resource type="CanvasItemMaterial" id="2"]
+blend_mode = 1
+
+[node name="NewTestLevel" type="Node2D"]
+script = ExtResource("1_cxps3")
+
+[node name="自机出生点" type="Marker2D" parent="."]
+position = Vector2(239, 530)
+metadata/_edit_lock_ = true
+
+[node name="BulletSpawners" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Shooter" parent="BulletSpawners" instance=ExtResource("2_f0e8m")]
+enable = true
+end_frame = 60.0
+spawn_bullet_owner = "player"
+bullet_speed = 1.0
+spawn_interval_frame = 60
+
+[node name="Reflectors" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="敌人" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Background/ParallaxLayer"]
+offset_right = 480.0
+offset_bottom = 560.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="Background/ParallaxLayer"]
+offset_top = -648.0
+offset_right = 480.0
+metadata/_edit_use_anchors_ = true
+
+[node name="BulletManager" parent="." instance=ExtResource("3_863bx")]
+position = Vector2(100, 100)
+
+[node name="普通弹幕层" parent="." instance=ExtResource("4_d5m0s")]
+process_mode = 4
+metadata/_edit_lock_ = true
+
+[node name="高光弹幕层" parent="." instance=ExtResource("4_d5m0s")]
+process_mode = 4
+z_index = 3
+material = SubResource("2")
+metadata/_edit_lock_ = true
+
+[node name="玩家子弹层" parent="." instance=ExtResource("4_d5m0s")]
+process_mode = 4
+z_index = -1
+metadata/_edit_lock_ = true
+
+[node name="符卡" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="道具管理器" parent="." instance=ExtResource("5_qls5o")]
+z_index = 11
+metadata/_edit_lock_ = true

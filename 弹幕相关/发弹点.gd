@@ -1,4 +1,4 @@
-class_name BulletSpawner
+class_name BulletSpawnerOld
 extends Marker2D
 
 enum MANAGE_TYPE {COMMON,HIGHLIGHT}

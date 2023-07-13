@@ -40,8 +40,9 @@ var item_pics = {
 var item_rects = {}
 
 var levels = {
-	"符卡测试":preload("res://关卡/符卡测试关卡.tscn"),
-	"默认测试":preload("res://关卡/默认测试关卡.tscn"),
+#	"符卡测试":preload("res://关卡/符卡测试关卡.tscn"),
+#	"默认测试":preload("res://关卡/默认测试关卡.tscn"),
+	"新版测试":preload("res://关卡/新版测试关卡.tscn"),
 }
 
 var self_flyers = {

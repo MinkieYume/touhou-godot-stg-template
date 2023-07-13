@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dflgl0nlmoc1v"]
+[gd_scene load_steps=2 format=3 uid="uid://dflgl0nlmoc1v"]
 
-[ext_resource type="Script" path="res://弹幕相关/发弹点/自机发弹点.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://弹幕相关/发弹点.tscn" id="2"]
 
 [node name="自机发弹点" instance=ExtResource("2")]
-script = ExtResource("1")
+script = null

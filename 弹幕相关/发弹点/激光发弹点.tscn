@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://bvl3kqjl8jqie"]
 
-[ext_resource type="Script" path="res://弹幕相关/发弹点/激光发弹点.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://弹幕相关/发弹点.tscn" id="2"]
 [ext_resource type="SpriteFrames" uid="uid://dkdspdapwonog" path="res://弹幕相关/子弹样式组.tres" id="3_dop30"]
 
@@ -8,26 +7,7 @@
 radius = 5.0
 
 [node name="RaserSpawner" instance=ExtResource("2")]
-script = ExtResource("1")
-await_sec = 0.0
-keep_sec = 5.0
-max_sec = 2.0
-before_sec = 2.0
-start_collide_sec = 1.0
-max_width = 5.0
-min_width = 1.0
-length = 50.0
-aim_self_flyer = false
-use_raser_line = true
-start_sec = 0.0
-end_sec = 0.0
-never_end = true
-bullet_manager_type = 1
-out_screen_free = false
-bullet_speed = 0.0
-spawn_bullet_type = "激光"
-spawn_bullet_frame = 1
-use_offset_position = true
+script = null
 
 [node name="BeforeRaserTimer" type="Timer" parent="." index="6"]
 wait_time = 3.0
@@ -42,7 +22,7 @@ one_shot = true
 
 [node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="." index="9"]
 visible = false
-frames = ExtResource("3_dop30")
+sprite_frames = ExtResource("3_dop30")
 animation = &"激光"
 
 [node name="RaserCollideTemp" type="CollisionShape2D" parent="." index="10"]

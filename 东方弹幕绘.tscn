@@ -314,6 +314,110 @@ tracks/11/keys = {
 "values": [Vector2(317, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_0wa1s"]
+resource_name = "自机选项切换_右"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(419, 600), Vector2(0, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(317, 0), Vector2(736, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 600), Vector2(419, 600)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(317, 0), Vector2(317, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gwpt6"]
+resource_name = "自机选项切换"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(419, 600), Vector2(0, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(317, 0), Vector2(317, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 600), Vector2(419, 600)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(736, 0), Vector2(317, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ppgc8"]
 resource_name = "菜单切入"
 length = 0.5
@@ -550,110 +654,6 @@ tracks/3/keys = {
 "values": [Vector2(803, 0), Vector2(317, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_gwpt6"]
-resource_name = "自机选项切换"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(419, 600), Vector2(0, 600)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(317, 0), Vector2(317, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 600), Vector2(419, 600)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(736, 0), Vector2(317, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_0wa1s"]
-resource_name = "自机选项切换_右"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(419, 600), Vector2(0, 600)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenu/LevelChose/SelfChose/SelfChosePanel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(317, 0), Vector2(736, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 600), Vector2(419, 600)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenu/LevelChose/SelfChose/SwitchChosePanel:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(317, 0), Vector2(317, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p677"]
 _data = {
 "RESET": SubResource("Animation_rrae4"),
@@ -674,6 +674,7 @@ offset_right = 800.0
 offset_bottom = 600.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i56db")
 script = ExtResource("11")
+level_name = "新版测试"
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -1374,10 +1375,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -147.5
-offset_top = -366.0
-offset_right = 147.5
-offset_bottom = -298.999
+offset_left = 252.5
+offset_top = -66.0
+offset_right = 547.5
+offset_bottom = 1.00098
 grow_horizontal = 2
 grow_vertical = 2
 text = "难度选择"
@@ -1393,10 +1394,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 406.0
-offset_top = -221.0
-offset_right = 649.997
-offset_bottom = 289.0
+offset_left = 806.0
+offset_top = 79.0
+offset_right = 1050.0
+offset_bottom = 589.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -1414,6 +1415,7 @@ focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
+level_name = "新版测试"
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Easy"]
 use_parent_material = true
@@ -1446,6 +1448,7 @@ focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
+level_name = "新版测试"
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Normal"]
 use_parent_material = true
@@ -1478,6 +1481,7 @@ focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
+level_name = "新版测试"
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Hard"]
 use_parent_material = true
@@ -1514,6 +1518,7 @@ focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
+level_name = "新版测试"
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Lunatic"]
 use_parent_material = true
@@ -1551,6 +1556,7 @@ focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
+level_name = "新版测试"
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Extra"]
 use_parent_material = true
@@ -1588,6 +1594,7 @@ focus_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("18_gvgl1")
 script = ExtResource("19_dftaq")
+level_name = "新版测试"
 
 [node name="难度" type="Label" parent="MainMenu/LevelChose/HardChose/HardPanels/Phatom"]
 use_parent_material = true
@@ -1698,6 +1705,7 @@ autowrap_mode = 1
 
 [node name="SwitchChosePanel" type="SubViewportContainer" parent="MainMenu/LevelChose/SelfChose"]
 visible = false
+layout_mode = 0
 offset_left = 317.0
 offset_right = 736.0
 offset_bottom = 600.0
@@ -1771,10 +1779,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -146.5
-offset_top = -367.0
-offset_right = 148.5
-offset_bottom = -299.999
+offset_left = 253.0
+offset_top = -67.0
+offset_right = 548.0
+offset_bottom = 0.000976563
 grow_horizontal = 2
 grow_vertical = 2
 text = "选择你的主角"

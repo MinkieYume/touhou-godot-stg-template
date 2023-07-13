@@ -1,4 +1,4 @@
-class_name BulletManager
+class_name BulletManagerOld
 extends Node2D
 
 var bullets = []

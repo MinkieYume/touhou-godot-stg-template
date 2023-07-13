@@ -93,7 +93,7 @@ func remove_boss():
 	boss = null
 	
 func set_level(node,flyer_name):
-	node.load_flyer(flyer_name)
+#	node.load_flyer(flyer_name) #为测试暂时关闭
 	level = node
 	
 func get_level():

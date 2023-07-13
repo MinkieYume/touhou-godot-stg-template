@@ -1,38 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://belsrybhinrbb"]
 
 [ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://弹幕相关/发弹点.tscn" id="1"]
-[ext_resource type="Script" path="res://弹幕相关/发弹点/炸弹发弹点.gd" id="2_prdun"]
-
 
 [node name="炸弹发弹点" instance=ExtResource("1")]
-script = ExtResource("2_prdun")
-enable = false
-enable_shoot_bullet = true
-cycle = false
-start_sec = 0.1
-end_sec = 20.0
-never_end = false
-bullet_manager_type = 0
-move_start = true
-self_move_start_sec = 0.1
-out_screen_free = true
-speed = 0.0
-aspeed = 0.0
-speed_rotation = 0.0
-aspeed_rotation = 0.0
-bullet_life = 0
-bullet_speed = 3.0
-bullet_aspeed = 0.0
-bullet_aspeed_rotation = 0.0
-spawn_bullet_type = "小玉"
-spawn_bullet_color = 0
-spawn_bullet_owner = "none"
-bullet_scale = Vector2(1, 1)
-bullet_moving_type = "linear"
-bullet_out_screen_remove = true
-way_num = 1
-way_range = 360.0
-way_rotation = 0.0
-spawner_radius = 0.0
-spawner_radius_rotation = 0.0
-spawn_bullet_frame = 2
+script = null

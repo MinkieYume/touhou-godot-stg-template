@@ -31,9 +31,9 @@ func _on_game_start_pressed():
 	animation_player.play("难度选择切入")
 	await animation_player.animation_finished
 	easy_hard_penel.grab_focus()
-#	visible = false
-#	game_window.visible = true
-#	game_window.enable = true
+	visible = false
+	game_window.visible = true
+	game_window.enable = true
 
 func _on_quit_pressed():
 	get_tree().quit()
