@@ -1,4 +1,4 @@
-class_name Bullet
+class_name BulletObj
 extends Object
 
 const SPEED_MULTIPLYER = 60
@@ -82,8 +82,9 @@ func move(delta):
 
 	var velocity = direction * speed * SPEED_MULTIPLYER * delta
 	
-	# 用前进方向和速度更新位置
 	position += velocity
+	
+	#更新碰撞体积
 
 #待实现
 func get_player_position():

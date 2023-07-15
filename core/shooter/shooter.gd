@@ -117,7 +117,9 @@ func spawn_bullet_group():
 			"collision_shape": null   # Set a default value for collision_shape
 		}
 		
-		var bullet = Bullet.new(bullet_attr)  # Create a new bullet instance
+#		var bullet = Bullet.new(bullet_attr)  # Create a new bullet instance
+		var bullet = bullet_manager.get_bullet()
+		bullet.initialize(bullet_attr)
 		bullet_manager.add_bullet(bullet, spawn_bullet_owner)
 
 		bullet_rotation += bullet_rotation_distance

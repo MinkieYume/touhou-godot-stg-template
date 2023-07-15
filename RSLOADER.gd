@@ -24,17 +24,17 @@ var bullet_pics = {}
 var bullet_polygons = {}
 
 var items = {
-	"Point":preload("res://掉落物/Point.gd"),
-	"Power":preload("res://掉落物/Power.gd"),
-	"MegaPower":preload("res://掉落物/MegaPower.gd"),
-	"BiggerPower":preload("res://掉落物/BiggerPower.gd")
+#	"Point":preload("res://掉落物/Point.gd"),
+#	"Power":preload("res://掉落物/Power.gd"),
+#	"MegaPower":preload("res://掉落物/MegaPower.gd"),
+#	"BiggerPower":preload("res://掉落物/BiggerPower.gd")
 }
 
 var item_pics = {
-	"Point":preload("res://Resource/texture/Point.png"),
-	"Power":preload("res://Resource/texture/P_Point.png"),
-	"MegaPower":preload("res://Resource/texture/P_Point.png"),
-	"BiggerPower":preload("res://Resource/texture/P_Point.png")
+#	"Point":preload("res://Resource/texture/Point.png"),
+#	"Power":preload("res://Resource/texture/P_Point.png"),
+#	"MegaPower":preload("res://Resource/texture/P_Point.png"),
+#	"BiggerPower":preload("res://Resource/texture/P_Point.png")
 }
 
 var item_rects = {}
@@ -46,54 +46,54 @@ var levels = {
 }
 
 var self_flyers = {
-	"默认自机":preload("res://机体/自机/默认自机.tscn"),
-	"默认自机2":preload("res://机体/自机/默认自机2.tscn"),
-	"默认自机3":preload("res://机体/自机/默认自机3.tscn"),
-	"默认自机4":preload("res://机体/自机/默认自机4.tscn")
+#	"默认自机":preload("res://机体/自机/默认自机.tscn"),
+#	"默认自机2":preload("res://机体/自机/默认自机2.tscn"),
+#	"默认自机3":preload("res://机体/自机/默认自机3.tscn"),
+#	"默认自机4":preload("res://机体/自机/默认自机4.tscn")
 }
 
 var self_flyer_menu = {
-	"A机小方":{
-		"标题效果":preload("res://UI/self_chose_panel_title1_squre.tres"),
-		"图片":preload("res://机体/自机/A Square.png"),
-		"称号效果":preload("res://UI/self_chose_panel_title2_squre.tres"),
-		"称号":"非常可爱的方形",
-		"介绍":\
-"""不管怎么说，总之就是非常可爱的方形
-容易被方块王国的怪物盯上
-比较擅长追踪大范围攻击""",
-		"介绍效果":preload("res://UI/self_chose_panel_discus_squre.tres"),
-		"机体列表":{
-			"买萌型":"默认自机",
-			"卖萌型":"默认自机2",
-		},
-	},
-	"B机小圆":{
-		"标题效果":preload("res://UI/self_chose_panel_title1_squre.tres"),
-		"图片":preload("res://机体/自机/A Round.png"),
-		"称号":"粉嫩少女小圆",
-		"称号效果":preload("res://UI/self_chose_panel_title2_round.tres"),
-		"介绍":\
-"""小圆我啊，可是粉嫩的美少女哦！
-粉粉的魔法少女，擅长格斗和狙击""",
-		"介绍效果":preload("res://UI/self_chose_panel_discus_squre.tres"),
-		"机体列表":{
-			"狙击型":"默认自机3",
-			"格斗型":"默认自机4",
-		},
-	}
+#	"A机小方":{
+#		"标题效果":preload("res://UI/self_chose_panel_title1_squre.tres"),
+#		"图片":preload("res://机体/自机/A Square.png"),
+#		"称号效果":preload("res://UI/self_chose_panel_title2_squre.tres"),
+#		"称号":"非常可爱的方形",
+#		"介绍":\
+#"""不管怎么说，总之就是非常可爱的方形
+#容易被方块王国的怪物盯上
+#比较擅长追踪大范围攻击""",
+#		"介绍效果":preload("res://UI/self_chose_panel_discus_squre.tres"),
+#		"机体列表":{
+#			"买萌型":"默认自机",
+#			"卖萌型":"默认自机2",
+#		},
+#	},
+#	"B机小圆":{
+#		"标题效果":preload("res://UI/self_chose_panel_title1_squre.tres"),
+#		"图片":preload("res://机体/自机/A Round.png"),
+#		"称号":"粉嫩少女小圆",
+#		"称号效果":preload("res://UI/self_chose_panel_title2_round.tres"),
+#		"介绍":\
+#"""小圆我啊，可是粉嫩的美少女哦！
+#粉粉的魔法少女，擅长格斗和狙击""",
+#		"介绍效果":preload("res://UI/self_chose_panel_discus_squre.tres"),
+#		"机体列表":{
+#			"狙击型":"默认自机3",
+#			"格斗型":"默认自机4",
+#		},
+#	}
 }
 
 var enemys = {
 #	"SqureBossEnemy":preload("res://机体/敌机/Squre_BOSS_EnemyFlyer.tscn"),
 #	"EnemyFlyerFollowPath":preload("res://机体/敌机/EnemyFlyerFollowPath.tscn"),
-	"EnemyFlyer":preload("res://机体/敌机/默认敌机.tscn"),
+#	"EnemyFlyer":preload("res://机体/敌机/默认敌机.tscn"),
 #	"Boss_01":preload("res://机体/Boss/Boss_01.tscn"),
 }
 
 var UI = {
-	"HpBar": preload("res://UI/HpBar.tscn"),
-	"HpBarRed": preload("res://UI/HpBarRed.tscn"),
+#	"HpBar": preload("res://UI/HpBar.tscn"),
+#	"HpBarRed": preload("res://UI/HpBarRed.tscn"),
 }
 
 func get_bullet_polygon(texture:AtlasTexture):
