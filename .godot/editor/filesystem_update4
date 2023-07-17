@@ -1,12 +1,9 @@
 res://东方弹幕绘.tscn
 res://弹幕相关/子弹样式组.tres
 res://UI/spell_name_container.tres
-res://SelfChose.gd
-res://difficult_panel.gd
-res://UI/difficult_panel.gdshader
 res://MainMenu.gd
+res://SelfChose.gd
 res://Spellcard_Chose.gd
-res://practice_levelchose_button.gd
-res://PraticeChose.gd
-res://GameWindow.gd
+res://SpellCardPracticeChose.gd
 res://RSLOADER.gd
+res://spellcard_button.gd

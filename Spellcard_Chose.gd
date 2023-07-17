@@ -13,6 +13,8 @@ extends Panel
 @onready var pratice_chose = $"../../../PraticeChose"
 @onready var pratice_level1 = $"../../../PraticeChose/Levels/Level1"
 
+@onready var spellcard_practice = $"../../../SpellCardPracticeChose"
+
 @export var flyer_type = "默认自机"
 
 
@@ -55,7 +57,12 @@ func _input(event):
 					pratice_level1.grab_focus()
 					black_screen.visible = false
 				2:
-					pass
+					spellcard_practice.visible = true
+					animation_player.play("RESET")
+					await animation_player.animation_finished
+					animation_player.play("练习符卡选择")
+					await animation_player.animation_finished
+					spellcard_practice.spell_card1.grab_focus()
 		
 		if event.is_action_pressed("ui_cancel"):
 			cancel_audio.play()

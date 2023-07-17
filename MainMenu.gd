@@ -17,6 +17,8 @@ extends Panel
 @onready var extra_hard_panel = $LevelChose/HardChose/HardPanels/Extra
 @onready var phatom_hard_panel = $LevelChose/HardChose/HardPanels/Phatom
 
+@onready var self_flyer_chose = $LevelChose/SelfChose
+
 @onready var no_focus = $No_Focus
 
 @export var quick_test_mode = false
@@ -59,6 +61,7 @@ func _on_game_start_pressed():
 	normal_hard_panel.visible = true
 	hard_hard_panel.visible = true
 	lunatic_hard_panel.visible = true
+	self_flyer_chose.is_spellcard_practice_mode = false
 	animation_player.play("难度选择切入")
 	await animation_player.animation_finished
 	easy_hard_penel.grab_focus()
@@ -73,6 +76,7 @@ func _on_practice_pressed():
 	normal_hard_panel.visible = true
 	hard_hard_panel.visible = true
 	lunatic_hard_panel.visible = true
+	self_flyer_chose.is_spellcard_practice_mode = false
 	animation_player.play("难度选择切入")
 	await animation_player.animation_finished
 	easy_hard_penel.grab_focus()
@@ -88,10 +92,7 @@ func _on_spell_card_pressed():
 	animation_player.play("菜单切出")
 	await animation_player.animation_finished
 	level_chose_panel.visible = true
-	easy_hard_panel.visible = true
-	normal_hard_panel.visible = true
-	hard_hard_panel.visible = true
-	lunatic_hard_panel.visible = true
-	animation_player.play("难度选择切入")
+	self_flyer_chose.is_spellcard_practice_mode = true
+	animation_player.play("难度选择切自机选择")
 	await animation_player.animation_finished
-	easy_hard_penel.grab_focus()
+	self_flyer_chose.get_focus()

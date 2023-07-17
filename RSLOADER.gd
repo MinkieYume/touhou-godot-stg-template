@@ -83,6 +83,13 @@ var self_flyer_menu = {
 	}
 }
 
+var spellcard_practices = [
+	{"name":"符卡名",
+	 "level":"默认测试",
+	 "unlocked":true},
+	
+]
+
 var diff_levels = {
 	"easy":["默认测试","默认测试","默认测试","默认测试","默认测试","默认测试"],
 	"normal":["默认测试","默认测试","默认测试","默认测试","默认测试","默认测试"],

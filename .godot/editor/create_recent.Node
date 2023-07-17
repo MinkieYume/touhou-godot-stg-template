@@ -1,5 +1,9 @@
-Control
+ScrollContainer
 Button
+VBoxContainer
+VFlowContainer
+ItemList
+Control
 ColorRect
 SubViewport
 SubViewportContainer
@@ -9,7 +13,6 @@ Panel
 Marker2D
 AudioStreamPlayer
 RichTextLabel
-VBoxContainer
 Node
 PanelContainer
 CenterContainer

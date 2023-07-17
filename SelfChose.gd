@@ -11,6 +11,10 @@ extends Control
 @onready var spellcard_chose = $"../SpellCardChose/Spellcard Chose"
 @onready var no_focus = $"../../No_Focus"
 
+@onready var main_menu = $"../.."
+
+var is_spellcard_practice_mode = false
+
 var last_chosed_hard
 var last_chosed_pos
 var current_character
@@ -132,7 +136,10 @@ func _input(event):
 			await animation_player.animation_finished
 			if is_instance_valid(ch):
 				ch.queue_free()
-			last_chosed_hard.grab_focus()
+			if is_spellcard_practice_mode:
+				main_menu.play_mainmenu_enter()
+			else:
+				last_chosed_hard.grab_focus()
 
 func delete_chosed_panel():
 	var ch = get_node("chosed_hard")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://lakvsrra3wdc"]
+[gd_scene load_steps=99 format=3 uid="uid://lakvsrra3wdc"]
 
 [ext_resource type="FontFile" uid="uid://bfulrtgnpdxb5" path="res://字体/进度条文本.tres" id="1"]
 [ext_resource type="Script" path="res://main.gd" id="1_d073v"]
@@ -37,6 +37,8 @@
 [ext_resource type="LabelSettings" uid="uid://65dplqqp1b0l" path="res://UI/spell_card_discus.tres" id="31_gcsf2"]
 [ext_resource type="Script" path="res://PraticeChose.gd" id="32_cbo5b"]
 [ext_resource type="Script" path="res://practice_levelchose_button.gd" id="33_prq2n"]
+[ext_resource type="Script" path="res://SpellCardPracticeChose.gd" id="34_lld3r"]
+[ext_resource type="Script" path="res://spellcard_button.gd" id="35_6y8y0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i56db"]
 bg_color = Color(0.192157, 0.666667, 0.772549, 1)
@@ -241,7 +243,7 @@ shader_parameter/alpha = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fo1fj"]
 shader = ExtResource("18_sl2nt")
-shader_parameter/alpha = 0.0
+shader_parameter/alpha = 1.0
 
 [sub_resource type="Animation" id="Animation_rrae4"]
 length = 0.001
@@ -436,6 +438,94 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(222, 28)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ChoseSpellCard:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(226, -70)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer:size")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(737, 20)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(34, 1)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_q58p5"]
+resource_name = "淡入淡出练习关卡选择"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/LevelChose/PraticeChose/Levels:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(241, 115), Vector2(805, 115)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/LevelChose/PraticeChose/ChoseSpellCard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(222, 28), Vector2(222, -74)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_bl26j"]
@@ -898,44 +988,56 @@ tracks/3/keys = {
 "values": [278.0, -272.5]
 }
 
-[sub_resource type="Animation" id="Animation_q58p5"]
-resource_name = "淡入淡出练习关卡选择"
-length = 0.5
+[sub_resource type="Animation" id="Animation_1160l"]
+resource_name = "练习符卡选择"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu/LevelChose/PraticeChose/Levels:position")
+tracks/0/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ChoseSpellCard:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(241, 115), Vector2(805, 115)]
+"values": [Vector2(226, -70), Vector2(226, 10)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenu/LevelChose/PraticeChose/ChoseSpellCard:position")
+tracks/1/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(222, 28), Vector2(222, -74)]
+"values": [Vector2(34, -22), Vector2(34, 76)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/2/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [Vector2(737, 20), Vector2(737, 476)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p677"]
@@ -944,6 +1046,7 @@ _data = {
 "淡入淡出练习关卡选择": SubResource("Animation_q58p5"),
 "淡入画面": SubResource("Animation_bl26j"),
 "淡出画面": SubResource("Animation_am5vg"),
+"练习符卡选择": SubResource("Animation_1160l"),
 "自机选择切符卡选择": SubResource("Animation_irep1"),
 "自机选项切换_右": SubResource("Animation_0wa1s"),
 "自机选项切换_左": SubResource("Animation_gwpt6"),
@@ -1957,6 +2060,7 @@ script = ExtResource("21_ul30j")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="focus" type="Button" parent="MainMenu/LevelChose/SelfChose/focues"]
 layout_mode = 0
@@ -1973,6 +2077,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_t5ai2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_od1os")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g6d8m")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q54s0")
+metadata/_edit_lock_ = true
 
 [node name="SelfChosePanel" type="SubViewportContainer" parent="MainMenu/LevelChose/SelfChose"]
 material = SubResource("ShaderMaterial_yv8ad")
@@ -2134,6 +2239,7 @@ vertical_alignment = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="ChoseSpellCard" type="Label" parent="MainMenu/LevelChose/SpellCardChose"]
 layout_mode = 1
@@ -2336,6 +2442,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("32_cbo5b")
+metadata/_edit_lock_ = true
 
 [node name="ChoseSpellCard" type="Label" parent="MainMenu/LevelChose/PraticeChose"]
 layout_mode = 1
@@ -2369,6 +2476,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Level1" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+layout_mode = 0
 offset_left = 81.0
 offset_top = 20.0
 offset_right = 209.0
@@ -2399,6 +2507,7 @@ text = "关卡1"
 script = ExtResource("33_prq2n")
 
 [node name="Level2" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+layout_mode = 0
 offset_left = 81.0
 offset_top = 70.0
 offset_right = 209.0
@@ -2430,6 +2539,7 @@ script = ExtResource("33_prq2n")
 level_index = 1
 
 [node name="Level3" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+layout_mode = 0
 offset_left = 81.0
 offset_top = 119.0
 offset_right = 209.0
@@ -2461,6 +2571,7 @@ script = ExtResource("33_prq2n")
 level_index = 2
 
 [node name="Level4" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+layout_mode = 0
 offset_left = 81.0
 offset_top = 172.0
 offset_right = 209.0
@@ -2492,6 +2603,7 @@ script = ExtResource("33_prq2n")
 level_index = 3
 
 [node name="Level5" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+layout_mode = 0
 offset_left = 81.0
 offset_top = 226.0
 offset_right = 209.0
@@ -2523,6 +2635,7 @@ script = ExtResource("33_prq2n")
 level_index = 4
 
 [node name="Level6" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+layout_mode = 0
 offset_left = 81.0
 offset_top = 274.0
 offset_right = 209.0
@@ -2554,6 +2667,7 @@ script = ExtResource("33_prq2n")
 level_index = 5
 
 [node name="Level7" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+layout_mode = 0
 offset_left = 81.0
 offset_top = 324.0
 offset_right = 225.0
@@ -2585,6 +2699,7 @@ script = ExtResource("33_prq2n")
 level_index = -1
 
 [node name="Level8" type="Button" parent="MainMenu/LevelChose/PraticeChose/Levels"]
+layout_mode = 0
 offset_left = 81.0
 offset_top = 373.0
 offset_right = 241.0
@@ -2616,10 +2731,734 @@ script = ExtResource("33_prq2n")
 level_index = -2
 
 [node name="SpellCardPracticeChose" type="Control" parent="MainMenu/LevelChose"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("34_lld3r")
+metadata/_edit_lock_ = true
+
+[node name="ChoseSpellCard" type="Label" parent="MainMenu/LevelChose/SpellCardPracticeChose"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 206.0
+offset_top = -90.0
+offset_right = 542.0
+offset_bottom = -22.9991
+grow_horizontal = 2
+grow_vertical = 2
+text = "选择练习符卡"
+label_settings = SubResource("LabelSettings_nebbg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/LevelChose/SpellCardPracticeChose"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 1.0
+offset_right = 771.0
+offset_bottom = 21.0
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="SpellCard1" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard2" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard3" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard4" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard5" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard6" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard7" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard8" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard9" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard10" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard11" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard12" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard13" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard14" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard15" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard16" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard17" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard18" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard19" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard20" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard21" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard22" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard23" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard24" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard25" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard26" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard27" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard28" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard29" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
+
+[node name="SpellCard30" type="Button" parent="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+disabled = true
+text = "？？？？？？"
+alignment = 0
+script = ExtResource("35_6y8y0")
 
 [node name="FPS" type="Label" parent="."]
 offset_left = 648.0
@@ -2711,3 +3550,33 @@ libraries = {
 [connection signal="focus_exited" from="MainMenu/LevelChose/PraticeChose/Levels/Level8" to="." method="_on_buttons_toggle"]
 [connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level8" to="." method="_on_buttons_pressed"]
 [connection signal="pressed" from="MainMenu/LevelChose/PraticeChose/Levels/Level8" to="MainMenu/LevelChose/PraticeChose" method="_on_level_1_pressed"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard1" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard2" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard3" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard4" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard5" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard6" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard7" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard8" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard9" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard10" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard11" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard12" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard13" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard14" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard15" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard16" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard17" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard18" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard19" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard20" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard21" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard22" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard23" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard24" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard25" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard26" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard27" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard28" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard29" to="." method="_on_buttons_toggle"]
+[connection signal="focus_exited" from="MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer/VBoxContainer/SpellCard30" to="." method="_on_buttons_toggle"]
