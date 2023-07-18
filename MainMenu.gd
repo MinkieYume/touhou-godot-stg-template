@@ -38,6 +38,8 @@ func _ready():
 
 func play_mainmenu_enter():
 	character_chose_mode = 0
+	visible = true
+	no_focus.grab_focus()
 	level_chose_panel.visible = false
 	buttons.visible = true
 	title.visible = true

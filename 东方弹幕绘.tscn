@@ -55,6 +55,21 @@ bg_color = Color(0.443137, 0.768627, 0.909804, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wbd7"]
 bg_color = Color(0.192157, 0.666667, 0.772549, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odvdl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xk6bd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wspwg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7kpd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4ptj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kq5y4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f547c"]
@@ -75,21 +90,6 @@ outline_color = Color(0, 0.839216, 0.964706, 1)
 font = ExtResource("16_8uqvo")
 font_size = 24
 font_color = Color(0.513726, 0.972549, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odvdl"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xk6bd"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wspwg"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7kpd"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4ptj"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_nebbg"]
 font = ExtResource("13")
@@ -584,6 +584,58 @@ tracks/1/keys = {
 "values": [0.0, 1.0]
 }
 
+[sub_resource type="Animation" id="Animation_1160l"]
+resource_name = "练习符卡选择"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ChoseSpellCard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(226, -70), Vector2(226, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(34, -22), Vector2(34, 76)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(737, 20), Vector2(737, 476)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlackScreen:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_irep1"]
 resource_name = "自机选择切符卡选择"
 length = 0.8
@@ -988,58 +1040,6 @@ tracks/3/keys = {
 "values": [278.0, -272.5]
 }
 
-[sub_resource type="Animation" id="Animation_1160l"]
-resource_name = "练习符卡选择"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ChoseSpellCard:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(226, -70), Vector2(226, 10)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(34, -22), Vector2(34, 76)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenu/LevelChose/SpellCardPracticeChose/ScrollContainer:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(737, 20), Vector2(737, 476)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BlackScreen:material:shader_parameter/alpha")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p677"]
 _data = {
 "RESET": SubResource("Animation_rrae4"),
@@ -1381,7 +1381,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="GameOverWindow" type="Panel" parent="."]
-visible = false
 offset_right = 800.0
 offset_bottom = 600.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7wbd7")
@@ -1397,12 +1396,103 @@ theme_override_fonts/font = ExtResource("13")
 theme_override_font_sizes/font_size = 70
 text = "游戏结束界面"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverWindow"]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 269.0
+offset_right = 493.0
+offset_bottom = 385.0
+theme_override_constants/separation = 10
+
+[node name="Continue" type="Button" parent="GameOverWindow/VBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "重试本关"
+
+[node name="SaveReplay" type="Button" parent="GameOverWindow/VBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "保存回放"
+
+[node name="BackMenu" type="Button" parent="GameOverWindow/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "回到菜单"
+
+[node name="Restart" type="Button" parent="GameOverWindow/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.780392, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("14_vor10")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_odvdl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xk6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wspwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j7kpd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o4ptj")
+text = "从头重新开始"
+
 [node name="PauseMenu" type="Panel" parent="."]
 visible = false
 offset_right = 800.0
 offset_bottom = 600.0
 
 [node name="MainMenu" type="Panel" parent="."]
+visible = false
 offset_right = 800.0
 offset_bottom = 600.0
 theme_override_styles/panel = ExtResource("13_0rpnd")
@@ -2093,7 +2183,7 @@ handle_input_locally = false
 size = Vector2i(419, 600)
 size_2d_override = Vector2i(419, 600)
 size_2d_override_stretch = true
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Background" type="TextureRect" parent="MainMenu/LevelChose/SelfChose/SelfChosePanel/SubViewport"]
 material = SubResource("ShaderMaterial_nt1xv")
@@ -3501,6 +3591,18 @@ libraries = {
 "": SubResource("AnimationLibrary_7p677")
 }
 
+[connection signal="focus_exited" from="GameOverWindow/VBoxContainer/Continue" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="GameOverWindow/VBoxContainer/Continue" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="GameOverWindow/VBoxContainer/Continue" to="GameOverWindow" method="_on_continue_pressed"]
+[connection signal="focus_exited" from="GameOverWindow/VBoxContainer/SaveReplay" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="GameOverWindow/VBoxContainer/SaveReplay" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="GameOverWindow/VBoxContainer/SaveReplay" to="GameOverWindow" method="_on_save_replay_pressed"]
+[connection signal="focus_exited" from="GameOverWindow/VBoxContainer/BackMenu" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="GameOverWindow/VBoxContainer/BackMenu" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="GameOverWindow/VBoxContainer/BackMenu" to="GameOverWindow" method="_on_back_menu_pressed"]
+[connection signal="focus_exited" from="GameOverWindow/VBoxContainer/Restart" to="." method="_on_buttons_toggle"]
+[connection signal="pressed" from="GameOverWindow/VBoxContainer/Restart" to="." method="_on_buttons_pressed"]
+[connection signal="pressed" from="GameOverWindow/VBoxContainer/Restart" to="GameOverWindow" method="_on_restart_pressed"]
 [connection signal="focus_exited" from="MainMenu/Buttons/GameStart" to="." method="_on_buttons_toggle"]
 [connection signal="pressed" from="MainMenu/Buttons/GameStart" to="." method="_on_buttons_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/GameStart" to="MainMenu" method="_on_game_start_pressed"]
