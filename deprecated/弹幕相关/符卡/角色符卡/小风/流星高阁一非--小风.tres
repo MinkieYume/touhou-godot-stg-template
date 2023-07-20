@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bxurycq2nosn2"]
+
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/符卡/card_res.gd" id="1_6trs8"]
+
+[resource]
+script = ExtResource("1_6trs8")
+keep_sec = 999999.0
+spellcard_name = ""
+variable_protect = {}

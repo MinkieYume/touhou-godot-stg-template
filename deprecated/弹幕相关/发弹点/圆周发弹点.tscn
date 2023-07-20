@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwqe2s0dq442k"]
+
+[ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://deprecated/弹幕相关/发弹点.tscn" id="1"]
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/发弹点/圆周发弹点.gd" id="2"]
+
+
+[node name="圆周发弹点" instance=ExtResource("1")]
+script = ExtResource("2")
+r = 50
+bullet_number = 1

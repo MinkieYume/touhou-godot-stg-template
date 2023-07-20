@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://deprecated/弹幕相关/符卡/符卡发弹点/方符：摇曳方阵.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://deprecated/弹幕相关/发弹点.tscn" id="2"]
+
+[node name="方符：摇曳方阵" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+cycle = true
+start_sec = 0.0
+bullet_speed = 1.5
+spawn_bullet_type = "方玉"
+way_num = 40
+spawner_radius = 20.0
+spawn_bullet_frame = 10

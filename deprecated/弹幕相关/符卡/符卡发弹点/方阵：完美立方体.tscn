@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://deprecated/弹幕相关/发弹点.tscn" id="1"]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends BulletSpawner
+
+#一个基础的符卡，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+var run_time = 0
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	spawn_bullet_color = randi()%15+1
+	var bullets = get_bullet_group(way_num)
+	bullet_draw_polygon(bullets)
+	spawn_group_of_bullet(bullets)
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	randomize()
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	spawn_bullet_frame -= 5
+	way_num += 8
+	run_time +=1
+	if run_time == 3:
+		spawn_bullet_frame -=10
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+"
+
+[node name="方阵：完美立方体" instance=ExtResource( 1 )]
+script = SubResource( 1 )
+bullet_life = 100
+bullet_speed = 2.0
+spawn_bullet_type = "方玉"
+way_num = 40
+way_rotation = -180.0
+spawner_radius = 200.0
+spawn_bullet_frame = 50

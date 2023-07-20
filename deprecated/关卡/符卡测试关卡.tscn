@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://b15icg2gdc0n0"]
+
+[ext_resource type="PackedScene" path="res://deprecated/弹幕相关/弹幕管理器.tscn" id="2"]
+[ext_resource type="Script" path="res://deprecated/关卡/默认关卡脚本.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://b5miubddjgdb0" path="res://deprecated/弹幕相关/符卡/方块一非.tscn" id="3_4gjfb"]
+[ext_resource type="PackedScene" uid="uid://sw1vi562t4f3" path="res://deprecated/弹幕相关/符卡/棱符：天棱地方.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bfi1eeyo7tvgb" path="res://deprecated/弹幕相关/符卡/方块二非.tscn" id="4_2dpl5"]
+[ext_resource type="PackedScene" uid="uid://dlrgh5rcaxcqf" path="res://deprecated/弹幕相关/符卡/方阵：完美立方体.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://d1bmakohvgygy" path="res://deprecated/弹幕相关/符卡/方符：摇曳方阵.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://doosbpn52hup8" path="res://deprecated/弹幕相关/符卡/范例：波与粒的境界.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://o2n0y8txkeca" path="res://deprecated/掉落物/道具管理器.tscn" id="9_6w5xb"]
+
+
+[sub_resource type="CanvasItemMaterial" id="1"]
+blend_mode = 1
+
+[node name="符卡测试" type="Node2D"]
+script = ExtResource("3")
+
+[node name="自机出生点" type="Marker2D" parent="."]
+position = Vector2(235, 519)
+
+[node name="敌人" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="符卡" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="方块一非" parent="符卡" instance=ExtResource("3_4gjfb")]
+
+[node name="方块二非" parent="符卡" instance=ExtResource("4_2dpl5")]
+
+[node name="范例：波与粒的境界" parent="符卡" instance=ExtResource("7")]
+
+[node name="方符：摇曳方阵" parent="符卡" instance=ExtResource("6")]
+
+[node name="棱符：天棱地方" parent="符卡" instance=ExtResource("4")]
+
+[node name="方阵：完美立方体" parent="符卡" instance=ExtResource("5")]
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+
+[node name="ColorRect" type="ColorRect" parent="Background/ParallaxLayer"]
+offset_right = 480.0
+offset_bottom = 560.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Background/ParallaxLayer"]
+offset_top = -648.0
+offset_right = 480.0
+
+[node name="普通弹幕层" parent="." instance=ExtResource("2")]
+
+[node name="高光弹幕层" parent="." instance=ExtResource("2")]
+z_index = 3
+material = SubResource("1")
+
+[node name="玩家子弹层" parent="." instance=ExtResource("2")]
+z_index = -1
+
+[node name="道具管理器" parent="." instance=ExtResource("9_6w5xb")]
+z_index = 11

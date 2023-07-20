@@ -1,0 +1,206 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcqjrkbdb72t"]
+
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/符卡/角色符卡/小雨/流星高阁小雨一非.gd" id="1_vke8f"]
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/符卡/发弹点组/相对发弹点组.gd" id="2_4nogs"]
+[ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://deprecated/弹幕相关/发弹点.tscn" id="2_yx5s0"]
+[ext_resource type="PackedScene" uid="uid://lakyayu5yndf" path="res://deprecated/弹幕相关/发弹点/发弹点发射器.tscn" id="4_ksvc4"]
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/发弹点配置.gd" id="5_wdek0"]
+
+[sub_resource type="GDScript" id="GDScript_ot6no"]
+resource_name = "全知之书"
+script/source = "extends BulletSpawner
+
+var book_id = 0
+#一个基础的发弹点，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	STGSYS.boss.move(Vector2(1218,randf_range(120.0,600.0)))
+	await STGSYS.boss.move_out
+	var bullets = get_bullet_group(way_num)
+	for bullet in bullets:
+		bullet.no_pic_rotation = true
+		bullet.bullet_tags[\"book_id\"] = book_id
+	set_way_bullet_spawn(bullets)
+	spawn_group_of_bullet(bullets)
+	book_id+=1
+
+
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	pass
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+
+"
+
+[sub_resource type="GDScript" id="GDScript_pd2m4"]
+script/source = "extends SpawnerSpawner
+
+var books = []
+var know_id = 0
+#一个基础的发弹点，继承BulletSpawner
+#当然继承对象也可以改为别的BulletSpawner
+
+#子弹的position分为real_position和position
+#real_position代表应用子弹的position矩阵变换前的position
+#position代表应用矩阵变换后的position
+#如果有考虑要让子弹支持矩阵变换
+#最好只更改real_position
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	await STGSYS.boss.move_out
+	var bullets = get_bullet_group(way_num)
+	for bull in bullets:
+		bull.spawner_tags[\"全知id\"] = know_id
+	set_way_bullet_spawn(bullets)
+	spawn_group_of_bullet(bullets)
+	if spawner_set.spawn_bullet_color < 9:
+		spawner_set.spawn_bullet_color+=1
+	else:
+		spawner_set.spawn_bullet_color = 0
+	spawner_set.way_rotation+=25
+	know_id+=1
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	pass
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	for book in books:
+		if book.bullet_tags[\"book_id\"] == bull.spawner_tags[\"全知id\"]:
+			bull.position = book.position
+
+"
+
+[sub_resource type="Resource" id="Resource_hb13d"]
+script = ExtResource("5_wdek0")
+enable = true
+enable_shoot_bullet = true
+cycle = false
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+bullet_manager_type = 0
+move_start = true
+self_move_start_sec = 0.1
+out_screen_free = true
+speed = 0.0
+aspeed = 0.0
+speed_rotation = 0.0
+aspeed_rotation = 0.0
+bullet_life = 0
+bullet_speed = 3.0
+bullet_aspeed = 0.0
+bullet_aspeed_rotation = 0
+spawn_bullet_type = "书弹"
+spawn_bullet_color = 0
+spawn_bullet_owner = "none"
+bullet_scale = Vector2(1, 1)
+bullet_moving_type = "linear"
+bullet_out_screen_remove = true
+way_num = 10
+way_range = 360.0
+way_rotation = 0.0
+spawner_radius = 32.0
+spawner_radius_rotation = 0.0
+spawn_bullet_frame = 100
+
+[node name="流星高阁小雨一非" type="Node"]
+script = ExtResource("1_vke8f")
+keep_sec = 9000.0
+
+[node name="符卡发弹点" type="Node" parent="."]
+
+[node name="相对发弹点" type="Node2D" parent="符卡发弹点"]
+script = ExtResource("2_4nogs")
+
+[node name="全知之书发射" parent="符卡发弹点/相对发弹点" instance=ExtResource("2_yx5s0")]
+script = SubResource("GDScript_ot6no")
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+bullet_speed = 1.0
+spawn_bullet_type = "书弹"
+spawn_bullet_color = 10
+bullet_scale = Vector2(2, 2)
+way_range = 180.0
+way_rotation = 90.0
+spawn_bullet_frame = 800
+
+[node name="全知之书绑定" parent="符卡发弹点/相对发弹点" instance=ExtResource("4_ksvc4")]
+script = SubResource("GDScript_pd2m4")
+spawner_set = SubResource("Resource_hb13d")
+spawner_type = "BulletSpawner"
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+speed = 0.0
+way_range = 180.0
+way_rotation = 90.0
+spawn_bullet_frame = 800
+
+[node name="符卡遮罩" type="Node" parent="."]
+
+[node name="符卡反射板" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="测试背景" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

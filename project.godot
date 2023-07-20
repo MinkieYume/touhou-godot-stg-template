@@ -27,15 +27,15 @@ instance_dock/scenes=[{
 [application]
 
 config/name="东方弹幕绘"
-run/main_scene="res://东方弹幕绘.tscn"
+run/main_scene="res://scenes/main/东方弹幕绘.tscn"
 config/features=PackedStringArray("4.1")
-config/icon="res://icon.png"
+config/icon="res://assets/image/icon.png"
 
 [autoload]
 
-STGSYS="*res://STGSYS.gd"
-RS="*res://RSLOADER.gd"
-RC="*res://replay_recorder.gd"
+STGSYS="*res://global/STGSYS.gd"
+RS="*res://global/RSLOADER.gd"
+RC="*res://global/replay_recorder.gd"
 
 [debug]
 

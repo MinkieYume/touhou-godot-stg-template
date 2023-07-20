@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0cggmb8tcqan"]
+
+[ext_resource type="PackedScene" uid="uid://efqimko7ykdr" path="res://战斗系统/弹幕相关/符卡/基础符卡.tscn" id="1_r6hu6"]
+[ext_resource type="Script" path="res://战斗系统/弹幕相关/符卡/角色符卡/小风/风技--魔法少女小风.gd" id="2_bbivb"]
+[ext_resource type="Resource" uid="uid://d1omq51w37b8k" path="res://战斗系统/弹幕相关/符卡/角色符卡/小风/风技--魔法少女小风.tres" id="3_7kfjq"]
+[ext_resource type="PackedScene" uid="uid://cv6rw3rasv4h8" path="res://战斗系统/弹幕相关/发弹点.tscn" id="3_owe86"]
+[ext_resource type="PackedScene" uid="uid://co11505gralfe" path="res://战斗系统/弹幕相关/发弹点/自机狙发弹点.tscn" id="4_kxcbr"]
+
+[sub_resource type="GDScript" id="GDScript_8k2by"]
+resource_name = "雏翼发弹点"
+script/source = "extends BulletSpawner
+
+func bullet_spawn_logic():
+	#重写该函数以自定义生成子弹初始设定
+	#也可以重写生成子弹前运行的逻辑
+	#每次发射子弹的时候运行
+	var bullets = get_bullet_group(way_num)
+	for bullet in bullets:
+		bullet.bullet_tags[\"init_pos\"] = position
+	set_way_bullet_spawn(bullets)
+	spawn_group_of_bullet(bullets)
+
+func _on_ready():
+	#该发弹点加载好的时候运行
+	pass
+
+func _on_end():
+	#发射结束时候运行一次
+	#如果neverend为true则永远不会运行该方法
+	#如果cycle为true则代表每次循环结束时运行一次
+	pass
+
+func self_run_logic():
+	#自己的运行逻辑
+	#每帧运行一次
+	if frame % spawn_bullet_frame == 0:
+		#该条件判断代表的是：
+		#判定每次发射子弹前运行
+		#注意：way数代表的是一次同时发射的子弹数
+		pass
+
+func bullet_run_logic(bull,delta):
+	#子弹的运行逻辑
+	#如果屏幕总子弹数为n的话，则每帧运行n次
+	#在self_run_logic之后运行
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_6jx0d"]
+resource_name = "扳手自机狙发弹点"
+script/source = "extends BulletSpawner
+#自机狙相关配置
+@export var lock_aim_direction = false #锁定自机狙的方向，即只在发射时获取一次玩家方向
+@export var bullet_aim = true #是否是子弹瞄准玩家的自机狙
+
+func bullet_spawn_logic():
+	player = STGSYS.player
+	spawn_bullet_color = randi_range(0,9)
+	var direction = get_global_position().direction_to(player.get_global_position())
+	var bullets = get_bullet_group(way_num)
+	if !lock_aim_direction and bullet_aim:
+		#若未锁定自机狙方向，则每个子弹都会获取一次玩家方向
+		way_rotation = rad_to_deg(Vector2.DOWN.angle_to(direction))
+	set_way_bullet_spawn(bullets)
+	spawn_group_of_bullet(bullets)
+
+func _on_StartTimer_timeout():
+	if lock_aim_direction and bullet_aim:
+		#若锁定自机狙方向，则只在发射时获取一次玩家方向
+		var direction = get_global_position().direction_to(player.get_global_position())
+		way_rotation = rad_to_deg(Vector2.DOWN.angle_to(direction))
+	shoot()
+	$EndTimer.start()
+"
+
+[node name="魔法少女小风" instance=ExtResource("1_r6hu6")]
+script = ExtResource("2_bbivb")
+spell_card_res = ExtResource("3_7kfjq")
+keep_sec = 999999.0
+spellcard_name = "风技「魔法少女小风」"
+
+[node name="扳手发弹点1" parent="符卡发弹点" index="0" instance=ExtResource("3_owe86")]
+position = Vector2(1270, 560)
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+bullet_speed = 4.0
+spawn_bullet_type = "扳手弹"
+spawn_bullet_color = 1
+way_rotation = 90.0
+spawn_bullet_frame = 20
+
+[node name="扳手发弹点2" parent="符卡发弹点" index="1" instance=ExtResource("3_owe86")]
+position = Vector2(10, 160)
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+bullet_speed = 4.0
+spawn_bullet_type = "扳手弹"
+spawn_bullet_color = 1
+way_rotation = -90.0
+spawn_bullet_frame = 20
+
+[node name="雏翼发弹点1" parent="符卡发弹点" index="2" instance=ExtResource("3_owe86")]
+position = Vector2(10, 80)
+script = SubResource("GDScript_8k2by")
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+spawn_bullet_type = "雏翼弹"
+bullet_moving_type = "sinx"
+bullet_sin_amplitude = 10.0
+bullet_sin_period = 0.125
+way_rotation = -90.0
+spawn_bullet_frame = 20
+
+[node name="雏翼发弹点2" parent="符卡发弹点" index="3" instance=ExtResource("3_owe86")]
+position = Vector2(1270, 640)
+script = SubResource("GDScript_8k2by")
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+spawn_bullet_type = "雏翼弹"
+bullet_moving_type = "sinx"
+bullet_sin_amplitude = 10.0
+bullet_sin_period = 0.125
+way_rotation = 90.0
+spawn_bullet_frame = 20
+
+[node name="扳手自机狙发弹点" parent="符卡发弹点" index="4" instance=ExtResource("4_kxcbr")]
+script = SubResource("GDScript_6jx0d")
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+spawn_bullet_type = "扳手弹"
+spawn_bullet_frame = 20
+rotate_bullet = true
+
+[node name="雏翼自机狙发弹点" parent="符卡发弹点" index="5" instance=ExtResource("4_kxcbr")]
+lock_aim_direction = true
+start_sec = 0.0
+end_sec = 0.0
+never_end = true
+spawn_bullet_type = "雏翼弹"
+way_num = 10
+spawn_bullet_frame = 80
+
+[node name="BossPos" type="Marker2D" parent="符卡敌机" index="0"]
+position = Vector2(1200, 360)
+
+[node name="FuuStopTimer" type="Timer" parent="." index="6"]
+wait_time = 5.0
+one_shot = true

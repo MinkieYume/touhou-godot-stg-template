@@ -1,0 +1,286 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2x86ewor0p62"]
+
+[ext_resource type="FontFile" uid="uid://c44n1uvn6kupv" path="res://assets/font/VonwaonBitmap-12px.ttf" id="2_55vx8"]
+[ext_resource type="Texture2D" uid="uid://dir83bd4m2clj" path="res://deprecated/机体/Boss/Boss_01.png" id="2_uj8mm"]
+[ext_resource type="Script" path="res://scenes/ui/UI.gd" id="3"]
+[ext_resource type="StyleBox" uid="uid://734qnxu3yk10" path="res://assets/resource/spell_name_container.tres" id="3_eq4ti"]
+
+
+[sub_resource type="Shader" id="Shader_jdocf"]
+code = "shader_type canvas_item;
+
+uniform float alpha=1.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	COLOR = mix(color,vec4(1,1,1,1),0.8);
+	COLOR.a = alpha;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ioipt"]
+shader = SubResource("Shader_jdocf")
+shader_parameter/alpha = 1.0
+
+[sub_resource type="Shader" id="Shader_wp8y2"]
+code = "shader_type canvas_item;
+
+uniform float alpha = 0.1;
+
+void fragment() {
+	COLOR;
+	COLOR.a = COLOR.a *alpha;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a5coa"]
+shader = SubResource("Shader_wp8y2")
+shader_parameter/alpha = 0.1
+
+[sub_resource type="Animation" id="Animation_co8e2"]
+resource_name = "立绘淡出与字幕移动"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpellCardShow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(440, 280), Vector2(440, 12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss立绘:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss立绘:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(143, 143), Vector2(207, 207)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boss立绘:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(336, 180), Vector2(272, 116)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpellCardShow:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boss立绘:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_y5ili"]
+resource_name = "立绘移动与字幕淡入"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpellCardShow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss立绘:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(481, 180), Vector2(336, 180)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpellCardShow/SpellCardName:material:shader_parameter/alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpellCardShow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(440, 280)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boss立绘:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(143, 143)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boss立绘:material:shader_parameter/alpha")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Boss立绘:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpellCardShow:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f6nk3"]
+_data = {
+"立绘淡出与字幕移动": SubResource("Animation_co8e2"),
+"立绘移动与字幕淡入": SubResource("Animation_y5ili")
+}
+
+[node name="UI" type="CanvasLayer"]
+offset = Vector2(16, 14)
+transform = Transform2D(1, 0, 0, 1, 16, 14)
+script = ExtResource("3")
+
+[node name="测试背景" type="ColorRect" parent="."]
+offset_right = 480.0
+offset_bottom = 560.0
+color = Color(0, 0, 0, 1)
+
+[node name="HpContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 70.0
+offset_top = 3.0
+offset_right = 70.0
+offset_bottom = 3.0
+
+[node name="Boss立绘" type="TextureRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ioipt")
+offset_left = 336.0
+offset_top = 180.0
+offset_right = 479.0
+offset_bottom = 323.0
+texture = ExtResource("2_uj8mm")
+
+[node name="SpellCardShow" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 440.0
+offset_top = 280.0
+offset_right = 440.0
+offset_bottom = 299.0
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
+
+[node name="SpellCardName" type="Label" parent="SpellCardShow"]
+material = SubResource("ShaderMaterial_a5coa")
+custom_minimum_size = Vector2(0, 17)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -8.5
+offset_bottom = 8.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_55vx8")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = ExtResource("3_eq4ti")
+text = "一定要赢得胜利"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f6nk3")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

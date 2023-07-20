@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://deprecated/弹幕相关/弹幕管理器.gd" id="1_ia073"]
+
+
+[node name="弹幕管理器" type="Node2D"]
+z_index = 7
+script = ExtResource("1_ia073")

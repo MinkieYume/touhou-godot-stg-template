@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="SpriteFrames" uid="uid://dkdspdapwonog" path="res://deprecated/弹幕相关/子弹样式组.tres" id="1"]
+[ext_resource type="Shape2D" uid="uid://dumc5t8lw5i5o" path="res://deprecated/弹幕相关/子弹碰撞/中玉.tres" id="2"]
+[ext_resource type="Shape2D" uid="uid://cods3xfpficvs" path="res://deprecated/弹幕相关/子弹碰撞/小玉.tres" id="3"]
+[ext_resource type="Shape2D" uid="uid://coucf8ho0xnw3" path="res://deprecated/弹幕相关/子弹碰撞/方玉.tres" id="4"]
+[ext_resource type="Shape2D" uid="uid://cmb625db2kmjv" path="res://deprecated/弹幕相关/子弹碰撞/激光.tres" id="6_d7hxj"]
+[ext_resource type="Shape2D" uid="uid://c3divcn4bvix0" path="res://deprecated/弹幕相关/子弹碰撞/书弹.tres" id="6_lx21n"]
+[ext_resource type="Shape2D" uid="uid://cjle15hf8ojly" path="res://deprecated/弹幕相关/子弹碰撞/扳手弹.tres" id="6_smyl6"]
+[ext_resource type="Shape2D" uid="uid://cshummydoda7h" path="res://deprecated/弹幕相关/子弹碰撞/棱弹.tres" id="7"]
+[ext_resource type="Shape2D" uid="uid://bbf2qsgiespgj" path="res://deprecated/弹幕相关/子弹碰撞/判定线.tres" id="9_rfsf6"]
+[ext_resource type="Shape2D" uid="uid://b3iywk21qyrek" path="res://deprecated/弹幕相关/子弹碰撞/星弹.tres" id="10_m4tku"]
+
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_1xwpn"]
+points = PackedVector2Array(0, -9, -4, -3, -4, 7, -3, 8, 3, 8, 4, 7, 4, -3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+frames = ExtResource("1")
+animation = &"雏翼弹"
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="碰撞形状" type="Node" parent="."]
+
+[node name="中玉" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource("2")
+
+[node name="小玉" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource("3")
+
+[node name="方玉" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource("4")
+
+[node name="米玉" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource("7")
+
+[node name="激光" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource("6_d7hxj")
+
+[node name="棱弹" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource("7")
+
+[node name="扳手弹" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource("6_smyl6")
+
+[node name="书弹" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource("6_lx21n")
+
+[node name="判定线" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource("9_rfsf6")
+
+[node name="星弹" type="CollisionShape2D" parent="碰撞形状"]
+visible = false
+shape = ExtResource("10_m4tku")
+
+[node name="雏翼弹" type="CollisionShape2D" parent="碰撞形状"]
+position = Vector2(0, 1)
+shape = SubResource("ConvexPolygonShape2D_1xwpn")

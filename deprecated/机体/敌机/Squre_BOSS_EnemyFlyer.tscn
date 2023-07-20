@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" uid="uid://c5634a0dfaffs" path="res://deprecated/机体/敌机/默认敌机.tscn" id="1"]
+
+
+[node name="SqureBossEnemyFlyer" instance=ExtResource( 1 )]
+
+[node name="ColorRect" parent="." index="0"]
+color = Color( 0.0235294, 0.0156863, 1, 1 )

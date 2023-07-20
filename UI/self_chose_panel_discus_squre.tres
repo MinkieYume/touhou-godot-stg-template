@@ -1,9 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ng434208a7ed"]
-
-[ext_resource type="FontFile" uid="uid://c5o8vt8loqopj" path="res://字体/WenQuanDianZhenZhengHei-1.ttf" id="1_sb6x3"]
-
-[resource]
-font = ExtResource("1_sb6x3")
-font_size = 24
-shadow_size = 4
-shadow_color = Color(0, 0, 0, 0.403922)

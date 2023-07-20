@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://65dplqqp1b0l"]
+
+[ext_resource type="FontFile" uid="uid://c44n1uvn6kupv" path="res://assets/font/VonwaonBitmap-12px.ttf" id="1_5b45r"]
+
+
+[resource]
+font = ExtResource("1_5b45r")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
