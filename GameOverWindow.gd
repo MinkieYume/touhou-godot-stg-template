@@ -20,6 +20,8 @@ func _ready():
 
 func _on_gameover():
 	visible = true
+	RC.start = false
+	print(RC.input)
 	get_node("/root/东方弹幕绘/UI").show_boss_hp = false
 	get_node("/root/东方弹幕绘/UI").remove_hp_bars()
 	reset_focus()

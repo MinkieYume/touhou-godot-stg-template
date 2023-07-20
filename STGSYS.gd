@@ -49,6 +49,8 @@ var player = null #当前玩家操控的自机
 var boss = null #当前boss
 var level = null #当前level
 var UI = null
+var special = false
+var bomb_use = false
 
 signal update_life #生命数更新
 signal update_bomb #炸弹数更新
@@ -95,6 +97,7 @@ func remove_boss():
 func set_level(node,flyer_name):
 	node.load_flyer(flyer_name)
 	level = node
+	RC.start = true
 	
 func get_level():
 	return level
@@ -178,9 +181,14 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("bomb"):
 		if bomb > 0:
 			emit_signal("use_bomb")
+			bomb_use = true
 			decrease_bomb()
+	if Input.is_action_just_released("bomb"):
+		bomb_use = false
 	if Input.is_action_just_pressed("special"):
-		pass
+		special = true
+	if Input.is_action_just_released("special"):
+		special = false
 	
 	fxInput()
 

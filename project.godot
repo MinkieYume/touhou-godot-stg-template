@@ -35,6 +35,7 @@ config/icon="res://icon.png"
 
 STGSYS="*res://STGSYS.gd"
 RS="*res://RSLOADER.gd"
+RC="*res://replay_recorder.gd"
 
 [debug]
 
