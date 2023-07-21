@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1689922424
+::res://::1689931311
 README.md::TextFile::-1::1688561766::0::1::::<><>::
 更新档函数表.txt::TextFile::-1::1676460373::0::1::::<><>::
 ::res://addons/::1689922386
@@ -39,8 +39,8 @@ LaserBeam.tscn::PackedScene::3143420983640885672::1682507664::0::1::::<><>::res:
 Bullet_3.png::CompressedTexture2D::5206438139599800395::1682507664::1689922401::1::::<><>::
 Bullet_06.png::CompressedTexture2D::3044870448777782854::1682507664::1689922401::1::::<><>::
 Bullet_11.png::CompressedTexture2D::9208460842262867385::1682507664::1689922400::1::::<><>::
-::res://addons/BulletUpHell/ExampleScenes/::1689922387
-Example1_Pattern_Types.tscn::PackedScene::6295888557719670333::1682507664::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/ExampleScene.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomPoints.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomShape.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomArea.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BulletProps.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd
+::res://addons/BulletUpHell/ExampleScenes/::1689922448
+Example1_Pattern_Types.tscn::PackedScene::6295888557719670333::1689922448::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/ExampleScene.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomPoints.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomShape.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomArea.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BulletProps.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd
 Example2_Pattern_Properties.tscn::PackedScene::4813181636554972273::1682507664::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/ExampleScene.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BulletProps.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd
 Example3_Cooldowns.tscn::PackedScene::2198374860434909842::1682507664::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/ExampleScene.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BulletProps.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd
 Example4_Bullet_Customisation.tscn::PackedScene::6527188153252803814::1682507664::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/ExampleScene.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BulletProps.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd
@@ -169,9 +169,9 @@ difficult_panel.gdshader::Shader::-1::1689592137::0::1::::<><>::
 difficult_panel_font.gdshader::Shader::-1::1689592137::0::1::::<><>::
 ::res://core/::1689848837
 Util.gd::GDScript::-1::1689592137::0::1::::Util<>Node<>::
-::res://core/player/::1689922357
+::res://core/player/::1689922448
 player.gd::GDScript::-1::1689851456::0::1::::Player<>CharacterBody2D<>::
-player.tscn::PackedScene::3285322680788105748::1689922357::0::1::::<><>::res://core/player/player.gd<>res://deprecated/机体/自机/自机判定点.gd<>res://deprecated/机体/自机/GrazeArea.gd
+player.tscn::PackedScene::3285322680788105748::1689922448::0::1::::<><>::res://core/player/player.gd<>res://deprecated/机体/自机/自机判定点.gd<>res://deprecated/机体/自机/GrazeArea.gd
 ::res://deprecated/::1689848315
 ::res://deprecated/关卡/::1689848315
 关卡模板.tscn::PackedScene::7864827975115774988::1689848315::0::1::::<><>::res://deprecated/弹幕相关/弹幕管理器.tscn<>res://deprecated/关卡/默认关卡脚本.gd

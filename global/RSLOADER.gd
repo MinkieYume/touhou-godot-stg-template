@@ -51,44 +51,45 @@ signal load_finish
 #	"默认自机4":preload("res://机体/自机/默认自机4.tscn")
 #}
 
-#var self_flyer_menu = {
-#	"A机小方":{
-#		"标题效果":preload("res://UI/self_chose_panel_title1_squre.tres"),
-#		"图片":preload("res://机体/自机/A Square.png"),
-#		"称号效果":preload("res://UI/self_chose_panel_title2_squre.tres"),
-#		"称号":"非常可爱的方形",
-#		"介绍":\
-#"""不管怎么说，总之就是非常可爱的方形
-#容易被方块王国的怪物盯上
-#比较擅长追踪大范围攻击""",
-#		"介绍效果":preload("res://UI/self_chose_panel_discus_squre.tres"),
-#		"机体列表":{
-#			"买萌型":[preload("res://UI/spellcard_title.tres"),"一点都不萌的机型，还需要特地买萌",preload("res://UI/spell_card_discus.tres"),"默认自机"],
-#			"卖萌型":[preload("res://UI/spellcard_title.tres"),"除了卖萌之外没什么用的机型",preload("res://UI/spell_card_discus.tres"),"默认自机2"],
-#		},
-#	},
-#	"B机小圆":{
-#		"标题效果":preload("res://UI/self_chose_panel_title1_squre.tres"),
-#		"图片":preload("res://机体/自机/A Round.png"),
-#		"称号":"粉嫩少女小圆",
-#		"称号效果":preload("res://UI/self_chose_panel_title2_round.tres"),
-#		"介绍":\
-#"""小圆我啊，可是粉嫩的美少女哦！
-#粉粉的魔法少女，擅长格斗和狙击""",
-#		"介绍效果":preload("res://UI/self_chose_panel_discus_squre.tres"),
-#		"机体列表":{
-#			"狙击型":[preload("res://UI/spellcard_title.tres"),"适合远程小范围攻击的机型",preload("res://UI/spell_card_discus.tres"),"默认自机3"],
-#			"格斗型":[preload("res://UI/spellcard_title.tres"),"适合近战小范围攻击的机型",preload("res://UI/spell_card_discus.tres"),"默认自机4"],
-#		},
-#	}
-#}
+var self_flyer_menu = {
+	"A机小方":{
+		"标题效果":preload("res://assets/resource/self_chose_panel_title1_squre.tres"),
+		"图片":preload("res://deprecated/机体/自机/A Square.png"),
+		"称号效果":preload("res://assets/resource/self_chose_panel_title2_squre.tres"),
+		"称号":"非常可爱的方形",
+		"介绍":\
+"""不管怎么说，总之就是非常可爱的方形
+容易被方块王国的怪物盯上
+比较擅长追踪大范围攻击""",
+		"介绍效果":preload("res://assets/resource/self_chose_panel_discus_squre.tres"),
+		"机体列表":{
+			"买萌型":[preload("res://assets/resource/spellcard_title.tres"),"一点都不萌的机型，还需要特地买萌",preload("res://assets/resource/spell_card_discus.tres"),"默认自机"],
+			"卖萌型":[preload("res://assets/resource/spellcard_title.tres"),"除了卖萌之外没什么用的机型",preload("res://assets/resource/spell_card_discus.tres"),"默认自机2"],
+		},
+	},
+	"B机小圆":{
+		"标题效果":preload("res://assets/resource/self_chose_panel_title1_squre.tres"),
+		"图片":preload("res://deprecated/机体/自机/A Round.png"),
+		"称号":"粉嫩少女小圆",
+		"称号效果":preload("res://assets/resource/self_chose_panel_title2_round.tres"),
+		"介绍":\
+"""小圆我啊，可是粉嫩的美少女哦！
+粉粉的魔法少女，擅长格斗和狙击""",
+		"介绍效果":preload("res://assets/resource/self_chose_panel_discus_squre.tres"),
+		"机体列表":{
+			"狙击型":[preload("res://assets/resource/spellcard_title.tres"),"适合远程小范围攻击的机型",preload("res://assets/resource/spell_card_discus.tres"),"默认自机3"],
+			"格斗型":[preload("res://assets/resource/spellcard_title.tres"),"适合近战小范围攻击的机型",preload("res://assets/resource/spell_card_discus.tres"),"默认自机4"],
+		},
+	}
+}
 
-#var spellcard_practices = [
-#	{"name":"符卡名",
-#	 "level":"默认测试",
-#	 "unlocked":true},
-#
-#]
+var spellcard_practices = [
+	{
+		"name":"符卡名",
+		 "level":"默认测试",
+		 "unlocked":true,
+	},
+]
 
 #var diff_levels = {
 #	"easy":["默认测试","默认测试","默认测试","默认测试","默认测试","默认测试"],

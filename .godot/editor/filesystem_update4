@@ -1,2 +1,3 @@
-res://addons/BulletUpHell/ExampleScenes/Example1_Pattern_Types.tscn
+res://addons/BulletUpHell/ExampleScenes/PlayerTest.tscn
 res://core/player/player.tscn
+res://global/RSLOADER.gd

@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://buhyhagppfrot"]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 9, 317 )
+[ext_resource type="Script" path="res://addons/BulletUpHell/ExampleScenes/PlayerTest.gd" id="1_hrt2a"]
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(18, 634)
 
 [node name="PlayerTest" type="Area2D"]
+script = ExtResource("1_hrt2a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 307 )
-shape = SubResource( 2 )
+position = Vector2(-1, 307)
+shape = SubResource("2")
