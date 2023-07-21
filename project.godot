@@ -36,6 +36,7 @@ config/icon="res://assets/image/icon.png"
 STGSYS="*res://global/STGSYS.gd"
 RS="*res://global/RSLOADER.gd"
 RC="*res://global/replay_recorder.gd"
+Spawning="*res://addons/BulletUpHell/Spawning.tscn"
 
 [debug]
 
@@ -47,6 +48,10 @@ window/size/viewport_width=800
 window/size/viewport_height=600
 window/stretch/mode="viewport"
 window/size/width=800
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/BulletUpHell/plugin.cfg")
 
 [importer_defaults]
 
