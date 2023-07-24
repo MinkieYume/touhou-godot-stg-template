@@ -1,2 +1,4 @@
-res://addons/BulletUpHell/ExampleScenes/Example1_Pattern_Types.tscn
+res://scenes/spellcards/squrecard - moving_squre.tscn
 res://core/player/player.tscn
+res://addons/BulletUpHell/ExampleScenes/Example1_Pattern_Types.tscn
+res://core/enemy/enemy.tscn

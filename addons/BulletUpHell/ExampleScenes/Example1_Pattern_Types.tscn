@@ -567,7 +567,7 @@ auto_distance_from = NodePath("")
 trigger_container = NodePath("")
 
 [node name="SpawnPoint6" type="Node2D" parent="SpawnPoints"]
-position = Vector2(746, 465)
+position = Vector2(775.003, 548.997)
 script = ExtResource("11_iv1jv")
 active = true
 auto_pattern_id = "area"
