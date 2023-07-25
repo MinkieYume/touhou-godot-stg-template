@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1690180720
+::res://::1690265829
 README.md::TextFile::-1::1680316530::0::1::::<><>::
 更新档函数表.txt::TextFile::-1::1680316530::0::1::::<><>::
 ::res://addons/::1689922331
@@ -39,8 +39,8 @@ LaserBeam.tscn::PackedScene::3143420983640885672::1689922331::0::1::::<><>::res:
 Bullet_3.png::CompressedTexture2D::5206438139599800395::1689922331::1689922778::1::::<><>::
 Bullet_06.png::CompressedTexture2D::3044870448777782854::1689922331::1689922778::1::::<><>::
 Bullet_11.png::CompressedTexture2D::9208460842262867385::1689922331::1689922778::1::::<><>::
-::res://addons/BulletUpHell/ExampleScenes/::1689928178
-Example1_Pattern_Types.tscn::PackedScene::6295888557719670333::1689928178::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/ExampleScene.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomPoints.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomShape.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomArea.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BulletProps.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd
+::res://addons/BulletUpHell/ExampleScenes/::1690265935
+Example1_Pattern_Types.tscn::PackedScene::6295888557719670333::1690265935::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/ExampleScene.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomPoints.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomShape.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomArea.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BulletProps.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd
 Example2_Pattern_Properties.tscn::PackedScene::4813181636554972273::1689922331::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/ExampleScene.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BulletProps.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd
 Example3_Cooldowns.tscn::PackedScene::2198374860434909842::1689922331::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/ExampleScene.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BulletProps.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd
 Example4_Bullet_Customisation.tscn::PackedScene::6527188153252803814::1689922331::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/ExampleScene.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BulletProps.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd
@@ -49,7 +49,7 @@ Example6_Triggers.tscn::PackedScene::196553393859974850::1689922331::0::1::::<><
 Example7_SpawnScenes.tscn::PackedScene::7819917591385939960::1689922331::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/ExampleScene.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/ObjectProps.gd<>res://addons/BulletUpHell/BulletNodeProps.gd<>res://addons/BulletUpHell/BuHInstanceLister.gd<>uid://dmmjrd3hnwewq
 ExampleScene.gd::GDScript::-1::1689922331::0::1::::<>Node2D<>::
 PlayerTest.gd::GDScript::-1::1689922331::0::1::::<>Area2D<>::
-PlayerTest.tscn::PackedScene::-1::1689922331::0::1::::<><>::
+PlayerTest.tscn::PackedScene::3806117919086516139::1690181145::0::1::::<><>::res://addons/BulletUpHell/ExampleScenes/PlayerTest.gd
 ::res://addons/BulletUpHell/SpawnPatterns/::1689922331
 PatternCircle.gd::GDScript::-1::1689922331::0::1::::PatternCircle<>NavigationPolygon<>res://addons/BulletUpHell/Sprites/NodeIcons6.png::
 PatternCustomArea.gd::GDScript::-1::1689922331::0::1::::PatternCustomArea<>NavigationPolygon<>res://addons/BulletUpHell/Sprites/NodeIcons17.png::
@@ -169,11 +169,12 @@ difficult_panel.gdshader::Shader::-1::1689851429::0::1::::<><>::
 difficult_panel_font.gdshader::Shader::-1::1689851429::0::1::::<><>::
 ::res://core/::1689923746
 Util.gd::GDScript::-1::1689851429::0::1::::Util<>Node<>::
-::res://core/enemy/::1689928178
-enemy.tscn::PackedScene::1705321982648997342::1689928178::0::1::::<><>::
-::res://core/player/::1689928178
+::res://core/enemy/::1690265940
+enemy.gd::GDScript::-1::1690189411::0::1::::<>Area2D<>::
+enemy.tscn::PackedScene::1705321982648997342::1690265940::0::1::::<><>::uid://cc7ayqgnxnju7::::res://assets/image/icon.png<>res://core/enemy/enemy.gd
+::res://core/player/::1690181121
 player.gd::GDScript::-1::1689851429::0::1::::Player<>CharacterBody2D<>::
-player.tscn::PackedScene::3285322680788105748::1689928178::0::1::::<><>::res://core/player/player.gd<>res://deprecated/机体/自机/自机判定点.gd<>res://deprecated/机体/自机/GrazeArea.gd
+player.tscn::PackedScene::3285322680788105748::1690181121::0::1::::<><>::res://core/player/player.gd<>res://deprecated/机体/自机/自机判定点.gd<>res://deprecated/机体/自机/GrazeArea.gd
 ::res://deprecated/::1689851429
 ::res://deprecated/关卡/::1689851429
 关卡模板.tscn::PackedScene::7864827975115774988::1689851429::0::1::::<><>::res://deprecated/弹幕相关/弹幕管理器.tscn<>res://deprecated/关卡/默认关卡脚本.gd
@@ -319,16 +320,16 @@ GrazeArea.gd::GDScript::-1::1689851429::0::1::::<>Area2D<>::
 默认炸弹.tscn::PackedScene::2384538560185067953::1689851429::0::1::::<><>::res://deprecated/炸弹/默认炸弹.gd<>res://deprecated/炸弹/默认炸弹发弹点.tscn
 默认炸弹发弹点.gd::GDScript::-1::1689851429::0::1::::<>BulletSpawnerBomb<>::
 默认炸弹发弹点.tscn::PackedScene::-1::1689851429::0::1::::<><>::res://deprecated/弹幕相关/发弹点/炸弹发弹点.tscn<>res://deprecated/炸弹/默认炸弹发弹点.gd
-::res://global/::1689922325
+::res://global/::1690181145
 replay_recorder.gd::GDScript::-1::1689851429::0::1::::<>Node<>::
-RSLOADER.gd::GDScript::-1::1689922325::0::1::::<>Node<>::
+RSLOADER.gd::GDScript::-1::1690181145::0::1::::<>Node<>::
 STGSYS.gd::GDScript::-1::1689851429::0::1::::<>Node<>::
 ::res://replay/::1689834918
 ::res://scenes/::1689924991
 ::res://scenes/hp_bar/::1689851429
 HpBar.tscn::PackedScene::-1::1689851429::0::1::::<><>::uid://cfgh6gf61y6lg
 HpBarRed.tscn::PackedScene::-1::1689851429::0::1::::<><>::uid://bixqbklug0vvk
-::res://scenes/main/::1689851429
+::res://scenes/main/::1690265935
 difficult_panel.gd::GDScript::-1::1689851429::0::1::::<>Panel<>::
 GameOverWindow.gd::GDScript::-1::1689851429::0::1::::<>Panel<>::
 GameWindow.gd::GDScript::-1::1689851429::0::1::::<>Panel<>::
@@ -342,10 +343,10 @@ SelfChose.gd::GDScript::-1::1689851429::0::1::::<>Control<>::
 SpellCardPracticeChose.gd::GDScript::-1::1689851429::0::1::::<>Control<>::
 spellcard_button.gd::GDScript::-1::1689851429::0::1::::<>Button<>::
 Spellcard_Chose.gd::GDScript::-1::1689851429::0::1::::<>Panel<>::
-东方弹幕绘.tscn::PackedScene::772722924073529600::1689851429::0::1::::<><>::uid://bfulrtgnpdxb5
-::res://scenes/spellcards/::1689928230
+东方弹幕绘.tscn::PackedScene::772722924073529600::1690265935::0::1::::<><>::uid://bfulrtgnpdxb5::::res://assets/font/进度条文本.tres<>res://scenes/main/main.gd<>res://assets/font/标题.tres<>res://assets/font/number.tres<>uid://d2x86ewor0p62::::res://scenes/ui/UI.tscn<>res://assets/font/分数标题.tres<>uid://brtxymjhomfrl::::res://assets/image/P_Point.png<>res://scenes/main/NumberPanel.gd<>uid://wnvy23lfk22n::::res://assets/image/Point.png<>res://scenes/main/GameWindow.gd<>uid://wnltn64cscho::::res://assets/image/生命心值.png<>uid://db27h2qfhkxhi::::res://assets/image/符卡值.png<>uid://c5o8vt8loqopj::::res://assets/font/WenQuanDianZhenZhengHei-1.ttf<>uid://kcop8uhva3ey::::res://assets/resource/GameWindow配色.tres<>res://scenes/main/GameOverWindow.gd<>res://scenes/main/MainMenu.gd<>uid://cqaf3f2x2dgg8::::res://assets/font/VonwaonBitmap-16px.ttf<>uid://c44n1uvn6kupv::::res://assets/font/VonwaonBitmap-12px.ttf<>res://scenes/main/HardPanels.gd<>res://scenes/main/difficult_panel.gd<>res://assets/shader/difficult_panel.gdshader<>uid://h25cxnkvn8hj::::res://assets/resource/difficult_panel.tres<>uid://bmwy0x7fskwo::::res://deprecated/机体/自机/A Square.png<>res://scenes/main/SelfChose.gd<>uid://l67qcxfjtn70::::res://assets/resource/self_chose_panel_title2_squre.tres<>uid://ccq8108411owj::::res://deprecated/机体/自机/A Round.png<>uid://xg6xkg03cqkb::::res://assets/resource/self_chose_panel_title1_squre.tres<>uid://ng434208a7ed::::res://assets/resource/self_chose_panel_discus_squre.tres<>uid://catdlal5xu5sw::::res://assets/resource/self_chose_panel_title2_round.tres<>res://scenes/main/Spellcard_Chose.gd<>uid://rn4noi27mi6::::res://assets/resource/spellcard_title.tres<>uid://65dplqqp1b0l::::res://assets/resource/spell_card_discus.tres<>res://scenes/main/PraticeChose.gd<>res://scenes/main/practice_levelchose_button.gd<>res://scenes/main/SpellCardPracticeChose.gd<>res://scenes/main/spellcard_button.gd<>uid://c0culew7ap6gs::::res://assets/audio/SE/toggle_003.wav<>uid://cdn4s2l4rohgl::::res://assets/audio/SE/select_003.wav<>uid://chouswpba0p6h::::res://assets/audio/SE/back_003.wav
+::res://scenes/spellcards/::1690265935
 squrecard - moving_squre.gd::GDScript::-1::1689925231::0::1::::<>Node2D<>::
-squrecard - moving_squre.tscn::PackedScene::5289775607020582585::1689928230::0::1::::<><>::res://scenes/spellcards/squrecard - moving_squre.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomPoints.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd<>res://addons/BulletUpHell/BulletProps.gd
+squrecard - moving_squre.tscn::PackedScene::5289775607020582585::1690265935::0::1::::<><>::res://scenes/spellcards/squrecard - moving_squre.gd<>res://addons/BulletUpHell/BuHBulletProperties.gd<>res://addons/BulletUpHell/BuHPattern.gd<>res://addons/BulletUpHell/SpawnPatterns/PatternCustomPoints.gd<>res://addons/BulletUpHell/BuHSpawnPoint.gd<>res://addons/BulletUpHell/BulletProps.gd
 ::res://scenes/ui/::1689851429
 UI.gd::GDScript::-1::1689851429::0::1::::<>CanvasLayer<>::
 UI.tscn::PackedScene::9103900782760809869::1689851429::0::1::::<><>::uid://c44n1uvn6kupv

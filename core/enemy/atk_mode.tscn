@@ -1,37 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://chmn3jdocun7f"]
+[gd_scene load_steps=13 format=3 uid="uid://ddgmx5x6x7jtn"]
 
-[ext_resource type="Script" path="res://scenes/spellcards/squrecard - moving_squre.gd" id="1_hb2rt"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/BuHBulletProperties.gd" id="2_cq2of"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/BuHPattern.gd" id="2_s3ya0"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCustomPoints.gd" id="3_41n0g"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/BuHSpawnPoint.gd" id="3_eug8h"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="3_ncbic"]
+[ext_resource type="Script" path="res://core/enemy/atk_mode.gd" id="1_xxtdw"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BuHPattern.gd" id="2_gggf2"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="3_ivjuw"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BuHBulletProperties.gd" id="3_nxi7s"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="4_gbd1y"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BuHSpawnPoint.gd" id="5_kj3i6"]
 
-[sub_resource type="Curve2D" id="Curve2D_md8vh"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 100, -100, 0, 0, 0, 0, -100, -100, 0, 0, 0, 0, -100, 100, 0, 0, 0, 0, 0, 100)
-}
-point_count = 5
+[sub_resource type="Curve2D" id="Curve2D_3cuij"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_lt5ns"]
-resource_name = "PatternCustomPoints"
-script = ExtResource("3_41n0g")
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_g5ybi"]
+resource_name = "PatternOne"
+script = ExtResource("3_ivjuw")
 bullet = "1"
-center_pos = Vector2(0, 0)
-angles = []
-calculate_angles = 1
-reversed_angle = true
-pattern_angle = 0.0
-symmetric = false
-center = 0
-symmetry_type = 1
-iterations = 1000000
+iterations = 100
 follows_parent = false
 forced_angle = 0.0
 forced_target = NodePath("")
 forced_pattern_lookat = true
 cooldown_stasis = false
-cooldown_spawn = 0.5
+cooldown_spawn = 1.0
 cooldown_shoot = 0.0
 cooldown_next_spawn = 0.0
 cooldown_next_shoot = 0.0
@@ -45,9 +33,6 @@ layer_pos_offset = 0.0
 layer_speed_offset = 0.0
 layer_angle_offset = 0.0
 r_randomisation_chances = 1.0
-r_reversed_chances = 0.0
-r_angles_choice = []
-r_symmetry_chances = 0.0
 r_bullet_choice = ""
 r_bullet_nbr_choice = ""
 r_bullet_nbr_variation = Vector3(0, 0, 0)
@@ -69,16 +54,16 @@ r_cooldown_n_spawn_variation = Vector3(0, 0, 0)
 r_cooldown_n_shoot_choice = ""
 r_cooldown_n_shoot_variation = Vector3(0, 0, 0)
 
-[sub_resource type="Curve2D" id="Curve2D_p7x1c"]
+[sub_resource type="Curve2D" id="Curve2D_0uxuv"]
 
-[sub_resource type="Curve" id="Curve_r31ep"]
+[sub_resource type="Curve" id="Curve_x3rh3"]
 
-[sub_resource type="Curve" id="Curve_3ftqs"]
+[sub_resource type="Curve" id="Curve_b400i"]
 
-[sub_resource type="PackedDataContainer" id="PackedDataContainer_4hxem"]
-script = ExtResource("3_ncbic")
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_ba47j"]
+script = ExtResource("4_gbd1y")
 speed = 100.0
-scale = 0.5
+scale = 1
 angle = 0
 groups = []
 anim_idle_texture = "0"
@@ -106,7 +91,7 @@ death_outside_box = Rect2(0, 0, 0, 0)
 death_from_collision = true
 a_direction_equation = ""
 a_curve_movement = 0
-a_speed_multiplier = SubResource("Curve_r31ep")
+a_speed_multiplier = SubResource("Curve_x3rh3")
 a_speed_multi_iterations = 0
 a_speed_multi_scale = 0.0
 trigger_container = ""
@@ -117,7 +102,7 @@ homing_steer = 0
 homing_time_start = 0
 homing_duration = 999
 scale_multi_iterations = 0
-scale_multiplier = SubResource("Curve_3ftqs")
+scale_multiplier = SubResource("Curve_b400i")
 scale_multi_scale = 1
 r_randomisation_chances = 1.0
 r_speed_choice = ""
@@ -162,33 +147,31 @@ r_scale_multi_curve_choice = []
 r_scale_multi_iter_variation = Vector3(0, 0, 0)
 r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
-[node name="方符：摇曳方阵" type="Node2D"]
-script = ExtResource("1_hb2rt")
+[node name="AtkMode" type="Node"]
+script = ExtResource("1_xxtdw")
 
 [node name="Patterns" type="Node2D" parent="."]
 
 [node name="SpawnPattern" type="Path2D" parent="Patterns"]
-position = Vector2(112, 133)
-curve = SubResource("Curve2D_md8vh")
-script = ExtResource("2_s3ya0")
-id = "squre1"
-pattern = SubResource("NavigationPolygon_lt5ns")
+curve = SubResource("Curve2D_3cuij")
+script = ExtResource("2_gggf2")
+id = "one"
+pattern = SubResource("NavigationPolygon_g5ybi")
 
-[node name="BulletProps" type="Node2D" parent="."]
+[node name="Bullets" type="Node2D" parent="."]
 
-[node name="BulletPattern" type="Path2D" parent="BulletProps"]
-curve = SubResource("Curve2D_p7x1c")
-script = ExtResource("2_cq2of")
+[node name="BulletPattern" type="Path2D" parent="Bullets"]
+curve = SubResource("Curve2D_0uxuv")
+script = ExtResource("3_nxi7s")
 id = "1"
-props = SubResource("PackedDataContainer_4hxem")
+props = SubResource("PackedDataContainer_ba47j")
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="SpawnPoint" type="Node2D" parent="SpawnPoints"]
-position = Vector2(404, 253)
-script = ExtResource("3_eug8h")
-active = true
-auto_pattern_id = "squre1"
+script = ExtResource("5_kj3i6")
+active = false
+auto_pattern_id = "one"
 shared_area_name = "0"
 rotating_speed = 0.0
 pool_amount = 50
@@ -197,14 +180,3 @@ auto_start_after_time = 0.0
 auto_start_at_distance = 5.0
 auto_distance_from = NodePath("")
 trigger_container = NodePath("")
-
-[node name="Walls" type="StaticBody2D" parent="."]
-collision_layer = 17
-collision_mask = 33
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(1024, -8, 1024, 600, 0, 600, 0, 0, -56, 0, -48, 656, 1072, 640, 1056, -64, 0, -64, 8, 0)
-
-[node name="FPS" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 14.0
