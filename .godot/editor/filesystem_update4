@@ -1,7 +1,8 @@
-res://core/enemy/enemy.tscn
+res://core/enemy/atk_mode.tscn
 res://scenes/main/东方弹幕绘.tscn
 res://scenes/spellcards/squrecard - moving_squre.tscn
 res://addons/BulletUpHell/ExampleScenes/Example1_Pattern_Types.tscn
-res://core/enemy/atk_mode.tscn
+res://core/enemy/enemy.tscn
 res://core/enemy/atk_mode.gd
+res://core/bullet_tools/SpawnPoint.gd
 res://core/enemy/enemy.gd

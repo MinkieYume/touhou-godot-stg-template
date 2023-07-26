@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cec06qtuje8ia"]
+
+[ext_resource type="Script" path="res://core/bullet_tools/SpawnPoint.gd" id="1_0wgc1"]
+
+[node name="SpawnPoint" type="Marker2D"]
+script = ExtResource("1_0wgc1")
+active = true
+auto_pattern_id = ""
+shared_area_name = "0"
+rotating_speed = 0.0
+pool_amount = 50
+auto_start_on_cam = true
+auto_start_after_time = 0.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")

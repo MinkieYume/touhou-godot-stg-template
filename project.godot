@@ -29,6 +29,7 @@ instance_dock/scenes=[{
 config/name="东方弹幕绘"
 run/main_scene="res://scenes/main/东方弹幕绘.tscn"
 config/features=PackedStringArray("4.1")
+run/max_fps=60
 config/icon="res://assets/image/icon.png"
 
 [autoload]

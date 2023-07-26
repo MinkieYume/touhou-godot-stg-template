@@ -22,18 +22,18 @@ var second = 0
 func _ready():
 	pass
 
-func _process(delta):
+func _physics_process(delta):
 	if in_screen:
 		_enemy_event()
 		frame +=1
+		second = frame/60
 
 func _enemy_event():
 	if frame == 1:
 		attack(atk1)
 
 func attack(mode:AtkMode):
-	mode.atk_start = true
-	print(1)
+	mode.start_atk()
 
 func kill():
 	pass

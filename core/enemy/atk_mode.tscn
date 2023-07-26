@@ -170,7 +170,7 @@ props = SubResource("PackedDataContainer_ba47j")
 
 [node name="SpawnPoint" type="Node2D" parent="SpawnPoints"]
 script = ExtResource("5_kj3i6")
-active = false
+active = true
 auto_pattern_id = "one"
 shared_area_name = "0"
 rotating_speed = 0.0

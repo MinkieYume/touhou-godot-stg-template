@@ -1,7 +1,8 @@
-VisibleOnScreenEnabler2D
 SpawnPoint
-BulletPattern
+Marker2D
 Node2D
+VisibleOnScreenEnabler2D
+BulletPattern
 Control
 SpawnPattern
 InstanceLister
@@ -24,10 +25,8 @@ SubViewportContainer
 Label
 TextureRect
 Panel
-Marker2D
 AudioStreamPlayer
 RichTextLabel
 Node
 PanelContainer
 CenterContainer
-CanvasLayer
