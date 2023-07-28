@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cc7ayqgnxnju7" path="res://assets/image/icon.png" id="1_70m53"]
 [ext_resource type="Script" path="res://core/enemy/enemy.gd" id="1_v7jg4"]
-[ext_resource type="PackedScene" uid="uid://ddgmx5x6x7jtn" path="res://core/enemy/atk_mode.tscn" id="3_jtr0u"]
+[ext_resource type="PackedScene" uid="uid://ddgmx5x6x7jtn" path="res://core/atk_mode/atk_mode.tscn" id="3_jtr0u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_giflj"]
 radius = 23.0

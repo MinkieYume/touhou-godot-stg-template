@@ -1,10 +1,10 @@
+BulletPattern
+SpawnPattern
 SpawnPoint
 Marker2D
 Node2D
 VisibleOnScreenEnabler2D
-BulletPattern
 Control
-SpawnPattern
 InstanceLister
 Timer
 AnimationPlayer

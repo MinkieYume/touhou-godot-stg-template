@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddgmx5x6x7jtn"]
+
+[ext_resource type="Script" path="res://core/atk_mode/atk_mode.gd" id="1_ln0tc"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BuHPattern.gd" id="2_7p3bj"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BuHBulletProperties.gd" id="4_xeh6w"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BuHSpawnPoint.gd" id="6_hoofp"]
+
+[node name="AtkMode" type="Node"]
+script = ExtResource("1_ln0tc")
+
+[node name="Patterns" type="Node2D" parent="."]
+
+[node name="SpawnPattern" type="Path2D" parent="Patterns"]
+script = ExtResource("2_7p3bj")
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="BulletPattern" type="Path2D" parent="Bullets"]
+script = ExtResource("4_xeh6w")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="SpawnPoint" type="Node2D" parent="SpawnPoints"]
+script = ExtResource("6_hoofp")
+active = false
+auto_pattern_id = ""
+shared_area_name = "0"
+rotating_speed = 0.0
+pool_amount = 50
+auto_start_on_cam = false
+auto_start_after_time = 0.0
+auto_start_at_distance = 0.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")
